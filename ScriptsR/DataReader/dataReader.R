@@ -1,0 +1,25 @@
+data2013 = read.csv("../CGE2013/_ensimag2013-filtree-18-avr-2013.csv", sep =";", header=T, dec=",")
+data2012 = read.csv("../CGE2012/_cge2012-ensimag_final_26mars.csv", sep =";", header=T, dec=",")
+data2011 = read.csv("../CGE2011/cge-ensimag-2011_SPHINX_7avril2011.csv", sep =";", header=T, dec=",");
+
+
+promo2012 = read.csv("../CGE2013/promo_2012.csv", sep=";", header=T)
+promo2011 = read.csv("../CGE2013/promo_2011.csv", sep=";", header=T)
+taille2011 = sum(promo2011$M, promo2011$F)
+taille2012 = sum(promo2012$M, promo2012$F)
+
+promo6_2012 = taille2012
+promo18_2011 = taille2011
+
+promo6_2011 = taille2011
+promo18_2010 = 242
+
+promo6_2010 = 242
+promo18_2009 = 239
+  
+promo6_2009 = 239
+## attention promo sans telecom
+promo18_2008 = 157
+
+promo6_2008 = 157
+
