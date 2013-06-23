@@ -1,10 +1,10 @@
-data2013 = read.csv("../CGE2013/_ensimag2013-filtree-18-avr-2013.csv", sep =";", header=T, dec=",")
-data2012 = read.csv("../CGE2012/_cge2012-ensimag_final_26mars.csv", sep =";", header=T, dec=",")
-data2011 = read.csv("../CGE2011/cge-ensimag-2011_SPHINX_7avril2011.csv", sep =";", header=T, dec=",");
+data2013 = read.csv("../../../ObservatoirePourLEmploi.git/CGE2013/_ensimag2013-filtree-18-avr-2013.csv", sep =";", header=T, dec=",")
+data2012 = read.csv("../../../ObservatoirePourLEmploi.git/CGE2012/_cge2012-ensimag_final_26mars.csv", sep =";", header=T, dec=",")
+data2011 = read.csv("../../../ObservatoirePourLEmploi.git/CGE2011/cge-ensimag-2011_SPHINX_7avril2011.csv", sep =";", header=T, dec=",");
 
 
-promo2012 = read.csv("../CGE2013/promo_2012.csv", sep=";", header=T)
-promo2011 = read.csv("../CGE2013/promo_2011.csv", sep=";", header=T)
+promo2012 = read.csv("../../../ObservatoirePourLEmploi.git/CGE2013/promo_2012.csv", sep=";", header=T)
+promo2011 = read.csv("../../../ObservatoirePourLEmploi.git/CGE2013/promo_2011.csv", sep=";", header=T)
 taille2011 = sum(promo2011$M, promo2011$F)
 taille2012 = sum(promo2012$M, promo2012$F)
 
