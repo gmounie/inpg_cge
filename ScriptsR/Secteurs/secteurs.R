@@ -1,5 +1,4 @@
 source("../DataReader/dataReader.R")
-data2013 = data2013[data2013$AnneeEnquete == 2013,]
 
 library(ggplot2)
 library(plyr)
@@ -26,10 +25,11 @@ for(i in 1:length(val3$freq)) { if (val3$freq[i] < 0.01) val3$agglosect[i] = "Au
 
 
 p = ggplot(val3, aes(x=factor(agglosect), weight=freq)) + geom_bar(fill="lightgreen", colour="darkgreen") + coord_flip() + opts(title="Secteurs d'activité") + xlab("") + ylab("Pourcentage") 
-## png("secteurs2012.png", 1600, 1200)
+
 p + geom_text(x=1, y=0.11, label="15 secteurs < 10%", size=16) + opts(plot.title = theme_text(size=32, lineheight=.8, face="bold"), axis.text.x = theme_text(size=28, lineheight=.8, face="bold"), axis.text.y = theme_text(size=28, lineheight=.8, face="bold"),  axis.title.x = theme_text(size=28, lineheight=.8)) 
-## dev.off()
-## svg("secteurs2012.svg")
+
+ggsave("../../Output/ensimag_2013_secteurs.pdf", width=2*par("din")[1])
+
 p + geom_text(x=1, y=0.11, label="15 secteurs < 10%")
 ## dev.off()
 
