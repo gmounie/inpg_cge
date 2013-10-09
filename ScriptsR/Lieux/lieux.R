@@ -1,4 +1,4 @@
-source("script_data.R")
+source("../DataReader/dataReader.R")
 
 library(ggplot2)
 
@@ -6,14 +6,14 @@ for (i in 0:1) {
   if (i == 0) {
     data = data2013
     data = data[data$PromoEnquete2013 == 2012 | data$PromoEnquete2013 == 2011,]
-    fname = "./ensimag_2013_lieu.svg"
+    fname = "../../Output/ensimag_2013_lieu.pdf"
     titre = "Lieu de travail des diplômés, par type d'activité, début 2O13, 6 et 18 mois"
     lapromo = data$PromoEnquete2013
     anneeE = 2013
   } else {
     data = data2012
     data = data[data$PromoEnquete2012 == 2011 | data$PromoEnquete2012 == 2010,]
-    fname = "./ensimag_2012_lieu.svg"
+    fname = "../../Output/ensimag_2012_lieu.pdf"
     titre = "Lieu de travail des diplômés, par type d'activité, début 2O12, 6 et 18 mois"
     lapromo = data$PromoEnquete2012
     anneeE = 2012
