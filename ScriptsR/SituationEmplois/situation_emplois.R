@@ -18,6 +18,7 @@ library(ggplot2)
 p = ggplot(data=taux_emplois, aes(x=as.factor(promo), fill=situation, weight=poids), colour=black)  + geom_bar()
 p + scale_fill_manual(values=c("blue","green","SlateBlue4","chartreuse4","red","yellow", "orange")) + opts(title="Situation des diplômés début 2O13, à 6 et 18 mois") + xlab("Promo Ensimag") + ylab("Pourcentage")
 ggsave("../../Output/ensimag_2013_situation.svg")   
+ggsave("../../Output/ensimag_2013_situation.pdf") 
 
 # version 2012
 taux_emplois12 = data.frame(situation=data2012$ActiviteActuelle, activitesOLD=data2012$ActiviteActuelleV2010, promo=data2012$PromoEnquete2012, poids=100, nb=1)
@@ -34,7 +35,7 @@ taux_emplois12$situation = relevel(taux_emplois12$situation, "En activité profe
 p = ggplot(data=taux_emplois12, aes(x=as.factor(promo), fill=situation, weight=poids), colour=black)  + geom_bar()
 p + scale_fill_manual(values=c("blue","green","SlateBlue4","chartreuse4","red","yellow", "orange")) + opts(title="Situation des diplômés début 2O12, à 6 et 18 mois") + xlab("Promo Ensimag") + ylab("Pourcentage")
 ggsave("../../Output/ensimag_2012_situation.svg")   
-
+ggsave("../../Output/ensimag_2012_situation.pdf")
 
 
 

@@ -21,4 +21,4 @@ val2 = val
 val2$freq = val$freq / sum(val$freq)
 val3 = val2
 p = ggplot(a, aes(x=factor(postes), weight=poids/(length(a$postes)))) + geom_bar(fill="lightgreen", colour="darkgreen") + coord_flip() + opts(title="Nature des postes") + xlab("") + ylab("Pourcentage") 
-ggsave("../../Output/ensimag_2013_natures.pdf", width=2*par("din")[1])
+ggsave("../../Output/ensimag_2013_postes.pdf", width=2*par("din")[1])
