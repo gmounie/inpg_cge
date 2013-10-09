@@ -20,7 +20,9 @@ dev.off()
 
 
 
-
+tempsrecherche = data.frame(situation=data2013$ActiviteActuelle, activitesOLD=data2013$ActiviteActuelleV2010, promo=data2013$PromoEnquete2013, duree=data2013$DureeRechercheEmploiINPG.2, poids=100, nb=1)
+length(tempsrecherche[tempsrecherche$situation == "En activité professionnelle" & tempsrecherche$promo == 2012 & tempsrecherche$duree > 0 & ! is.na(tempsrecherche$duree),"duree"])
+tempsrecherche$situation
 
 
 
