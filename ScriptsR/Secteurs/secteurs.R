@@ -33,7 +33,7 @@ p = ggplot(a, aes(x=factor(secteurs), weight=poids/(length(a$secteurs)))) + geom
 
 
 #p + geom_text(x=1, y=0.11, label="15 secteurs < 10%")
-ggsave("../../Output/ensimag_2013_secteurs.pdf", width=2*par("din")[1])
+ggsave("../../Output/ensimag_2013_secteurs.svg", width=2*par("din")[1])
 
 
 
