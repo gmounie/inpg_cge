@@ -9,7 +9,7 @@ Tous les scripts sont couverts par la licence GPL v3+.
 # Motivation
 
 Le but de ces scripts est d'aider à l'analyse des données issues
-de l'enquête sur le devenir de diplômés réalisée tout les ans par
+de l'enquête sur le devenir de diplômés réalisée tous les ans par
 l'Ensimag.
 
 L'enquête est fondée sur l'enquête de la Conférence des Grandes écoles
@@ -44,11 +44,11 @@ valeurs exceptionnelles: un boxplot pour les inter-quartiles et les
 points bruts pour les valeurs exceptionnelles.
 
 
-# Échantillon de données
+# TODO: Échantillon de données
 
-Cet entrepot ne contient pas les vrais données. Mais les
-données-exemples devraient permettre de construire des schémas avec un
-rendu proche de celui avec les véritables entrées.
+Cet entrepot ne contient pas les vrais données.  Mais j'aimerai
+fournir des données-exemples devraient permettre de construire des
+schémas avec un rendu proche de celui avec les véritables entrées.
 
 Les entêtes des fichiers CSV sont correctes. Mais chaque entrée est
 reconstruite à partir des données en réalisant trois opérations:
