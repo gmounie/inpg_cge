@@ -1,4 +1,4 @@
-source("script_data.R")
+source("../DataReader/dataReader.R")
 
 
 repondants6_2012 = length( data2013$AnneeEnquete[ data2013$AnneeEnquete == 2013 & data2013$AnneeDiplome == 2012 & data2013$ActiviteActuelle != ""])
@@ -84,4 +84,4 @@ p = ggplot(cf18, aes(x=year, y=pmoyen, ymin=pmin, ymax=pmax))
 ## p = p + geom_line(colour="blue",size=2)
 p = p  + geom_errorbar(colour="blue") + geom_point(size=3)
 p + ggtitle("Pourcentage de recherche d'emploi à 18 mois  (Intervalle de confiance à 95%)") + coord_cartesian(ylim=c(0,10))
-ggsave("ensimag_itchomeur_18mois.svg")
+ggsave("../../Output/ensimag_2013_itchomeur_18mois.svg")
