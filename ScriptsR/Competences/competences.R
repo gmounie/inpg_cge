@@ -5,5 +5,5 @@
 
 source("../DataReader/dataReader.R")
 
-data2013$ActivitesTechniquesFonctionINPG
-
+write.csv(data2013$ActivitesTechniquesFonctionINPG, file="compet13.csv", row.names= F, quote=F)
+write.csv(data2014$ActivitesTechniquesFonctionINPG, file="compet14.csv", row.names= F, quote=F)
