@@ -16,7 +16,7 @@ c = as.factor(str_replace_all(b, "^ | $", ""))
 data = data.frame(compétence=c, poids=1/taille)
 p = ggplot(data, aes(x=compétence, weight=poids))+ geom_bar(fill="lightgreen", colour="darkgreen") + coord_flip() + opts(title="Compétences techniques") + xlab("") + ylab("Pourcentage") 
 p 
-ggsave("../../Output/competence.pdf", width=2*par("din")[1])
+ggsave("../../Output/ensimag_2013_competence.png", width=2*par("din")[1])
 
 write.csv(data2013$ActivitesTechniquesFonctionINPG, file="compet13.csv", row.names= F, quote=F)
 write.csv(data2014$ActivitesTechniquesFonctionINPG, file="compet14.csv", row.names= F, quote=F)
