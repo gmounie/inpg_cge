@@ -12,6 +12,7 @@ my %bigraph;
 
 say "graph { graph [splines=true,overlap=false];";
 
+
 my $indice=0;
 foreach my $ligne ( <$fh> ) {
     chomp($ligne);
@@ -19,6 +20,7 @@ foreach my $ligne ( <$fh> ) {
     if ($ligne ne "") {
 	foreach my $compet (split(";", $ligne)) {
 	    $compet =~ s/^\s+|\s+$//g;
+	    
 
 	    say "$indice [shape=box, width=0.1];";
 	    say "$indice -- \"$compet\";";
