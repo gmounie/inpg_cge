@@ -26,6 +26,7 @@ val3$agglosect = val3$SecteurActivite
 
 #p = ggplot(val3, aes(x=factor(agglosect), weight=freq)) + geom_bar(fill="lightgreen", colour="darkgreen") + coord_flip() + opts(title="Secteurs d'activité") + xlab("") + ylab("Pourcentage") 
 
+
 p = ggplot(a, aes(x=factor(secteurs), weight=poids/(length(a$secteurs)))) + geom_bar(fill="lightgreen", colour="darkgreen") + coord_flip() + opts(title="Secteurs d'activité") + xlab("") + ylab("Pourcentage") 
 
 
