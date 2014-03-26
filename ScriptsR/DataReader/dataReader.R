@@ -1,4 +1,4 @@
-data2014 = read.csv("../../../ObservatoirePourLEmploi.git/CGE2014/_ensimag2014_547.csv", sep =";", header=T, dec=",")
+data2014 = read.csv("../../../ObservatoirePourLEmploi.git/CGE2014/_ensimag2014_125.csv", sep =";", header=T, dec=",")
 data2013 = read.csv("../../../ObservatoirePourLEmploi.git/CGE2013/_ensimag2013-filtree-18-avr-2013.csv", sep =";", header=T, dec=",")
 data2012 = read.csv("../../../ObservatoirePourLEmploi.git/CGE2012/_cge2012-ensimag_final_26mars.csv", sep =";", header=T, dec=",")
 data2011 = read.csv("../../../ObservatoirePourLEmploi.git/CGE2011/cge-ensimag-2011_SPHINX_7avril2011.csv", sep =";", header=T, dec=",");
