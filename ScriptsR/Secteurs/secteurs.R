@@ -4,7 +4,7 @@ library(ggplot2)
 library(plyr)
 
 secteurs = data2013$SecteurActiviteFinale[data2013$AnneeEnquete == 2013]
-a = data.frame(secteurs = data2013$SecteurActivite, poids= 1, situation=data2013$ActiviteActuelle, situationVolontariat = data2013$SecteurActiviteEntrepriseVolontariat, apprentissage= data2013$ApprentissageFormationContinueV2013)
+a = data.frame(secteurs = data2013$SecteurActivite, poids= 1, situation=data2013$ActiviteActuelle, situationVolontariat = data2013$SecteurActiviteEntrepriseVolontariat, apprentissage= data2013$ApprentissageFormationContinueV2013, filiere=data2013$FiliereFormation)
 a$secteurs = factor(a$secteurs, levels=c(levels(a$secteurs), "Recherche (doctorat)"))
 a[a$situation == "En thèse",]$secteurs = "Recherche (doctorat)"
 a[a$situation == "Volontariat",]$secteurs = a[a$situation == "Volontariat",]$situationVolontariat
@@ -27,14 +27,14 @@ val3$agglosect = val3$SecteurActivite
 #p = ggplot(val3, aes(x=factor(agglosect), weight=freq)) + geom_bar(fill="lightgreen", colour="darkgreen") + coord_flip() + opts(title="Secteurs d'activité") + xlab("") + ylab("Pourcentage") 
 
 
-p = ggplot(a, aes(x=factor(secteurs), weight=poids/(length(a$secteurs)))) + geom_bar(fill="lightgreen", colour="darkgreen") + coord_flip() + opts(title="Secteurs d'activité") + xlab("") + ylab("Pourcentage") 
+p = ggplot(a, aes(x=factor(secteurs), weight=poids/(length(a$secteurs)),fill=filiere)) + geom_bar(colour="white") + coord_flip() + opts(title="Secteurs d'activité") + xlab("") + ylab("Pourcentage") 
 
 
 #p + geom_text(x=1, y=0.11, label="secteurs < 10%", size=16) + opts(plot.title = theme_text(size=32, lineheight=.8, face="bold"), axis.text.x = theme_text(size=28, lineheight=.8, face="bold"), axis.text.y = theme_text(size=28, lineheight=.8, face="bold"),  axis.title.x = theme_text(size=28, lineheight=.8)) 
 
 
 #p + geom_text(x=1, y=0.11, label="15 secteurs < 10%")
-ggsave("../../Output/ensimag_2013_secteurs.svg", width=2*par("din")[1])
+ggsave("../../Output/ensimag_2013_secteurs.svg", width=3*par("din")[1])
 
 
 
