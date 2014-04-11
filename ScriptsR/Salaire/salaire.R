@@ -42,12 +42,12 @@ summary(salaire$SalaireAvecPrime[salaire$AnneeEnquete == 2012 & salaire$AnneeDip
 
 p = ggplot(data=salaire, aes(x=AnneeDiplome, y=SalaireAvecPrime, ymin=0)) + geom_jitter(aes(alpha=0.01)) + geom_boxplot(outlier.size=0)
 p + facet_grid(dureesortie ~ AnneeEnquete) + opts(title="Salaire Brut (+ primes) par année de promotion et année de l'enquête")
-ggsave("../../Output/ensimag_salaire_total.pdf", width=2*par("din")[1])
+ggsave("../../Output/ensimag_salaire_total.png", width=2*par("din")[1])
 p + facet_grid(dureesortie ~ AnneeEnquete + Sexe) + opts(title="Salaire Brut (+ primes) par année de promotion, sexe et année de l'enquête")
-ggsave("../../Output/ensimag_salaire_sexe.pdf", width=2*par("din")[1])
+ggsave("../../Output/ensimag_salaire_sexe.png", width=2*par("din")[1])
 p + facet_grid(dureesortie ~ AnneeEnquete + ActiviteActuelle) + opts(title="Salaire Brut (+ primes) par année de promotion, activité et année de l'enquête")
-ggsave("../../Output/ensimag_salaire_activite.pdf", width=2*par("din")[1])
+ggsave("../../Output/ensimag_salaire_activite.png", width=2*par("din")[1])
 p + facet_grid(dureesortie ~ AnneeEnquete + lieu) + opts(title="Salaire Brut (+ primes) par année de promotion, lieu de travail et année de l'enquête")
-ggsave("../../Output/ensimag_salaire_lieu.pdf", width=2.2*par("din")[1])
+ggsave("../../Output/ensimag_salaire_lieu.png", width=2.2*par("din")[1])
 
 
