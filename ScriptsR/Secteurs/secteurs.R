@@ -37,6 +37,29 @@ p = ggplot(a, aes(x=factor(secteurs), weight=poids/(length(a$secteurs)),fill=fil
 ggsave("../../Output/ensimag_2013_secteurs.svg", width=3*par("din")[1])
 
 
+secteurs2008_20013_18mois = factor(c( sub("[0-9]+. *","",as.character(data2010_2008$emp.actuel.Secteur)), as.character(data2011$SecteurActiviteINPG[data2011$Promo == 2009]), as.character(data2012$SecteurActiviteFinale[data2012$AnneeEnquete == 2012 && data2012$AnneeDiplome == 2010]), as.character(data2013$SecteurActiviteFinale[data2013$AnneeEnquete == 2013 && data2013$AnneeDiplome == 2011]), as.character(data2014$SecteurActiviteFinale[data2014$AnneeEnquete == 2014 && data2014$AnneeDiplome == 2012]) ) )
+
+length(secteurs2008_20013_18mois)
+summary(secteurs2008_20013_18mois)
+
+levels(secteurs2008_20013_18mois)
+secteursAll = secteurs2008_20013_18mois[secteurs2008_20013_18mois != ""]
+
+qplot(secteursAll) + coord_flip()
+summary(secteursAll)
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
