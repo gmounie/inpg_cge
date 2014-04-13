@@ -26,7 +26,7 @@ r= r[r$contrat != "",]
 ## r$durée = relevel(r$durée, "Contrat avant la sortie de l'école")
 
 
-length(r$durée)
+length(r$contrat)
 summary(r)
 qplot(r)
 ggplot(r, aes(x=enquete, fill=contrat)) + geom_bar() + xlab("Année enquête") + ylab("Nombre de diplômés")
