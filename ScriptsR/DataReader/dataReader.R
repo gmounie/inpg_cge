@@ -16,6 +16,7 @@ promo2012 = read.csv("../../../ObservatoirePourLEmploi.git/CGE2013/promo_2012.cs
 promo2011 = read.csv("../../../ObservatoirePourLEmploi.git/CGE2013/promo_2011.csv", sep=";", header=T)
 taille2011 = sum(promo2011$M, promo2011$F)
 taille2012 = sum(promo2012$M, promo2012$F)
+taille2010 = 242
 
 promo6_2013 = 184
 promo18_2012 = taille2012
