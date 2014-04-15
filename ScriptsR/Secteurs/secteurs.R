@@ -4,10 +4,15 @@ library(ggplot2)
 library(plyr)
 
 secteurs = data2013$SecteurActiviteFinale[data2013$AnneeEnquete == 2013]
-a = data.frame(secteurs = data2013$SecteurActivite, poids= 1, situation=data2013$ActiviteActuelle, situationVolontariat = data2013$SecteurActiviteEntrepriseVolontariat, apprentissage= data2013$ApprentissageFormationContinueV2013)
+a = data.frame(secteurs = data2013$SecteurActivite, poids= 1, situation=data2013$ActiviteActuelle, situationVolontariat = data2013$SecteurActiviteEntrepriseVolontariat, apprentissage= data2013$ApprentissageFormationContinueV2013, filiere=data2013$FiliereFormation)
 a$secteurs = factor(a$secteurs, levels=c(levels(a$secteurs), "Recherche (doctorat)"))
 a[a$situation == "En thèse",]$secteurs = "Recherche (doctorat)"
 a[a$situation == "Volontariat",]$secteurs = a[a$situation == "Volontariat",]$situationVolontariat
+
+a = a[a$filiere != "",]
+a = a[as.character(a$secteurs) != "",]
+
+
 length(a$secteurs[a$secteurs != ""])
 ddply(a, .(secteurs), summarize, nb=round(100*sum(poids)/274, digits=1))
 
@@ -27,14 +32,38 @@ val3$agglosect = val3$SecteurActivite
 #p = ggplot(val3, aes(x=factor(agglosect), weight=freq)) + geom_bar(fill="lightgreen", colour="darkgreen") + coord_flip() + opts(title="Secteurs d'activité") + xlab("") + ylab("Pourcentage") 
 
 
-p = ggplot(a, aes(x=factor(secteurs), weight=poids/(length(a$secteurs)))) + geom_bar(fill="lightgreen", colour="darkgreen") + coord_flip() + opts(title="Secteurs d'activité") + xlab("") + ylab("Pourcentage") 
+p = ggplot(a, aes(x=factor(secteurs), weight=poids/(length(a$secteurs)),fill=filiere)) + geom_bar(colour="white") + coord_flip() + opts(title="Secteurs d'activité") + xlab("") + ylab("Pourcentage") 
 
 
 #p + geom_text(x=1, y=0.11, label="secteurs < 10%", size=16) + opts(plot.title = theme_text(size=32, lineheight=.8, face="bold"), axis.text.x = theme_text(size=28, lineheight=.8, face="bold"), axis.text.y = theme_text(size=28, lineheight=.8, face="bold"),  axis.title.x = theme_text(size=28, lineheight=.8)) 
 
-
+p
 #p + geom_text(x=1, y=0.11, label="15 secteurs < 10%")
-ggsave("../../Output/ensimag_2013_secteurs.svg", width=2*par("din")[1])
+ggsave("../../Output/ensimag_2013_secteurs.png", width=2*par("din")[1])
+
+
+secteurs2008_20013_18mois = factor(c( sub("[0-9]+. *","",as.character(data2010_2008$emp.actuel.Secteur)), as.character(data2011$SecteurActiviteINPG[data2011$Promo == 2009]), as.character(data2012$SecteurActiviteINPG[data2012$AnneeDiplome == 2010]), as.character(data2013$SecteurActiviteFinale[data2013$AnneeEnquete == 2013 && data2013$AnneeDiplome == 2011]), as.character(data2014$SecteurActiviteFinale[data2014$AnneeEnquete == 2014 && data2014$AnneeDiplome == 2012]) ) )
+
+secteurs2008_20013_18mois = factor(secteurs2008_20013_18mois[as.character(secteurs2008_20013_18mois) != ""]) 
+length(secteurs2008_20013_18mois)
+summary(secteurs2008_20013_18mois)
+
+levels(secteurs2008_20013_18mois)
+secteursAll = secteurs2008_20013_18mois[secteurs2008_20013_18mois != ""]
+
+qplot(secteursAll) + coord_flip()
+summary(secteursAll)
+
+
+
+
+
+
+
+
+
+
+
 
 
 
