@@ -138,7 +138,7 @@ ggplot(situation2009_2013, aes(x=promo,fill=situation, weight=poids)) + geom_bar
 ggsave("../../Output/ensimag_2009_2013_situation.png", width=2*par("din")[1])
 
 
-
+summary(situation2009_2013)
 
 
 
