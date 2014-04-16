@@ -133,6 +133,10 @@ situation2009_2013[situation2009_2013$promo == 2012,"nb"] = length(situation2009
 situation2009_2013[situation2009_2013$promo == 2013,"nb"] = length(situation2009_2013[situation2009_2013$promo == 2013,"situation"])
 situation2009_2013[,"poids"] = 100/situation2009_2013[,"nb"]
 
+length(situation2009_2013$situation)
+summary(situation2009_2013$situation)
+length(situation2008_2012$situation)
+summary(situation2008_2012$situation)
 
 ggplot(situation2009_2013, aes(x=promo,fill=situation, weight=poids)) + geom_bar() +scale_fill_manual(values=c("blue","green","SlateBlue4","chartreuse4","red","yellow", "orange")) + ylab("Pourcentage de réponses")
 ggsave("../../Output/ensimag_2009_2013_situation.png", width=2*par("din")[1])
