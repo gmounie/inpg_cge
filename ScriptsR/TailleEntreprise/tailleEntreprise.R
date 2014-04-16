@@ -49,8 +49,15 @@ t10 = data.frame(taille = data2012$TailleEntrepriseV2010[data2012$AnneeDiplome =
 
 t = rbind(t12, t11, t10)
 t$promo = factor(t$promo)
+t = t[t$taille != "",]
 
-
+levels(t$taille) = c(
+""                              , "Plus de 5000 salarié(e)s"   , 
+"Plus de 5000 salarié(e)s", "De 20 à 249 salarié(e)s"     , 
+"De 10 à 19 salarié(e)s"        , "De 250 à 4999 salarié(e)s" , 
+"De 20 à 249 salarié(e)s"        , "De 250 à 4999 salarié(e)s"     , 
+"Plus de 5000 salarié(e)s"  , "De 250 à 4999 salarié(e)s"   , 
+"De 20 à 249 salarié(e)s"        , "Moins de 10 salarié(e)s"      )
 
 length(t$taille)
 summary(t)
