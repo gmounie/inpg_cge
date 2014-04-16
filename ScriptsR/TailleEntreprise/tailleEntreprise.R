@@ -43,6 +43,24 @@ p = ggplot(a, aes(x=factor(tailles), weight=poids/(length(a$tailles)))) + geom_b
 #p + geom_text(x=1, y=0.11, label="15 secteurs < 10%")
 ggsave("../../Output/ensimag_2013_tailles.svg", width=2*par("din")[1])
 
+t12 = data.frame(taille = data2014$TailleEntrepriseV2010[data2014$AnneeDiplome == 2012],promo= 2012)
+t11 = data.frame(taille = data2013$TailleEntrepriseV2010[data2013$AnneeDiplome == 2011],promo= 2011)
+t10 = data.frame(taille = data2012$TailleEntrepriseV2010[data2012$AnneeDiplome == 2010],promo= 2010)
+
+t = rbind(t12, t11, t10)
+t$promo = factor(t$promo)
+
+
+
+length(t$taille)
+summary(t)
+
+
+
+
+
+
+
 
 
 
