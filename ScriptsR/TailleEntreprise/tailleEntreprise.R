@@ -62,9 +62,28 @@ levels(t$taille) = c(
 length(t$taille)
 summary(t)
 
+t612 = data.frame(taille = data2014$TailleEntrepriseV2010[data2014$AnneeDiplome == 2013],promo= 2013)
+t611 = data.frame(taille = data2013$TailleEntrepriseV2010[data2013$AnneeDiplome == 2012],promo= 2012)
+t610 = data.frame(taille = data2012$TailleEntrepriseV2010[data2012$AnneeDiplome == 2011],promo= 2011)
+
+t6 = rbind(t612, t611, t610)
+t6$promo = factor(t6$promo)
+t6 = t6[t6$taille != "",]
 
 
+levels(t6$taille)
 
+
+levels(t6$taille) = c(
+""                              , "Plus de 5000 salarié(e)s"   , 
+"Plus de 5000 salarié(e)s", "De 20 à 249 salarié(e)s"     , 
+"De 10 à 19 salarié(e)s"        , "De 250 à 4999 salarié(e)s" , 
+"De 20 à 249 salarié(e)s"        , "De 250 à 4999 salarié(e)s"     , 
+"Plus de 5000 salarié(e)s"  , "De 250 à 4999 salarié(e)s"   , 
+"De 20 à 249 salarié(e)s"        , "Moins de 10 salarié(e)s"      )
+
+length(t6$taille)
+summary(t6)
 
 
 
