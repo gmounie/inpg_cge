@@ -143,19 +143,13 @@ ggsave("../../Output/ensimag_2009_2013_situation.png", width=2*par("din")[1])
 
 
 summary(situation2009_2013)
+dim(situation2009_2013)
+head(situation2009_2013)
+library("dplyr")
+select(situation2009_2013, situation, promo, poids) %>% group_by(promo, situation) %>% summarize(nombre = round(sum(poids),1))
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+summary(situation2008_2012)
+dim(situation2008_2012)
+head(situation2008_2012)
+select(situation2008_2012, situation, promo, poids) %>% group_by(promo, situation) %>% summarize(nombre = round(sum(poids),1))
 
