@@ -1,6 +1,25 @@
 source("../DataReader/dataReader.R")
 data2013 = data2013[data2013$AnneeEnquete == 2013,]
 
+# version 2015
+taux_emplois = data.frame(situation=data2015$ActiviteActuelleV2015, promo=data2015$Promo, poids=100, nb=1)
+taux_emplois[taux_emplois$promo == 2012,"nb"] = length(taux_emplois[taux_emplois$promo == 2012,"situation"])
+taux_emplois[taux_emplois$promo == 2013,"nb"] = length(taux_emplois[taux_emplois$promo == 2013,"situation"])
+taux_emplois[taux_emplois$promo == 2014,"nb"] = length(taux_emplois[taux_emplois$promo == 2014,"situation"])
+taux_emplois[,"poids"] = 100/taux_emplois[,"nb"]
+taux_emplois$situation = relevel(taux_emplois$situation, "En recherche d'emploi")
+taux_emplois$situation = relevel(taux_emplois$situation, "En volontariat")
+taux_emplois$situation = relevel(taux_emplois$situation, "En thèse")
+taux_emplois$situation = relevel(taux_emplois$situation, "En création d'entreprise")
+taux_emplois$situation = relevel(taux_emplois$situation, "En activité professionnelle")
+taux_emplois$situation = relevel(taux_emplois$situation, "")
+library(ggplot2)
+p = ggplot(data=taux_emplois, aes(x=as.factor(promo), fill=situation, weight=poids), colour=black)  + geom_bar()
+p + scale_fill_manual(values=c("white", "blue","green","SlateBlue4","chartreuse4","red","yellow", "orange")) + ggtitle("Situation des diplômés début 2O14, à 6, 18 et 30 mois") + xlab("Promo Ensimag") + ylab("Pourcentage")
+ggsave("../../Output/ensimag_2015_situation.svg")   
+ggsave("../../Output/ensimag_2015_situation.pdf") 
+
+
 # version 2014
 taux_emplois = data.frame(situation=data2014$ActiviteActuelle, activitesOLD=data2014$ActiviteActuelleV2010, promo=data2014$Promo, poids=100, nb=1)
 taux_emplois[taux_emplois$promo == 2012,"nb"] = length(taux_emplois[taux_emplois$promo == 2012,"situation"])
