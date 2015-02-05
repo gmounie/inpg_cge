@@ -1,3 +1,4 @@
+data2015 = read.csv("../../../ObservatoirePourLEmploi.git/CGE2015/Ensimag2015-2015-02-05.csv", sep =";", header=T, dec=",")
 data2014 = read.csv("../../../ObservatoirePourLEmploi.git/CGE2014/_ensimag2014_296.csv", sep =",", header=T, dec=".")
 data2013 = read.csv("../../../ObservatoirePourLEmploi.git/CGE2013/_ensimag2013-filtree-18-avr-2013.csv", sep =";", header=T, dec=",")
 data2012 = read.csv("../../../ObservatoirePourLEmploi.git/CGE2012/_cge2012-ensimag_final_26mars.csv", sep =";", header=T, dec=",")
@@ -13,6 +14,10 @@ data2012 = data2012[data2012$AnneeEnquete == 2012,]
 # grave typo dans 2011 noté "2 011", ne pas filtré (inutile en plus)
 # data2011 = data2011[data2011$AnneeEnquete == 2011,] 
 
+
+# financiers entré l'année d'avant
+taille2014 = 255
+
 # attention promo sans la filère finance
 taille2013 = 184
 
@@ -23,7 +28,11 @@ taille2011 = sum(promo2011$M, promo2011$F)
 taille2012 = sum(promo2012$M, promo2012$F)
 taille2010 = 242
 
-promo6_2013 = 184
+promo6_2014 = taille2014
+promo18_2013 = taille2013
+
+
+promo6_2013 = taille2013
 promo18_2012 = taille2012
 
 promo6_2012 = taille2012
