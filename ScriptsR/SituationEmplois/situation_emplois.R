@@ -15,13 +15,14 @@ taux_emplois$situation = relevel(taux_emplois$situation, "En activité professio
 taux_emplois$situation = relevel(taux_emplois$situation, "")
 library(ggplot2)
 p = ggplot(data=taux_emplois, aes(x=as.factor(promo), fill=situation, weight=poids), colour=black)  + geom_bar()
-p + scale_fill_manual(values=c("white", "blue","green","SlateBlue4","chartreuse4","red","yellow", "orange")) + ggtitle("Situation des diplômés début 2O14, à 6, 18 et 30 mois") + xlab("Promo Ensimag") + ylab("Pourcentage")
+p + scale_fill_manual(values=c("white", "blue","green","SlateBlue4","chartreuse4","red","yellow", "orange")) + ggtitle("Situation des diplômés début 2O15, à 6, 18 et 30 mois") + xlab("Promo Ensimag") + ylab("Pourcentage")
 ggsave("../../Output/ensimag_2015_situation.svg")   
 ggsave("../../Output/ensimag_2015_situation.pdf") 
 
 
 # version 2014
 taux_emplois = data.frame(situation=data2014$ActiviteActuelle, activitesOLD=data2014$ActiviteActuelleV2010, promo=data2014$Promo, poids=100, nb=1)
+taux_emplois = taux_emplois[taux_emplois$situation != ""]
 taux_emplois[taux_emplois$promo == 2012,"nb"] = length(taux_emplois[taux_emplois$promo == 2012,"situation"])
 taux_emplois[taux_emplois$promo == 2013,"nb"] = length(taux_emplois[taux_emplois$promo == 2013,"situation"])
 taux_emplois[,"poids"] = 100/taux_emplois[,"nb"]
@@ -35,7 +36,7 @@ library(ggplot2)
 p = ggplot(data=taux_emplois, aes(x=as.factor(promo), fill=situation, weight=poids), colour=black)  + geom_bar()
 p + scale_fill_manual(values=c("blue","green","SlateBlue4","chartreuse4","red","yellow", "orange")) + opts(title="Situation des diplômés début 2O14, à 6 et 18 mois") + xlab("Promo Ensimag") + ylab("Pourcentage")
 ggsave("../../Output/ensimag_2014_situation.svg")   
-ggsave("../../Output/ensimag_2014_situation.pdf") 
+ggsave("../../Output/ensimag_2014_situation.png") 
 
 
 # version 2013
