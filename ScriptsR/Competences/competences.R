@@ -20,7 +20,7 @@ filiereDUP=c()
 for(line in a) { for(nb in seq(1, length(line))) { filiereDUP = c(filiereDUP, as.character(filiere[i]))}; i=i+1  }
 str(filiereDUP)
 data = data.frame(compétence=c, poids=1/taille, filiere=as.factor(filiereDUP))
-p = ggplot(data, aes(x=compétence, weight=poids,fill=filiere))+ geom_bar() + coord_flip() + opts(title="Compétences techniques") + xlab("") + ylab("Pourcentage") 
+p = ggplot(data, aes(x=compétence, weight=poids,fill=filiere))+ geom_bar() + coord_flip() + theme(title=element_text("Compétences techniques")) + xlab("") + ylab("Pourcentage") 
 p 
 ggsave("../../Output/ensimag_2013_competence.png", width=3*par("din")[1])
 

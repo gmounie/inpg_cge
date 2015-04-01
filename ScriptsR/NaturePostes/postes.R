@@ -20,7 +20,7 @@ val = count(data2013)
 val2 = val
 val2$freq = val$freq / sum(val$freq)
 val3 = val2
-p = ggplot(a, aes(x=factor(postes), weight=poids/(length(a$postes)))) + geom_bar(fill="lightgreen", colour="darkgreen") + coord_flip() + opts(title="Nature des postes") + xlab("") + ylab("Pourcentage") 
+p = ggplot(a, aes(x=factor(postes), weight=poids/(length(a$postes)))) + geom_bar(fill="lightgreen", colour="darkgreen") + coord_flip() + theme(title=element <- text("Nature des postes")) + xlab("") + ylab("Pourcentage") 
 ggsave("../../Output/ensimag_2013_postes.svg", width=2*par("din")[1])
 
 postes2008_2013 = factor(c( as.character(data2010_2008$emp.actuel.poste), as.character(data2011$NaturePosteOccupeINPG[data2011$Promo == 2009]), as.character(data2012$NaturePosteOccupeINPG[data2012$AnneeDiplome == 2010]), as.character(data2013$NaturePosteOccupeINPG[data2013$AnneeEnquete == 2013 && data2013$AnneeDiplome == 2011]), as.character(data2014$NaturePosteOccupeINPG[data2014$AnneeEnquete == 2014 && data2014$AnneeDiplome == 2012]) ) )

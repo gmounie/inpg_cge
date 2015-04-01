@@ -3,6 +3,49 @@ source("../DataReader/dataReader.R")
 library(ggplot2)
 library(plyr)
 
+# version 2014
+secteurs = data2014$SecteurActiviteFinale[data2014$AnneeEnquete == 2014]
+a = data.frame(secteurs = data2014$SecteurActivite, poids= 1, situation=data2014$ActiviteActuelle, situationVolontariat = data2014$SecteurActiviteEntrepriseVolontariat, apprentissage= data2014$ApprentissageFormationContinueV2013, filiere=data2014$FiliereFormation)
+a$secteurs = factor(a$secteurs, levels=c(levels(a$secteurs), "Recherche (doctorat)"))
+a[a$situation == "En thèse",]$secteurs = "Recherche (doctorat)"
+a[a$situation == "Volontariat",]$secteurs = a[a$situation == "Volontariat",]$situationVolontariat
+
+a = a[a$filiere != "",]
+a = a[as.character(a$secteurs) != "",]
+
+
+total= length(a$secteurs[a$secteurs != ""])
+ddply(a, .(secteurs), summarize, nb=round(100*sum(poids)/total, digits=1))
+
+b = a[a$apprentissage == "En apprentissage",] 
+totala = length(b$secteurs[b$secteurs != ""])
+ddply(b, .(secteurs), summarize, nb=round(100*sum(poids)/totala, digits=0)) 
+
+val = count(data2014)
+val2 = val
+val2$freq = val$freq / sum(val$freq)
+val3 = val2
+val3$agglosect = val3$SecteurActivite
+#for(i in 1:length(val3$freq)) { if (val3$freq[i] < 0.1) val3$agglosect[i] = "Autres secteurs" }
+
+
+
+#p = ggplot(val3, aes(x=factor(agglosect), weight=freq)) + geom_bar(fill="lightgreen", colour="darkgreen") + coord_flip() + opts(title="Secteurs d'activité") + xlab("") + ylab("Pourcentage") 
+
+
+p = ggplot(a, aes(x=factor(secteurs), weight=poids/(length(a$secteurs)),fill=filiere)) + geom_bar(colour="white") + coord_flip() + ggtitle("Secteurs d'activité en 2014, par filière, 6 et 18 mois après la sortie") + xlab("") + ylab("Pourcentage") + geom_text(label="PAS DE FILIÈRE FINANCE À 6 MOIS !!!", color="red", x=10, y=0.2)
+
+
+#p + geom_text(x=1, y=0.11, label="secteurs < 10%", size=16) + opts(plot.title = theme_text(size=32, lineheight=.8, face="bold"), axis.text.x = theme_text(size=28, lineheight=.8, face="bold"), axis.text.y = theme_text(size=28, lineheight=.8, face="bold"),  axis.title.x = theme_text(size=28, lineheight=.8)) 
+
+p
+#p + geom_text(x=1, y=0.11, label="15 secteurs < 10%")
+ggsave("../../Output/ensimag_2014_secteurs_filiere.png", width=2*par("din")[1])
+
+
+
+# version 2013
+
 secteurs = data2013$SecteurActiviteFinale[data2013$AnneeEnquete == 2013]
 a = data.frame(secteurs = data2013$SecteurActivite, poids= 1, situation=data2013$ActiviteActuelle, situationVolontariat = data2013$SecteurActiviteEntrepriseVolontariat, apprentissage= data2013$ApprentissageFormationContinueV2013, filiere=data2013$FiliereFormation)
 a$secteurs = factor(a$secteurs, levels=c(levels(a$secteurs), "Recherche (doctorat)"))
@@ -32,14 +75,14 @@ val3$agglosect = val3$SecteurActivite
 #p = ggplot(val3, aes(x=factor(agglosect), weight=freq)) + geom_bar(fill="lightgreen", colour="darkgreen") + coord_flip() + opts(title="Secteurs d'activité") + xlab("") + ylab("Pourcentage") 
 
 
-p = ggplot(a, aes(x=factor(secteurs), weight=poids/(length(a$secteurs)),fill=filiere)) + geom_bar(colour="white") + coord_flip() + opts(title="Secteurs d'activité") + xlab("") + ylab("Pourcentage") 
+p = ggplot(a, aes(x=factor(secteurs), weight=poids/(length(a$secteurs)),fill=filiere)) + geom_bar(colour="white") + coord_flip() + ggtitle("Secteurs d'activité en 2013, par filière, 6 et 12 mois") + xlab("") + ylab("Pourcentage") 
 
 
 #p + geom_text(x=1, y=0.11, label="secteurs < 10%", size=16) + opts(plot.title = theme_text(size=32, lineheight=.8, face="bold"), axis.text.x = theme_text(size=28, lineheight=.8, face="bold"), axis.text.y = theme_text(size=28, lineheight=.8, face="bold"),  axis.title.x = theme_text(size=28, lineheight=.8)) 
 
 p
 #p + geom_text(x=1, y=0.11, label="15 secteurs < 10%")
-ggsave("../../Output/ensimag_2013_secteurs.png", width=2*par("din")[1])
+ggsave("../../Output/ensimag_2013_secteurs_filiere.png", width=2*par("din")[1])
 
 
 secteurs2008_20013_18mois = factor(c( sub("[0-9]+. *","",as.character(data2010_2008$emp.actuel.Secteur)), as.character(data2011$SecteurActiviteINPG[data2011$Promo == 2009]), as.character(data2012$SecteurActiviteINPG[data2012$AnneeDiplome == 2010]), as.character(data2013$SecteurActiviteFinale[data2013$AnneeEnquete == 2013 && data2013$AnneeDiplome == 2011]), as.character(data2014$SecteurActiviteFinale[data2014$AnneeEnquete == 2014 && data2014$AnneeDiplome == 2012]) ) )

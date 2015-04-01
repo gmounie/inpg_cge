@@ -18,7 +18,7 @@ library(ggplot2)
 p = ggplot(data=taux_emplois, aes(x=as.factor(promo), fill=situation, weight=poids), colour=black)  + geom_bar()
 p + scale_fill_manual(values=c("blue","green","SlateBlue4","chartreuse4","red","yellow", "orange")) + ggtitle("Situation des diplômés début 2O15, à 6, 18 et 30 mois") + xlab("Promo Ensimag") + ylab("Pourcentage")
 ggsave("../../Output/ensimag_2015_situation.svg")   
-ggsave("../../Output/ensimag_2015_situation.pdf") 
+ggsave("../../Output/ensimag_2015_situation.png") 
 
 
 # version 2014
