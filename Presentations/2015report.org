@@ -1,0 +1,57 @@
+#+TITLE: 2015report
+#+DATE: <2015-04-17 ven.>
+#+AUTHOR: Grégory Mounié
+#+EMAIL: gregory@kiowa
+#+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
+#+OPTIONS: author:t c:nil creator:comment d:(not "LOGBOOK") date:t
+#+OPTIONS: e:t email:nil f:t inline:t num:t p:nil pri:nil stat:t
+#+OPTIONS: tags:t tasks:t tex:t timestamp:t toc:t todo:t |:t
+#+CREATOR: Emacs 24.4.1 (Org mode 8.2.10)
+#+DESCRIPTION:
+#+EXCLUDE_TAGS: noexport
+#+KEYWORDS:
+#+LANGUAGE: en
+#+SELECT_TAGS: export
+
+#+OPTIONS: H:1
+#+BEAMER_COLOR_THEME: orchid
+#+BEAMER_FONT_THEME:
+#+BEAMER_HEADER:
+#+BEAMER_INNER_THEME:
+#+BEAMER_OUTER_THEME:
+#+BEAMER_THEME: CambridgeUS
+#+LATEX_CLASS: beamer
+#+LATEX_CLASS_OPTIONS: [presentation]
+
+* Répondants
+  - Les 3 dernières promos sorties (nouveauté !)
+  - Entre les deux-tiers et la moitié de chaque promo
+
+#+ATTR_LATEX: :width 12cm
+[[./../Output/repondants15.png]]
+
+* Répondants par filières
+  - Attention IF est sous-représenté !
+
+#+ATTR_LATEX: :width 13cm
+[[./../Output/ensimag_2015_repondants_filiere.png]]
+
+* Situation des diplômés
+
+#+ATTR_LATEX: :width 13cm
+[[./../Output/ensimag_2015_situation.png]]
+
+* Secteurs
+
+#+ATTR_LATEX: :width 13cm
+[[./../Output/ensimag_2015_secteurs_filiere.png]]
+
+
+* NaturePostes
+
+* Competences
+
+* Lieu
+
+* Salaires
+
