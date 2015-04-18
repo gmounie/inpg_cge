@@ -10,6 +10,10 @@ a$secteurs = factor(a$secteurs, levels=c(levels(a$secteurs), "Recherche (doctora
 a[a$situation == "En thèse",]$secteurs = "Recherche (doctorat)"
 a[a$situation == "En volontariat",]$secteurs = "Volontariat"
 
+
+levels(a$secteurs) = c("", "Activités financières et d'assurance", "Activités informatiques et services d'information", "Arts, spectacles et activités récréatives", "Autres activités spécialisées, scientifiques et techniques", "Autres industries", "Autres secteurs", "Commerce", "Édition, audiovisuel et diffusion", "Énergie", "Enseignement, recherche", "Industrie automobile, aéronautique, navale, ferroviaire", "Métallurgie", "Recherche-développement scientifique", "Santé humaine et action sociale", "Sociétés de conseil, bureaux d'études", "Télécommunications", "Tourisme", "Transports (Services)", "Recherche (doctorat)", "Volontariat")
+
+
 a = a[a$filiere != "",]
 a = a[as.character(a$secteurs) != "",]
 
@@ -33,7 +37,7 @@ val3$agglosect = val3$SecteurActivite
 #p = ggplot(val3, aes(x=factor(agglosect), weight=freq)) + geom_bar(fill="lightgreen", colour="darkgreen") + coord_flip() + opts(title="Secteurs d'activité") + xlab("") + ylab("Pourcentage") 
 
 
-p = ggplot(a, aes(x=factor(secteurs), weight=poids/(length(a$secteurs)),fill=filiere)) + geom_bar(colour="white",guide=F) + coord_flip() + ggtitle("Secteurs d'activité en 2015, par filière, 6, 18 et 30 mois après la sortie") + xlab("") + ylab("Pourcentage") + geom_text(label="FILIÈRE FINANCE décalé de 6 MOIS (sous-représenté: 2/3)!!!", color="red", x=10, y=0.2)
+p = ggplot(a, aes(x=factor(secteurs), weight=poids/(length(a$secteurs)),fill=filiere)) + geom_bar(colour="white",guide=FALSE) + coord_flip() + ggtitle("Secteurs d'activité en 2015, par filière, 6, 18 et 30 mois après la sortie") + xlab("") + ylab("Pourcentage") + geom_text(label="FILIÈRE FINANCE décalé de 6 MOIS (sous-représenté: 2/3)!!!", color="red", x=10, y=0.2)
 
 
 #p + geom_text(x=1, y=0.11, label="secteurs < 10%", size=16) + opts(plot.title = theme_text(size=32, lineheight=.8, face="bold"), axis.text.x = theme_text(size=28, lineheight=.8, face="bold"), axis.text.y = theme_text(size=28, lineheight=.8, face="bold"),  axis.title.x = theme_text(size=28, lineheight=.8)) 
