@@ -1,11 +1,11 @@
-#+TITLE: 2015report
-#+DATE: <2015-04-17 ven.>
+#+TITLE: Enquête CGE
+#+DATE: 2015
 #+AUTHOR: Grégory Mounié
-#+EMAIL: gregory@kiowa
+#+EMAIL: gregory.mounie@imag.fr
 #+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
 #+OPTIONS: author:t c:nil creator:comment d:(not "LOGBOOK") date:t
 #+OPTIONS: e:t email:nil f:t inline:t num:t p:nil pri:nil stat:t
-#+OPTIONS: tags:t tasks:t tex:t timestamp:t toc:t todo:t |:t
+#+OPTIONS: tags:t tasks:t tex:t timestamp:t toc:nil todo:t |:t
 #+CREATOR: Emacs 24.4.1 (Org mode 8.2.10)
 #+DESCRIPTION:
 #+EXCLUDE_TAGS: noexport
@@ -22,9 +22,10 @@
 #+BEAMER_THEME: CambridgeUS
 #+LATEX_CLASS: beamer
 #+LATEX_CLASS_OPTIONS: [presentation]
+#+STARTUP: beamer
 
 * Répondants
-  - Les 3 dernières promos sorties (nouveauté !)
+  - Les 3 dernières promos (nouveauté 2015 !)
   - Entre les deux-tiers et la moitié de chaque promo
 
 #+ATTR_LATEX: :width 12cm
@@ -41,17 +42,30 @@
 #+ATTR_LATEX: :width 13cm
 [[./../Output/ensimag_2015_situation.png]]
 
-* Secteurs
+* Lieu (Les 3 promos)
+#+ATTR_LATEX: :width 12cm
+[[./../Output/ensimag_2015_lieu.png]]
 
-#+ATTR_LATEX: :width 13cm
+* Secteur de l'entreprise (Les 3 promos)
+
+#+ATTR_LATEX: :width 13cm :height 6cm
 [[./../Output/ensimag_2015_secteurs_filiere.png]]
 
+* Nature des postes (Les 3 promos)
 
-* NaturePostes
+#+ATTR_LATEX: :width 12cm
+[[./../Output/ensimag_2015_postes.png]]
 
-* Competences
 
-* Lieu
+* Competences techniques utilisées (Les 3 promos)
 
-* Salaires
+#+ATTR_LATEX: :width 13cm
+[[./../Output/ensimag_2015_competence.png]]
+
+
+
+* Salaires 
+
+#+ATTR_LATEX: :width 12cm
+[[./../Output/ensimag_2015_salaire_total_inf100000.png]]
 

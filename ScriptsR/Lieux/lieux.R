@@ -15,7 +15,7 @@ levels(a$lieu) = c("Province-Sud", "Rhône-Alpes-Auvergne", "Province-Nord", "Pr
 p = ggplot(data=a, aes(x=lieu, fill=filiere))  + geom_bar((aes(weight=weight))) + coord_flip()
 p = p  + theme(plot.title=element_text("Lieu de travail (doctorat, volontariat) en fonction de la filière")) + xlab("Lieu") + scale_fill_hue(l=70, c=150)  + ylab("Nb de diplômés")
 p
-ggsave("../../Output/ensimag_2015_lieu.png", width=2*par("din")[1])
+ggsave("../../Output/ensimag_2015_lieu.png", width=1.7*par("din")[1])
 
 
 for (i in 0:2) { 
