@@ -54,3 +54,25 @@ p + facet_grid(dureesortie ~ AnneeEnquete + lieu) + theme(title=element_text("Sa
 ggsave("../../Output/ensimag_salaire_lieu.png", width=2.2*par("din")[1])
 
 
+s15 = data.frame(AnneeDiplome= factor(data2015$Promo), SalaireAvecPrime = data2015$RemunerationTotaleCorrigee)
+s15f = na.omit(s15[s15$SalaireAvecPrime < 100000 & s15$SalaireAvecPrime > 10000,])
+p = ggplot(data=s15f, aes(x=AnneeDiplome, y=SalaireAvecPrime, ymin=0)) + geom_jitter(position = position_jitter(width=0.3), aes(alpha=0.01)) + geom_boxplot(outlier.size=0.1)
+p + theme(title=element_text("Salaire Brut (+ primes) par année de promotion et année de l'enquête")) + geom_text(label="8 2012, 3 2013, 1 2014 > 100000", x= 2, y = 100000 , color = "red", size= 8) + geom_text(label="1 2012, 2 2013 proche 0 (création d'entreprise)", x= 2, y = 90000 , color = "red", size= 8) + geom_text(label="Pas de IF en 2013 !", x= 2, y = 80000 , color = "red", size= 8) + ggtitle("Salaire avec prime, enquête 2015, filtré aux extrèmes")
+ggsave("../../Output/ensimag_2015_salaire_total_inf100000.png", width=1.5*par("din")[1])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
