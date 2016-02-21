@@ -1,5 +1,18 @@
 source("../DataReader/dataReader.R")
 
+# enquete 2016
+
+repondants6_2015 = length( data2016$AnneeEnquete[ data2016$AnneeEnquete == 2016 & data2016$AnneeDiplome == 2015 & data2016$ActiviteActuelle != ""])
+
+repondants18_2014 = length( data2016$AnneeEnquete[ data2016$AnneeEnquete == 2016 & data2016$AnneeDiplome == 2014 & data2016$ActiviteActuelle != ""])
+repondants30_2013 = length( data2016$AnneeEnquete[ data2016$AnneeEnquete == 2016 & data2016$AnneeDiplome == 2013 & data2016$ActiviteActuelle != ""])
+
+print(repondants6_2015/taille2015)
+print(repondants18_2014/taille2014)
+print(repondants30_2013/taille2013)
+
+# enquete 2015
+
 repondants6_2014 = length( data2015$AnneeEnquete[ data2015$AnneeEnquete == 2015 & data2015$AnneeDiplome == 2014 & data2015$ActiviteActuelle != ""])
 
 repondants18_2013 = length( data2015$AnneeEnquete[ data2015$AnneeEnquete == 2015 & data2015$AnneeDiplome == 2013 & data2015$ActiviteActuelle != ""])

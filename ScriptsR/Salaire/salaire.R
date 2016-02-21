@@ -1,6 +1,9 @@
 source("../DataReader/dataReader.R")
 
 ## Donne le salaire moyen et le salaire médian ?
+salaireBrut2016 = as.data.frame(data2016[ data2016$AnneeEnquete == 2016, c("RemunerationTotaleCorrigee", "SalaireHorsPrimesCorrige", "Sexe", "AnneeDiplome", "AnneeEnquete", "RevenuBrutAnnuelAvecPrimesThesard", "RevenuBrutAnnuelHorsPrimesThesard", "ActiviteActuelleV2016", "LieuTravailRegionEtrangerV2015", "LieuLaboDoctoratEnquete2012")])
+names(salaireBrut2016) = c("SalaireBrutAnnuelAvecPrimes", "SalaireBrutAnnuelHorsPrimes", "Sexe", "AnneeDiplome", "AnneeEnquete", "RevenuBrutAnnuelAvecPrimesThesard", "RevenuBrutAnnuelHorsPrimesThesard", "ActiviteActuelle", "LieuTravailDetailEnquete2012", "LieuLaboDoctoratEnquete2012");
+
 salaireBrut2015 = as.data.frame(data2015[ data2015$AnneeEnquete == 2015, c("RemunerationTotaleCorrigee", "SalaireHorsPrimesCorrige", "Sexe", "AnneeDiplome", "AnneeEnquete", "RevenuBrutAnnuelAvecPrimesThesard", "RevenuBrutAnnuelHorsPrimesThesard", "ActiviteActuelle", "LieuTravailRegionEtrangerV2015", "LieuLaboDoctoratEnquete2012")])
 names(salaireBrut2015) = c("SalaireBrutAnnuelAvecPrimes", "SalaireBrutAnnuelHorsPrimes", "Sexe", "AnneeDiplome", "AnneeEnquete", "RevenuBrutAnnuelAvecPrimesThesard", "RevenuBrutAnnuelHorsPrimesThesard", "ActiviteActuelle", "LieuTravailDetailEnquete2012", "LieuLaboDoctoratEnquete2012");
 
@@ -8,7 +11,7 @@ salaireBrut2014 = as.data.frame(data2014[ data2014$AnneeEnquete == 2014, c("Sala
 salaireBrut2013 = as.data.frame(data2013[ data2013$AnneeEnquete == 2013, c("SalaireBrutAnnuelAvecPrimes", "SalaireBrutAnnuelHorsPrimes", "Sexe", "AnneeDiplome", "AnneeEnquete", "RevenuBrutAnnuelAvecPrimesThesard", "RevenuBrutAnnuelHorsPrimesThesard", "ActiviteActuelle", "LieuTravailDetailEnquete2012", "LieuLaboDoctoratEnquete2012")])
 salaireBrut2012 = as.data.frame(data2012[ data2012$AnneeEnquete == 2012, c("SalaireBrutAnnuelAvecPrimes", "SalaireBrutAnnuelHorsPrimes", "Sexe", "AnneeDiplome", "AnneeEnquete", "RevenuBrutAnnuelAvecPrimesThesard", "RevenuBrutAnnuelHorsPrimesThesard", "ActiviteActuelle", "LieuTravailDetailEnquete2012", "LieuLaboDoctoratEnquete2012")])
 
-salaire = rbind(salaireBrut2015, salaireBrut2014, salaireBrut2013, salaireBrut2012)
+salaire = rbind(salaireBrut2016, salaireBrut2015, salaireBrut2014, salaireBrut2013, salaireBrut2012)
 salaire = salaire[salaire$Sexe != "" & ! is.na(salaire$Sexe),]
 salaire = salaire[salaire$AnneeDiplome != "" & ! is.na(salaire$AnneeDiplome),]
 salaire$Sexe = as.factor(salaire$Sexe)
@@ -31,6 +34,13 @@ salaire[salaire$lieu == "","lieu"] = "Non renseigné"
 
 library(ggplot2)
 
+summary(salaire$SalaireAvecPrime[salaire$AnneeEnquete == 2016 & salaire$AnneeDiplome== 2015])
+summary(salaire$SalaireAvecPrime[salaire$AnneeEnquete == 2016 & salaire$AnneeDiplome== 2014])
+summary(salaire$SalaireAvecPrime[salaire$AnneeEnquete == 2016 & salaire$AnneeDiplome== 2013])
+
+summary(salaire$SalaireAvecPrime[salaire$AnneeEnquete == 2015 & salaire$AnneeDiplome== 2013])
+summary(salaire$SalaireAvecPrime[salaire$AnneeEnquete == 2015 & salaire$AnneeDiplome== 2014])
+summary(salaire$SalaireAvecPrime[salaire$AnneeEnquete == 2015 & salaire$AnneeDiplome== 2012])
 summary(salaire$SalaireAvecPrime[salaire$AnneeEnquete == 2014 & salaire$AnneeDiplome== 2012])
 summary(salaire$SalaireAvecPrime[salaire$AnneeEnquete == 2014 & salaire$AnneeDiplome== 2013])
 summary(salaire$SalaireAvecPrime[salaire$AnneeEnquete == 2013 & salaire$AnneeDiplome== 2011])

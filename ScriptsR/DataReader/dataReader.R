@@ -1,3 +1,4 @@
+data2016 = read.csv("../../../ObservatoirePourLEmploi.git/CGE2016/_ENSIMAG2016_610.csv", sep =",", header=T, dec=".")
 data2015 = read.csv("../../../ObservatoirePourLEmploi.git/CGE2015/Ensimag2015-2015-04-01.csv", sep =",", header=T, dec=".")
 data2014 = read.csv("../../../ObservatoirePourLEmploi.git/CGE2014/_ensimag2014_296.csv", sep =",", header=T, dec=".")
 data2013 = read.csv("../../../ObservatoirePourLEmploi.git/CGE2013/_ensimag2013-filtree-18-avr-2013.csv", sep =";", header=T, dec=",")
@@ -15,7 +16,9 @@ data2012 = data2012[data2012$AnneeEnquete == 2012,]
 # data2011 = data2011[data2011$AnneeEnquete == 2011,] 
 
 
-# financiers entré l'année d'avant
+taille2015 = 274
+
+# 2015 financiers entré l'année d'avant
 taille2014 = 255
 
 # attention promo sans la filère finance
