@@ -63,6 +63,9 @@ ggsave("../../Output/ensimag_salaire_activite.png", width=2*par("din")[1])
 p + facet_grid(dureesortie ~ AnneeEnquete + lieu) + theme(title=element_text("Salaire Brut (+ primes) par année de promotion, lieu de travail et année de l'enquête"))
 ggsave("../../Output/ensimag_salaire_lieu.png", width=2.2*par("din")[1])
 
+p + facet_grid(dureesortie ~ .) + theme(title=element_text("Salaire Brut (+ primes) par année de promotion, lieu de travail et année de l'enquête")) + ylim(20000,50000)
+ggsave("../../Output/ensimag_salaire_evol.png", width=2.2*par("din")[1])
+
 
 s15 = data.frame(AnneeDiplome= factor(data2015$Promo), SalaireAvecPrime = data2015$RemunerationTotaleCorrigee)
 s15f = na.omit(s15[s15$SalaireAvecPrime < 100000 & s15$SalaireAvecPrime > 10000,])
