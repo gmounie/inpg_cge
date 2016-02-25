@@ -1,4 +1,4 @@
-data2016 = read.csv("../../../ObservatoirePourLEmploi.git/CGE2016/_ENSIMAG2016_610.csv", sep =",", header=T, dec=".")
+data2016 = read.csv("../../../ObservatoirePourLEmploi.git/CGE2016/_ENSIMAG2016_724.csv", sep =",", header=T, dec=".")
 data2015 = read.csv("../../../ObservatoirePourLEmploi.git/CGE2015/Ensimag2015-2015-04-01.csv", sep =",", header=T, dec=".")
 data2014 = read.csv("../../../ObservatoirePourLEmploi.git/CGE2014/_ensimag2014_296.csv", sep =",", header=T, dec=".")
 data2013 = read.csv("../../../ObservatoirePourLEmploi.git/CGE2013/_ensimag2013-filtree-18-avr-2013.csv", sep =";", header=T, dec=",")
@@ -30,6 +30,10 @@ promo2011 = read.csv("../../../ObservatoirePourLEmploi.git/CGE2013/promo_2011.cs
 taille2011 = sum(promo2011$M, promo2011$F)
 taille2012 = sum(promo2012$M, promo2012$F)
 taille2010 = 242
+
+promo6_2015 = taille2015
+promo18_2014 = taille2014
+promo30_2013 = taille2013
 
 promo6_2014 = taille2014
 promo18_2013 = taille2013
