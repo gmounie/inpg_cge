@@ -2,6 +2,27 @@ source("../DataReader/dataReader.R")
 
 library(ggplot2)
 
+                                        # 2016
+                                        # très basique, juste RA, PACA et province
+lieu = data.frame( lieutrav = data2016$LieuTravailRegionEtrangerV2015 ,lieuvol = data2016$LieuVolontariatRegion, lieudoc = data2016$LieuLaboDoctoratEnquete2012)
+lieu$lieu[lieu$lieutrav != ""] = as.character(lieu$lieutrav[lieu$lieutrav != ""])
+lieu$lieu[lieu$lieudoc != ""] = as.character(lieu$lieudoc[lieu$lieudoc != ""])
+lieu$lieu[lieu$lieuvol != ""] = as.character(lieu$lieuvol[lieu$lieuvol != ""])
+lieu$lieu = factor(lieu$lieu)
+a = data.frame(promo = data2016$Promo, filiere=data2016$Option_FiliereFormation, lieu = lieu$lieu, weight=1/length(data2016$Promo))
+levels(a$lieu)
+                                        # niveau d'origines
+                                        # levels(a$lieu) = c("Alsace", "Aquitaine" , "Auvergne" , "Bretagne" , "Centre" , "Champagne-Ardenne" , "Etranger" , "Franche-Comté" , "Île-de-France" , "Languedoc-Roussillon" , "Lorraine" , "Midi-Pyrénées" , "Nord-Pas-de-Calais", "Picardie" , "Provence-Alpes-Côte d'Azur", "Rhône-Alpes")
+levels(a$lieu) = c("Province Nord", "Province Sud" , "Province Sud" , "Province Nord" , "Province Sud" , "Province Nord" , "Etranger" , "Province Nord" , "Île-de-France" , "Province Sud" , "Province Nord" , "Province Sud" , "Province Nord", "Province Nord" , "Provence-Alpes-Côte d'Azur", "Rhône-Alpes")
+
+                                        # levels(a$lieu) = c("Province-Sud", "Rhône-Alpes-Auvergne", "Province-Nord", "Province-Nord", "Etranger", "Province-Nord", "Île-de-France", "Province-Sud", "DOM/TOM", "Province-Nord", "Province-Sud", "Province-Nord", "Province-Nord", "Provence-Alpes-Côte d'Azur", "Rhône-Alpes-Auvergne")
+p = ggplot(data=a, aes(x=lieu, fill=filiere))  + geom_bar((aes(weight=weight))) + coord_flip()
+p = p  + theme(plot.title=element_text("Lieu de travail (doctorat, volontariat) en fonction de la filière")) + xlab("Lieu") + scale_fill_hue(l=70, c=150)  + ylab("Nb de diplômés")
+p
+ggsave("../../Output/ensimag_2016_lieu.png", width=1.7*par("din")[1])
+
+
+
                                         # 2015
                                         # Très basique avec juste RA, PACA et Province pour le reste
 lieu = data.frame( lieutrav = data2015$LieuTravailRegionEtrangerV2015 ,lieuvol = data2015$LieuVolontariatRegion, lieudoc = data2015$LieuLaboDoctoratEnquete2012)
