@@ -73,6 +73,13 @@ p = ggplot(data=s15f, aes(x=AnneeDiplome, y=SalaireAvecPrime, ymin=0)) + geom_ji
 p + theme(title=element_text("Salaire Brut (+ primes) par année de promotion et année de l'enquête")) + geom_text(label="8 2012, 3 2013, 1 2014 > 100000", x= 2, y = 100000 , color = "red", size= 8) + geom_text(label="1 2012, 2 2013 proche 0 (création d'entreprise)", x= 2, y = 90000 , color = "red", size= 8) + geom_text(label="Pas de IF en 2013 !", x= 2, y = 80000 , color = "red", size= 8) + ggtitle("Salaire avec prime, enquête 2015, filtré aux extrèmes")
 ggsave("../../Output/ensimag_2015_salaire_total_inf100000.png", width=1.5*par("din")[1])
 
+# salaire 2016
+
+s16 = data.frame(AnneeDiplome= factor(data2016$Promo), SalaireAvecPrime = data2016$RemunerationTotaleCorrigee)
+s16f = na.omit(s16[s16$SalaireAvecPrime < 100000 & s16$SalaireAvecPrime > 10000,])
+p = ggplot(data=s16f, aes(x=AnneeDiplome, y=SalaireAvecPrime, ymin=0)) + geom_jitter(position = position_jitter(width=0.3), aes(alpha=0.01)) + geom_boxplot(outlier.size=0.1)
+p + theme(title=element_text("Salaire Brut (+ primes) par année de promotion et année de l'enquête")) + geom_text(label="1 2013, 3 2014, 5 2015 >= 100kE", x= 2, y = 90000 , color = "red", size= 8) + geom_text(label="1 2013, 1 2014, 5 2015 moins 10kE (création d'entreprise)", x= 2, y = 85000 , color = "red", size= 8) + geom_text(label="Pas de IF en 2013 !", x= 2, y = 80000 , color = "red", size= 8) + ggtitle("Salaire avec prime, enquête 2016, filtré aux extrèmes")
+ggsave("../../Output/ensimag_2016_salaire_total_inf100000.png", width=1.5*par("din")[1])
 
 
 
