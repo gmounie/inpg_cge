@@ -1,0 +1,75 @@
+#+TITLE: Retour sur l'enquête nationale sur l'insertion des diplômés (CGE)
+#+DATE: 2016
+#+AUTHOR: Grégory Mounié
+#+EMAIL: gregory.mounie@imag.fr
+#+OPTIONS: ':nil *:t -:t ::t <:t H:2 \n:nil ^:t arch:headline
+#+OPTIONS: author:t c:nil creator:comment d:(not "LOGBOOK") date:t
+#+OPTIONS: e:t email:nil f:t inline:t num:t p:nil pri:nil stat:t
+#+OPTIONS: tags:t tasks:t tex:t timestamp:t toc:nil todo:t |:t
+#+CREATOR: Emacs 24.4.1 (Org mode 8.2.10)
+#+DESCRIPTION:
+#+EXCLUDE_TAGS: noexport
+#+KEYWORDS:
+#+LANGUAGE: en
+#+SELECT_TAGS: export
+
+#+OPTIONS: H:2
+#+BEAMER_COLOR_THEME: spruce
+#+BEAMER_FONT_THEME:
+#+BEAMER_HEADER:  \usecolortheme{rose} \usecolortheme{dolphin}
+#+BEAMER_INNER_THEME:
+#+BEAMER_OUTER_THEME:
+#+BEAMER_THEME: Warsaw
+#+LATEX_CLASS: beamer
+#+LATEX_CLASS_OPTIONS: [presentation]
+#+STARTUP: beamer
+
+* Situation générale
+** Répondants
+   - Les 3 dernières promos (6 mois: 69%, 18 mois: 50%, 30 mois: 48%)
+
+ #+ATTR_LATEX: :width 12cm
+ [[./../Output/repondants16.png]]
+
+** Répondants par filières
+   (Rappel: Étudiant \lambda: 7000 \euro/an, Ensimag \lambda: 23000 \euro/an; IF += 15% de
+   cours (~ coût) en plus). *Merci de répondre pour justifier
+   l'existence des filières et de l'école*.
+
+ #+ATTR_LATEX: :width 11cm
+ [[./../Output/ensimag_2016_repondants_filiere.png]]
+
+** Situation des diplômés
+
+ #+ATTR_LATEX: :width 13cm
+ [[./../Output/ensimag_2016_situation.png]]
+
+** Lieu (Les 3 promos)
+   IDF: 37%; RA: 25%; Étranger: 15%; PACA: 8%; NA: 7%
+
+ #+ATTR_LATEX: :width 11.5cm
+ [[./../Output/ensimag_2016_lieu.png]]
+
+** Secteur de l'entreprise (Les 3 promos)
+
+ #+ATTR_LATEX: :width 11cm 
+ [[./../Output/ensimag_2016_secteurs_filiere.png]]
+
+** Nature des postes (Les 3 promos)
+
+ #+ATTR_LATEX: :width 12cm
+ [[./../Output/ensimag_2016_postes.png]]
+
+
+** Competences techniques utilisées (Les 3 promos)
+
+ #+ATTR_LATEX: :width 13cm
+ [[./../Output/ensimag_2016_competence.png]]
+
+
+
+** Salaires 
+
+ #+ATTR_LATEX: :width 13cm
+ [[./../Output/ensimag_2016_salaire_total_inf100000.png]]
+
