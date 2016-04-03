@@ -4,6 +4,17 @@ source("../DataReader/dataReader.R")
 
 library(ggplot2)
 library(plyr)
+                                        # 2016
+postes = data2016$Option_PosteSurListe
+a = data.frame(postes = data2016$Option_PosteSurListe, poids= 1, situation=data2016$ActiviteActuelleV2016)
+a$postes = factor(a$postes, levels=c(levels(a$postes), "Doctorant", "Volontaire"))
+a[a$situation == "En thèse",]$postes = "Doctorant"
+a[a$situation == "En volontariat (VIE, VIA, Volontariat civil)",]$postes = "Volontaire"
+
+p = ggplot(a, aes(x=factor(postes), weight=poids/(length(a$postes)))) + geom_bar(fill="lightgreen", colour="darkgreen") + coord_flip() + theme(title=element_text("Nature des postes")) + xlab("") + ylab("Pourcentage") 
+p
+ggsave("../../Output/ensimag_2016_postes.svg", width=2*par("din")[1])
+ggsave("../../Output/ensimag_2016_postes.png", width=2*par("din")[1])
 
                                         # 2015
 postes = data2015$NaturePosteOccupeINPG
