@@ -41,7 +41,7 @@ print(repondants18_2011/taille2011)
 repondants6_2011 = length( data2012$AnneeEnquete[ data2012$AnneeEnquete == 2012 & data2012$AnneeDiplome == 2011 & data2012$ActiviteActuelle != ""])
 repondants18_2010 = length( data2012$AnneeEnquete[ data2012$AnneeEnquete == 2012 & data2012$AnneeDiplome == 2010 & data2012$ActiviteActuelle != ""])
 
-repondants_CGE = data.frame(annee=factor(c(2012,2012,2013,2013,2014,2014,2015,2015,2015)), promo=factor(c(2011,2010, 2012,2011, 2013,2012,2014,2013,2012)), repondants= c(repondants6_2011, repondants18_2010, repondants6_2012, repondants18_2011, repondants6_2013, repondants18_2012, repondants6_2014, repondants18_2013, repondants30_2012), taillepromo = c(taille2011, taille2010, taille2012, taille2011, taille2013, taille2012, taille2014, taille2013, taille2012),sortie=c("6 mois","18 mois","6 mois","18 mois","6 mois","18 mois","6 mois","18 mois","30 mois"))
+repondants_CGE = data.frame(annee=factor(c(2012,2012,2013,2013,2014,2014,2015,2015,2015,2016,2016,2016)), promo=factor(c(2011,2010, 2012,2011, 2013,2012,2014,2013,2012,2015,2014,2013)), repondants= c(repondants6_2011, repondants18_2010, repondants6_2012, repondants18_2011, repondants6_2013, repondants18_2012, repondants6_2014, repondants18_2013, repondants30_2012, repondants6_2015, repondants18_2014, repondants30_2013), taillepromo = c(taille2011, taille2010, taille2012, taille2011, taille2013, taille2012, taille2014, taille2013, taille2012, taille2015, taille2014, taille2013),sortie=c("6 mois","18 mois","6 mois","18 mois","6 mois","18 mois","6 mois","18 mois","30 mois","6 mois","18 mois","30 mois"))
 
 repondants_CGE$sortie = relevel(repondants_CGE$sortie,"30 mois")
 
@@ -63,7 +63,7 @@ p
 p = ggplot(data = repondants_CGE, aes(x=promo, fill=promo, weight=100*repondants/taillepromo)) + geom_bar()
 #+ scale_fill_manual(values=c("blue","blue","blue","blue"))
 p +  ggtitle("Pourcentage de répondants, taux de réponses des promotions à 6, 18 et 30 mois après la sortie") + xlab("Promo Ensimag") + ylab("Pourcentage")  + facet_grid( ~ sortie) + coord_flip(ylim=c(0,100))
-ggsave("../../Output/repondants15.png", width=2*par("din")[1])
+ggsave("../../Output/repondants16.png", width=2*par("din")[1])
 
 
 
