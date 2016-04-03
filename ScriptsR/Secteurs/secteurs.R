@@ -10,8 +10,10 @@ a[a$situation == "En thèse",]$secteurs = "Recherche (doctorat)"
 a[a$situation == "En volontariat (VIE, VIA, Volontariat civil)",]$secteurs = "Volontariat"
 levels(a$situation)
 levels(a$secteurs)
+levels(a$filiere) = c( "Master" , "Master" , "IF" , "ISI" , "Tcom/ISSC" , "Master" , "Master" , "Master" , "MMIS" , "SLE" , "Tcom/ISSC")
 
-levels(a$secteurs) = c("" , "Activités financières et d'assurance" , "Activités informatiques et services d'information (TIC Services)" , "Activités juridiques/comptables/gestion" , "Administration d'État, Collectivités territoriales, Hospitalière" , "Agriculture, sylviculture et pêche" , "Arts, spectacles et activités récréatives" , "Autres activités spécialisées, scientifiques et techniques" , "Autres secteurs" , "Commerce" , "Construction, BTP" , "Édition, audiovisuel et diffusion" , "Énergie" , "Enseignement, recherche" , "Hébergement et restauration" , "Industrie automobile, aéronautique, navale, ferroviaire" , "Industrie chimique" , "Industrie des TIC" , "Industrie pharmaceutique" , "Métallurgie" , "Recherche-développement scientifique" , "Santé humaine et action sociale" , "Sociétés de conseil, Bureaux d'études, Ingénierie" , "Télécommunications" , "Tourisme" , "Transports (Services)" , "Recherche (doctorat)" , "Volontariat") 
+
+levels(a$secteurs) = c("" , "Activités financières et d'assurance" , "Activités informatiques et services d'information (TIC Services)" , "15 Autres" , "15 Autres" , "15 Autres" , "15 Autres" , "Autres activités spécialisées, scientifiques et techniques" , "Autres secteurs" , "15 Autres" , "15 Autres" , "15 Autres" , "Énergie" , "Enseignement, recherche" , "15 Autres" , "Industrie automobile, aéronautique, navale, ferroviaire" , "15 Autres" , "Industrie des TIC" , "15 Autres" , "15 Autres" , "Recherche-développement scientifique" , "15 Autres" , "Sociétés de conseil, Bureaux d'études, Ingénierie" , "Télécommunications" , "15 Autres" , "15 Autres" , "Recherche (doctorat)" , "Volontariat") 
 #levels(a$secteurs) = c("", "Activités financières et d'assurance", "Activités informatiques et services d'information", "Arts, spectacles et activités récréatives", "Autres activités spécialisées, scientifiques et techniques", "Autres industries", "Autres secteurs", "Commerce", "Édition, audiovisuel et diffusion", "Énergie", "Enseignement, recherche", "Industrie automobile, aéronautique, navale, ferroviaire", "Métallurgie", "Recherche-développement scientifique", "Santé humaine et action sociale", "Sociétés de conseil, bureaux d'études", "Télécommunications", "Tourisme", "Transports (Services)", "Recherche (doctorat)", "Volontariat")
 
 
@@ -38,14 +40,14 @@ val3$agglosect = val3$SecteurActivite
 #p = ggplot(val3, aes(x=factor(agglosect), weight=freq)) + geom_bar(fill="lightgreen", colour="darkgreen") + coord_flip() + opts(title="Secteurs d'activité") + xlab("") + ylab("Pourcentage") 
 
 
-p = ggplot(a, aes(x=factor(secteurs), weight=poids/(length(a$secteurs)),fill=filiere)) + geom_bar(colour="white") + coord_flip() + ggtitle("Secteurs d'activité en 2016, par filière, 6, 18 et 30 mois après la sortie") + xlab("") + ylab("Pourcentage") + geom_text(label="FILIÈRE FINANCE sous représenté !!!", color="red", x=10, y=0.2)
+p = ggplot(a, aes(x=factor(secteurs), weight=poids/(length(a$secteurs)),fill=filiere)) + geom_bar(colour="white") + coord_flip() + ggtitle("Secteurs d'activité en 2016, par filière, 6, 18 et 30 mois après la sortie") + xlab("") + ylab("Pourcentage") + geom_text(label="FILIÈRE FINANCE sous représenté !!!", color="red", x=1, y=0.25)
 
 
 #p + geom_text(x=1, y=0.11, label="secteurs < 10%", size=16) + opts(plot.title = theme_text(size=32, lineheight=.8, face="bold"), axis.text.x = theme_text(size=28, lineheight=.8, face="bold"), axis.text.y = theme_text(size=28, lineheight=.8, face="bold"),  axis.title.x = theme_text(size=28, lineheight=.8)) 
 
 p
 #p + geom_text(x=1, y=0.11, label="15 secteurs < 10%")
-ggsave("../../Output/ensimag_2016_secteurs_filiere.png", width=1.2*par("din")[1])
+ggsave("../../Output/ensimag_2016_secteurs_filiere.png", width=0.8*par("din")[1])
 
 # version 2015
 secteurs = data2015$SecteurActiviteFinale[data2015$AnneeEnquete == 2015]

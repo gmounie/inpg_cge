@@ -16,10 +16,11 @@ levels(a$lieu)
 levels(a$lieu) = c("Province Nord", "Province Sud" , "Province Sud" , "Province Nord" , "Province Sud" , "Province Nord" , "Etranger" , "Province Nord" , "Île-de-France" , "Province Sud" , "Province Nord" , "Province Sud" , "Province Nord", "Province Nord" , "Provence-Alpes-Côte d'Azur", "Rhône-Alpes")
 
                                         # levels(a$lieu) = c("Province-Sud", "Rhône-Alpes-Auvergne", "Province-Nord", "Province-Nord", "Etranger", "Province-Nord", "Île-de-France", "Province-Sud", "DOM/TOM", "Province-Nord", "Province-Sud", "Province-Nord", "Province-Nord", "Provence-Alpes-Côte d'Azur", "Rhône-Alpes-Auvergne")
-p = ggplot(data=a, aes(x=lieu, fill=filiere))  + geom_bar((aes(weight=weight))) + coord_flip()
+levels(a$filiere) = c( "Master" , "Master" , "IF" , "ISI" , "Tcom/ISSC" , "Master" , "Master" , "Master" , "MMIS" , "SLE" , "Tcom/ISSC")
+p = ggplot(data=a, aes(x=lieu, fill=filiere))  + geom_bar(colour="white",(aes(weight=weight))) + coord_flip()
 p = p  + theme(plot.title=element_text("Lieu de travail (doctorat, volontariat) en fonction de la filière")) + xlab("Lieu") + scale_fill_hue(l=70, c=150)  + ylab("Nb de diplômés")
 p
-ggsave("../../Output/ensimag_2016_lieu.png", width=1.7*par("din")[1])
+ggsave("../../Output/ensimag_2016_lieu.png", width=1*par("din")[1])
 
 
 
