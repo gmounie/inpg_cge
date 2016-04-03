@@ -9,6 +9,30 @@ library(stringr)
 library(plyr)
 library(ggplot2)
 
+# 2016
+a = str_split(data2016$Ecole_ActivitesTechniquesFonction,";")
+filiere = data2016$Option_FiliereFormation
+a = a[a[] != ""]
+filiere = filiere[data2016$Ecole_ActivitesTechniquesFonction != ""]
+taille=length(a[a[] != ""])
+b = unlist(a)
+c = as.factor(str_replace_all(b, "^ | $", ""))
+i=1
+filiereDUP=c()
+for(line in a) { for(nb in seq(1, length(line))) { filiereDUP = c(filiereDUP, as.character(filiere[i]))}; i=i+1  }
+str(filiereDUP)
+levels(c) = c("24 Autres" , "24 Autres" , "24 Autres" , "24 Autres" , "24 Autres" , "24 Autres" , "Economie - Finance" , "24 Autres" , "24 Autres" , "24 Autres" , "24 Autres" , "24 Autres" , "24 Autres" , "Gestion - Organisation" , "24 Autres" , "Ingénierie financière" , "24 Autres" , "Logiciels multimédia, images, audiovisuel" , "Logiciels, systèmes informatiques, réseaux" , "Logiciels temps réel, embarqué, informatique industrielle" , "24 Autres" , "24 Autres" , "Mathématiques, modélisation, simulation" , "24 Autres" , "24 Autres" , "24 Autres" , "Modélisation - Calcul scientifique" , "24 Autres" , "24 Autres" , "24 Autres" , "24 Autres" , "Systèmes de télécommunications" , "Systèmes d'information, informatique de gestion, bases de données" , "24 Autres" , "Traitement du signal et des images")
+
+# levels(c) = c("Aéronautique" , "Aérospatiale" , "Automatique" , "Autres" , "Biologie - Biotechnologie" , "Conception microélectronique" , "Economie - Finance" , "Electronique de puissance" , "Electronique embarquée" , "Energétique" , "Génie civil et urbain" , "Génie des procédés" , "Génie mécanique" , "Gestion - organisation" , "Hydraulique" , "Ingénierie financière" , "Instrumentation" , "Logiciels multimédia, images, audiovisuel" , "Logiciels, systèmes informatiques, réseaux" , "Logiciels temps réel, embarqué, informatique industrielle" , "Marketing - Commerce" , "Matériaux" , "Mathématiques, modélisation, simulation" , "Mécanique des fluides industriels" , "Mécanique des matériaux" , "Microtechnologies : microélectronique et microsystèmes" , "Modélisation - Calcul scientifique" , "Physique générale" , "Productique génie industriel" , "Qualité - Sécurité" , "Réseaux électriques" , "Systèmes de télécommunications" , "Systèmes d'information, informatique de gestion, bases de données" , "Systèmes électroniques" , "Traitement du signal et des images")
+
+
+data = data.frame(compétence=c, poids=1/taille, filiere=as.factor(filiereDUP))
+p = ggplot(data, aes(x=compétence, weight=poids,fill=filiere))+ geom_bar() + coord_flip() + theme(title=element_text("Compétences techniques")) + xlab("") + ylab("Pourcentage") 
+p 
+ggsave("../../Output/ensimag_2016_competence.png", width=1*par("din")[1])
+
+
+
 # 2015
 a = str_split(data2015$Ecole_ActivitesTechniquesFonction,";")
 filiere = data2015$Option_FiliereFormation
