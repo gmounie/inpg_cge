@@ -6,12 +6,15 @@ library(ggplot2)
 library(plyr)
                                         # 2016
 postes = data2016$Option_PosteSurListe
-a = data.frame(postes = data2016$Option_PosteSurListe, poids= 1, situation=data2016$ActiviteActuelleV2016)
+a = data.frame(postes = data2016$Option_PosteSurListe, poids= 1, situation=data2016$ActiviteActuelleV2016,filiere=data2016$Option_FiliereFormation)
+
 a$postes = factor(a$postes, levels=c(levels(a$postes), "Doctorant", "Volontaire"))
 a[a$situation == "En thèse",]$postes = "Doctorant"
 a[a$situation == "En volontariat (VIE, VIA, Volontariat civil)",]$postes = "Volontaire"
+levels(a$filiere) = c( "Master" , "Master" , "IF" , "ISI" , "Tcom/ISSC" , "Master" , "Master" , "Master" , "MMIS" , "SLE" , "Tcom/ISSC")
+levels(a$postes) = c("NA" , "Autre" , "9 Autres" , "Consultant" , "9 Autres" , "9 Autres" , "9 Autres" , "9 Autres" , "Ingénieur d'étude" , "Ingénieur développement produit" , "9 Autres" , "Ingénieur financier" , "Ingénieur logiciel" , "Ingénieur mathématicien" , "Ingénieur recherche et développement, ingénieur brevets" , "9 Autres" , "9 Autres" , "9 Autres" , "Doctorant" , "Volontaire")
 
-p = ggplot(a, aes(x=factor(postes), weight=poids/(length(a$postes)))) + geom_bar(fill="lightgreen", colour="darkgreen") + coord_flip() + theme(title=element_text("Nature des postes")) + xlab("") + ylab("Pourcentage") 
+p = ggplot(a, aes(x=factor(postes), weight=poids/(length(a$postes)),fill=filiere)) + geom_bar(colour="white") + coord_flip() + theme(title=element_text("Nature des postes")) + xlab("") + ylab("Pourcentage") 
 p
 ggsave("../../Output/ensimag_2016_postes.svg", width=2*par("din")[1])
 ggsave("../../Output/ensimag_2016_postes.png", width=2*par("din")[1])
