@@ -57,13 +57,13 @@
 
 ** Nature des postes (Les 3 promos)
 
- #+ATTR_LATEX: :width 12cm
+ #+ATTR_LATEX: :width 11cm
  [[./../Output/ensimag_2016_postes.png]]
 
 
 ** Competences techniques utilisées (Les 3 promos)
 
- #+ATTR_LATEX: :width 13cm
+ #+ATTR_LATEX: :width 11.5cm
  [[./../Output/ensimag_2016_competence.png]]
 
 
@@ -73,3 +73,22 @@
  #+ATTR_LATEX: :width 13cm
  [[./../Output/ensimag_2016_salaire_total_inf100000.png]]
 
+** Satisfaction (noté de 1 (très mauvais) à 5 (très bien))
+ #+ATTR_LATEX: :width 11cm
+ [[./../Output/ensimag_2016_satisfaction.png]]
+   
+
+* Demandes							   :noexport:
+** DONE part à l'étranger
+** DONE satisfaction travail et formation
+** DONE salaire boxplot
+** combien d'emploi avant la situation
+** DONE taux d'abstention
+** DONE compétence les plus utiles
+** combien on travailler dans la boite à la fin du PFE
+** DONE % doctorat
+** taille des entreprises
+** DONE % de poursuite d'étude
+** localisation
+** salaire moyen juste France et entreprises
+** proportion de management
