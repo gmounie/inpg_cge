@@ -2,6 +2,29 @@ source("../DataReader/dataReader.R")
 
 library(ggplot2)
 library(plyr)
+library(dplyr)
+                                        # 2016
+a = data.frame(taille = data2016$TailleEntrepriseV2010, poids= 1,filiere=data2016$Option_FiliereFormation)
+levels(a$taille)
+levels(a$taille) = c("",  "5 000 salarie(e)s ou plus",
+                    "De 10 à 19 salarie(e)s",     "De 20 à 49 salarie(e)s",    
+                    "De 250 à 4 999 salarie(e)s", "De 50 à 249 salarie(e)s",   
+                    "Moins de 10 salarie(e)s")
+a$taille = relevel(a$taille,"5 000 salarie(e)s ou plus")
+a$taille = relevel(a$taille,"De 250 à 4 999 salarie(e)s")
+a$taille = relevel(a$taille,"De 50 à 249 salarie(e)s")
+a$taille = relevel(a$taille,"De 20 à 49 salarie(e)s")
+a$taille = relevel(a$taille,"De 10 à 19 salarie(e)s")
+a$taille = relevel(a$taille,"Moins de 10 salarie(e)s")
+a$taille = relevel(a$taille,"")
+levels(a$filiere) = c( "Master" , "Master" , "IF" , "ISI" , "Tcom/ISSC" , "Master" , "Master" , "Master" , "MMIS" , "SLE" , "Tcom/ISSC")
+
+p = ggplot(a, aes(x=factor(taille), weight=poids/(length(a$taille)),fill=filiere )) + geom_bar(colour="white") + coord_flip() + theme(title=element_text("Tailles des entreprises")) + xlab("") + ylab("Pourcentage") 
+p
+ggsave("../../Output/ensimag_2016_tailles.svg", width=2*par("din")[1])
+
+
+                                        # 2013
 
 taillesE = data2013$TailleEntrepriseV2010[data2013$AnneeEnquete == 2013]
 a = data.frame(tailles = data2013$TailleEntrepriseV2010, poids= 1, situation=data2013$ActiviteActuelle)
