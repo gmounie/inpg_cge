@@ -3,7 +3,7 @@
 #+OPTIONS: d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t num:t
 #+OPTIONS: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
 #+OPTIONS: timestamp:t title:t toc:t todo:t |:t
-#+TITLE: presentationISI
+#+TITLE: Presentation ISI: les chiffres 2017
 #+DATE: <2017-03-07 mar.>
 #+AUTHOR: Grégory Mounié
 #+EMAIL: Gregory.Mounie@imag.fr
@@ -24,14 +24,14 @@
 #+RESULTS:
 #+BEGIN_EXPORT latex
 % latex table generated in R 3.3.3 by xtable 1.8-2 package
-% Tue Mar  7 14:52:56 2017
+% Tue Mar  7 17:03:01 2017
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
   \hline
  & V1 \\ 
   \hline
-147 &   1 \\ 
+150 &   1 \\ 
    \hline
 \end{tabular}
 \end{table}
@@ -50,23 +50,23 @@
 #+RESULTS:
 #+BEGIN_EXPORT latex
 % latex table generated in R 3.3.3 by xtable 1.8-2 package
-% Tue Mar  7 15:14:31 2017
-\begin{table}[ht]
+% Tue Mar  7 15:19:01 2017
+\begin{table}[h]
 \centering
 \begin{tabular}{rr}
   \hline
  & V1 \\ 
   \hline
- &  16 \\ 
+ &  17 \\ 
   Autre &  17 \\ 
   Consultant &   5 \\ 
   Ingénieur commercial &   1 \\ 
   Ingénieur d'étude &  12 \\ 
   Ingénieur développement produit &  14 \\ 
   Ingénieur logiciel &  51 \\ 
-  Ingénieur recherche et développement, ingénieur brevets &  16 \\ 
+  Ingénieur recherche et développement, ingénieur brevets &  17 \\ 
   Ingénieur sécurité &   3 \\ 
-  doctorant &  12 \\ 
+  doctorant &  13 \\ 
    \hline
 \end{tabular}
 \end{table}
@@ -80,8 +80,8 @@
 #+RESULTS:
 #+BEGIN_EXPORT latex
 % latex table generated in R 3.3.3 by xtable 1.8-2 package
-% Tue Mar  7 14:53:23 2017
-\begin{table}[ht]
+% Tue Mar  7 15:19:07 2017
+\begin{table}[h]
 \centering
 \begin{tabular}{rr}
   \hline
@@ -91,9 +91,9 @@
   Furthering studies (including preparation for a competitive examination) &   5 \\ 
   Job-hunting &   5 \\ 
   Not in activity out of choice &   2 \\ 
-  Studying for a PhD &  12 \\ 
+  Studying for a PhD &  13 \\ 
   Voluntary work &   0 \\ 
-  Working & 123 \\ 
+  Working & 125 \\ 
    \hline
 \end{tabular}
 \end{table}
@@ -112,8 +112,8 @@
 #+RESULTS:
 #+BEGIN_EXPORT latex
 % latex table generated in R 3.3.3 by xtable 1.8-2 package
-% Tue Mar  7 15:13:59 2017
-\begin{table}[ht]
+% Tue Mar  7 15:19:15 2017
+\begin{table}[h]
 \centering
 \begin{tabular}{rr}
   \hline
@@ -125,20 +125,20 @@
   Education, research &   1 \\ 
   Energy &   2 \\ 
   Financial and insurance activities &   7 \\ 
-  IT and other information services &  68 \\ 
+  IT and other information services &  69 \\ 
   IT industries &  10 \\ 
-  Legal, accounting, management, architecture, engineering, technical testing and analysis activities &   1 \\ 
-  Manufacture of rubber and plastic products, and other non-metallic mineral products &   1 \\ 
+  Legal, accounting, management, architecture, engin.. activities &   1 \\ 
+  Manufacture of rubber and plastic products, .. mineral products &   1 \\ 
   Manufacture of textiles, clothes, leather and related products &   1 \\ 
   Other industries &   1 \\ 
   Other professional, scientific and technical activities &   4 \\ 
   Other sectors &   2 \\ 
   Publishing, audiovisual and broadcasting activities &   2 \\ 
-  Scientific research and development &   3 \\ 
+  Scientific research and development &   4 \\ 
   Telecommunications &   1 \\ 
   Transportation &   1 \\ 
   Wholesale and retail trade &   2 \\ 
-  Recherche (doctorat) &  12 \\ 
+  Recherche (doctorat) &  13 \\ 
    \hline
 \end{tabular}
 \end{table}
@@ -152,17 +152,17 @@
 #+RESULTS:
 #+BEGIN_EXPORT latex
 % latex table generated in R 3.3.3 by xtable 1.8-2 package
-% Tue Mar  7 15:07:30 2017
-\begin{table}[ht]
+% Tue Mar  7 15:19:21 2017
+\begin{table}[h]
 \centering
 \begin{tabular}{rr}
   \hline
  & V1 \\ 
   \hline
- &  24 \\ 
+ &  25 \\ 
   10 to 19 employees &   4 \\ 
-  20 to 49 employees &  17 \\ 
-  250 to 4 999 employees &  28 \\ 
+  20 to 49 employees &  18 \\ 
+  250 to 4 999 employees &  29 \\ 
   5 000 employees and more &  36 \\ 
   50 to 249 employees &  21 \\ 
   Less than 10 employees &  17 \\ 
@@ -180,14 +180,14 @@
 #+RESULTS:
 #+BEGIN_EXPORT latex
 % latex table generated in R 3.3.3 by xtable 1.8-2 package
-% Tue Mar  7 15:11:46 2017
-\begin{table}[ht]
+% Tue Mar  7 15:19:28 2017
+\begin{table}[h]
 \centering
 \begin{tabular}{rr}
   \hline
  & V1 \\ 
   \hline
- &  31 \\ 
+ &  33 \\ 
   2S Computing &   1 \\ 
   360Learning &   1 \\ 
   Accenture &   1 \\ 
@@ -196,6 +196,7 @@
   Air France &   1 \\ 
   Airbus OneWeb Satellites SAS &   1 \\ 
   AllegroDvt &   1 \\ 
+  AllegroDvt2 &   1 \\ 
   Amadeus SAS &   2 \\ 
   Antidot SAS &   1 \\ 
   Apalia &   1 \\ 
@@ -303,23 +304,23 @@
 
 Réponse optionelle, beaucoup moins de réponses.
 
-#+BEGIN_SRC R R :results output latex :exports results :session ensimag17
+#+BEGIN_SRC R :results output latex :exports results :session ensimag17
  xtable(table(factor(postes$satisfactionEmploi)))
 #+END_SRC
 
 #+RESULTS:
 #+BEGIN_EXPORT latex
 % latex table generated in R 3.3.3 by xtable 1.8-2 package
-% Tue Mar  7 15:13:29 2017
-\begin{table}[ht]
+% Tue Mar  7 15:19:37 2017
+\begin{table}[h]
 \centering
 \begin{tabular}{rr}
   \hline
  & V1 \\ 
   \hline
- &  55 \\ 
-  Neither satisfied nor dissatisfied &   6 \\ 
-  Satisfied &  45 \\ 
+ &  56 \\ 
+  Neither satisfied nor dissatisfied &   7 \\ 
+  Satisfied &  46 \\ 
   Unsatisfied &   6 \\ 
   Very satisfied &  33 \\ 
   Very unsatisfied &   2 \\ 
@@ -327,3 +328,25 @@ Réponse optionelle, beaucoup moins de réponses.
 \end{tabular}
 \end{table}
 #+END_EXPORT
+
+* Salaires
+
+#+BEGIN_SRC R :results output :exports results :session ensimag17
+tmp0 = dataISI$X71..EmploiSalaireBrutAnnuelHorsPrimes
+tmp00 =  dataISI$X73..EmploiPrimesBrutOuiMontant
+tmp0[is.na(tmp0)] = 0
+tmp00[is.na(tmp00)] = 0
+tmp = tmp0 + tmp00
+tmp1 = dataISI$X132..TheseSalaireBrutAnnuelHorsPrimes
+tmp2 = dataISI$X137..TheseSalaireBrutAnnuelAvecPrimes 
+tmp[is.na(tmp)] = tmp2[is.na(tmp)]
+tmp[is.na(tmp)] = tmp1[is.na(tmp)]
+tmp[is.na(tmp)] = 0
+tmp[tmp <= 3000] = 12 * tmp[tmp <= 3000]
+tmp[tmp == 0] = NA
+summary(tmp)
+#+END_SRC
+
+#+RESULTS:
+:    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+:    5000   35000   40000   45350   45220  180000      32
