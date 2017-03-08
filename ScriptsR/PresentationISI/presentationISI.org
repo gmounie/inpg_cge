@@ -24,7 +24,7 @@
 #+RESULTS:
 #+BEGIN_EXPORT latex
 % latex table generated in R 3.3.3 by xtable 1.8-2 package
-% Tue Mar  7 17:03:01 2017
+% Wed Mar  8 10:24:07 2017
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
@@ -350,3 +350,33 @@ summary(tmp)
 #+RESULTS:
 :    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
 :    5000   35000   40000   45350   45220  180000      32
+
+* Salaire par sexe sur la promo
+
+#+BEGIN_SRC R :results output :exports results :session ensimag17
+sexe = data2017[data2017$X169..AnneeDiplome == 2016,]$X10..SexeVerifieParLeDiplome
+tmp0 = data2017[data2017$X169..AnneeDiplome == 2016,]$X71..EmploiSalaireBrutAnnuelHorsPrimes
+tmp00 =  data2017[data2017$X169..AnneeDiplome == 2016,]$X73..EmploiPrimesBrutOuiMontant
+tmp0[is.na(tmp0)] = 0
+tmp00[is.na(tmp00)] = 0
+tmp = tmp0 + tmp00
+tmp1 = data2017[data2017$X169..AnneeDiplome == 2016,]$X132..TheseSalaireBrutAnnuelHorsPrimes
+tmp2 = data2017[data2017$X169..AnneeDiplome == 2016,]$X137..TheseSalaireBrutAnnuelAvecPrimes 
+tmp[is.na(tmp)] = tmp2[is.na(tmp)]
+tmp[is.na(tmp)] = tmp1[is.na(tmp)]
+tmp[is.na(tmp)] = 0
+tmp[tmp <= 3000] = 12 * tmp[tmp <= 3000]
+tmp[tmp == 0] = NA
+salaireparsexe = data.frame(salaire= tmp, sexe=sexe)
+summary(tmp)
+summary(salaireparsexe$salaire[salaireparsexe$sexe == "Female"])
+summary(salaireparsexe$salaire[salaireparsexe$sexe == "Male"])
+#+END_SRC
+
+#+RESULTS:
+:    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+:   16000   34200   40100   45290   45900  180000      86
+:    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+:   25640   35920   41000   39930   45500   49000      17
+:    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+:   16000   34000   40100   46020   45900  180000      70
