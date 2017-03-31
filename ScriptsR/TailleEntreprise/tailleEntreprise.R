@@ -21,7 +21,7 @@ levels(a$filiere) = c( "Master" , "Master" , "IF" , "ISI" , "Tcom/ISSC" , "Maste
 
 p = ggplot(a, aes(x=factor(taille), weight=poids/(length(a$taille)),fill=filiere )) + geom_bar(colour="white") + coord_flip() + theme(title=element_text("Tailles des entreprises")) + xlab("") + ylab("Pourcentage") 
 p
-ggsave("../../Output/ensimag_2016_tailles.svg", width=2*par("din")[1])
+ggsave("../../Output/ensimag_2016_tailles.png", width=2*par("din")[1])
 
 
                                         # 2013

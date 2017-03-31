@@ -23,6 +23,7 @@ salaire$AnneeEnquete = factor(salaire$AnneeEnquete)
 #salaire$AnneeEnquete = relevel(salaire$AnneeEnquete, "2013")
 #salaire$AnneeEnquete = relevel(salaire$AnneeEnquete, "2014")
 salaire$SalaireAvecPrime = pmax( salaire$SalaireBrutAnnuelHorsPrimes, salaire$SalaireBrutAnnuelAvecPrimes, salaire$RevenuBrutAnnuelAvecPrimesThesard, salaire$RevenuBrutAnnuelHorsPrimesThesard, na.rm= TRUE )
+salaire$SalaireHorsPrime = pmax( salaire$SalaireBrutAnnuelHorsPrimes, salaire$RevenuBrutAnnuelHorsPrimesThesard, na.rm= TRUE )
 
 salaire = salaire[! is.na(salaire$SalaireAvecPrime),]
 
@@ -33,6 +34,48 @@ salaire[salaire$lieu != "Etranger" & salaire$lieu != "Île-de-France"  & salaire
 salaire[salaire$lieu == "","lieu"] = "Non renseigné"
 
 library(ggplot2)
+
+# par sexe avec prime
+summary(salaire$SalaireAvecPrime[salaire$AnneeEnquete == 2016 & salaire$AnneeDiplome== 2015 & salaire$Sexe == "Femme"])
+summary(salaire$SalaireAvecPrime[salaire$AnneeEnquete == 2016 & salaire$AnneeDiplome== 2015 & salaire$Sexe == "Homme"])
+summary(salaire$SalaireAvecPrime[salaire$AnneeEnquete == 2015 & salaire$AnneeDiplome== 2014 & salaire$Sexe == "Femme"])
+summary(salaire$SalaireAvecPrime[salaire$AnneeEnquete == 2015 & salaire$AnneeDiplome== 2014 & salaire$Sexe == "Homme"])
+summary(salaire$SalaireAvecPrime[salaire$AnneeEnquete == 2014 & salaire$AnneeDiplome== 2013 & salaire$Sexe == "Femme"])
+summary(salaire$SalaireAvecPrime[salaire$AnneeEnquete == 2014 & salaire$AnneeDiplome== 2013 & salaire$Sexe == "Homme"])
+summary(salaire$SalaireAvecPrime[salaire$AnneeEnquete == 2013 & salaire$AnneeDiplome== 2012 & salaire$Sexe == "Femme"])
+summary(salaire$SalaireAvecPrime[salaire$AnneeEnquete == 2013 & salaire$AnneeDiplome== 2012 & salaire$Sexe == "Homme"])
+
+# par sexe sans prime
+summary(salaire$SalaireHorsPrime[salaire$AnneeEnquete == 2016 & salaire$AnneeDiplome== 2015 & salaire$Sexe == "Femme"])
+summary(salaire$SalaireAvecPrime[salaire$AnneeEnquete == 2016 & salaire$AnneeDiplome== 2015 & salaire$Sexe == "Homme"])
+summary(salaire$SalaireAvecPrime[salaire$AnneeEnquete == 2015 & salaire$AnneeDiplome== 2014 & salaire$Sexe == "Femme"])
+summary(salaire$SalaireAvecPrime[salaire$AnneeEnquete == 2015 & salaire$AnneeDiplome== 2014 & salaire$Sexe == "Homme"])
+summary(salaire$SalaireAvecPrime[salaire$AnneeEnquete == 2014 & salaire$AnneeDiplome== 2013 & salaire$Sexe == "Femme"])
+summary(salaire$SalaireAvecPrime[salaire$AnneeEnquete == 2014 & salaire$AnneeDiplome== 2013 & salaire$Sexe == "Homme"])
+summary(salaire$SalaireAvecPrime[salaire$AnneeEnquete == 2013 & salaire$AnneeDiplome== 2012 & salaire$Sexe == "Femme"])
+summary(salaire$SalaireAvecPrime[salaire$AnneeEnquete == 2013 & salaire$AnneeDiplome== 2012 & salaire$Sexe == "Homme"])
+
+                                        # hors prime
+summary(salaire$SalaireAvecPrime[salaire$AnneeEnquete == 2016 & salaire$AnneeDiplome== 2015 & salaire$Sexe == "Femme"])
+summary(salaire$SalaireAvecPrime[salaire$AnneeEnquete == 2016 & salaire$AnneeDiplome== 2015 & salaire$Sexe == "Homme"])
+summary(salaire$SalaireAvecPrime[salaire$AnneeEnquete == 2015 & salaire$AnneeDiplome== 2014 & salaire$Sexe == "Femme"])
+summary(salaire$SalaireAvecPrime[salaire$AnneeEnquete == 2015 & salaire$AnneeDiplome== 2014 & salaire$Sexe == "Homme"])
+summary(salaire$SalaireAvecPrime[salaire$AnneeEnquete == 2014 & salaire$AnneeDiplome== 2013 & salaire$Sexe == "Femme"])
+summary(salaire$SalaireAvecPrime[salaire$AnneeEnquete == 2014 & salaire$AnneeDiplome== 2013 & salaire$Sexe == "Homme"])
+summary(salaire$SalaireAvecPrime[salaire$AnneeEnquete == 2013 & salaire$AnneeDiplome== 2012 & salaire$Sexe == "Femme"])
+summary(salaire$SalaireAvecPrime[salaire$AnneeEnquete == 2013 & salaire$AnneeDiplome== 2012 & salaire$Sexe == "Homme"])
+
+# par sexe sans prime
+summary(salaire$SalaireHorsPrime[salaire$AnneeEnquete == 2016 & salaire$AnneeDiplome== 2015 & salaire$Sexe == "Femme"])
+summary(salaire$SalaireHorsPrime[salaire$AnneeEnquete == 2016 & salaire$AnneeDiplome== 2015 & salaire$Sexe == "Homme"])
+summary(salaire$SalaireHorsPrime[salaire$AnneeEnquete == 2015 & salaire$AnneeDiplome== 2014 & salaire$Sexe == "Femme"])
+summary(salaire$SalaireHorsPrime[salaire$AnneeEnquete == 2015 & salaire$AnneeDiplome== 2014 & salaire$Sexe == "Homme"])
+summary(salaire$SalaireHorsPrime[salaire$AnneeEnquete == 2014 & salaire$AnneeDiplome== 2013 & salaire$Sexe == "Femme"])
+summary(salaire$SalaireHorsPrime[salaire$AnneeEnquete == 2014 & salaire$AnneeDiplome== 2013 & salaire$Sexe == "Homme"])
+summary(salaire$SalaireHorsPrime[salaire$AnneeEnquete == 2013 & salaire$AnneeDiplome== 2012 & salaire$Sexe == "Femme"])
+summary(salaire$SalaireHorsPrime[salaire$AnneeEnquete == 2013 & salaire$AnneeDiplome== 2012 & salaire$Sexe == "Homme"])
+
+# résumé général
 
 summary(salaire$SalaireAvecPrime[salaire$AnneeEnquete == 2016 & salaire$AnneeDiplome== 2015])
 summary(salaire$SalaireAvecPrime[salaire$AnneeEnquete == 2016 & salaire$AnneeDiplome== 2014])

@@ -1,4 +1,4 @@
-#+TITLE: Ensimag: Que sont devenus les diplômé(e)s 2015, 2014 et 2014 ? (enquête nationale sur l'insertion des diplômés ingénieurs et d'école de commerce (CGE))
+#+TITLE: Ensimag: Que sont devenus les diplômé(e)s 2015, 2014 et 2013 ? (enquête nationale sur l'insertion des diplômés ingénieurs et d'écoles de commerce (enquête CGE))
 #+DATE: 2016
 #+AUTHOR: Grégory Mounié
 #+EMAIL: gregory.mounie@imag.fr
@@ -28,11 +28,11 @@
 ** Répondants
    
 *** Vous voulez voir les statistiques, les "autres" (ministères, journalistes, etc.) aussi.
-    Étudiant \lambda: 7-8000 \euro/an, Ensimag \lambda: 23000 \euro/an;
-    
-    *Répondez SVP ! Cela nous permet de justifier plus facilement
+    *Répondez SVP ! 3 fois ! Cela nous permet de justifier plus facilement
     l'existence des filières, et de l'école*.
-*** Réponses						       :B_alertblock:
+
+    (Étudiant \lambda: 7-8000 \euro/an, Ensimag \lambda: 23000 \euro/an;)
+*** Proportions des promos répondant aux questions 	       :B_alertblock:
     :PROPERTIES:
     :BEAMER_env: alertblock
     :END:
@@ -41,8 +41,8 @@
    6 mois 79%; 18 mois 68%; 30 mois: 59%)
 
 *** Contexte
-    IF += 15% de cours en plus: décalage de 1 an des réponses, pas
-   d'IF diplômés en 2013 !
+    IF += 15% de cours en plus: décalage de 1 an du diplôme donc du
+   questionnaire, pas d'IF diplômés en 2013 !
 
 ** Répondants par filières
 
@@ -64,7 +64,7 @@ et 30 mois)
  [[./../Output/ensimag_2016_situation.png]]
 
 
-** Premier emploi
+** Votre emploi est-il votre premier emploi ?
 Pas d'IF en 2013 !
 
  #+ATTR_LATEX: :width 11cm
@@ -89,12 +89,12 @@ Pas d'IF en 2013 !
    
 
 
-** Salaires 
+** Salaires filtrés aux extrèmes
 
  #+ATTR_LATEX: :width 11cm
  [[./../Output/ensimag_2016_salaire_total_inf100000.png]]
 
-** Salaire France, hors thèse
+** Salaires France, hors thèse, non filtrés
  #+ATTR_LATEX: :width 11cm
  [[./../Output/ensimag_2016_salaire_france_industrie.png]]
 
@@ -102,9 +102,8 @@ Pas d'IF en 2013 !
  #+ATTR_LATEX: :width 11cm
  [[./../Output/ensimag_2016_satisfaction.png]]
 
-** Comment ont-il trouvé l'emploi ? (les 3 promos)   
-Question non posée aux doctorant (~15%), recherche d'emploi et
-poursuite d'étude.
+** Comment ont-ils trouvé leur emploi ? (les 3 promos)   
+*NA* inclue les doctorant (~15%), recherche d'emploi et poursuite d'étude.
 
  #+ATTR_LATEX: :width 11cm
 [[./../Output/ensimag_2016_methode.png]]
@@ -112,6 +111,11 @@ poursuite d'étude.
 ** Taille de l'entreprise
  #+ATTR_LATEX: :width 11cm
  [[./../Output/ensimag_2016_tailles.png]]
+
+** Management (En activité, hors thèse) (les 3 promos)
+ #+ATTR_LATEX: :width 11cm
+ [[./../Output/ensimag_2016_management.png]]
+
 
 ** Annexes
    Quelques autres statistiques:
@@ -156,5 +160,5 @@ en 2011 et 2009; durée de recherche d'emploi plus courte à 6 mois.
 ** DONE taille des entreprises
 ** DONE % de poursuite d'étude
 ** DONE localisation
-** salaire moyen juste France et entreprises
-** proportion de management
+** DONE salaire moyen juste France et entreprises
+** DONE proportion de management

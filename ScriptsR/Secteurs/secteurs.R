@@ -4,7 +4,9 @@ library(ggplot2)
 library(plyr)
 # version 2016
 secteurs = data2016$SecteurActiviteFinale[data2016$AnneeEnquete == 2016]
-a = data.frame(secteurs = data2016$SecteurActivite, poids= 1, situation=data2016$ActiviteActuelleV2016, filiere=data2016$Option_FiliereFormation)
+a = data.frame(secteurs = data2016$SecteurActivite, poids= 1, situation=data2016$ActiviteActuelleV2016, filiere=data2016$Option_FiliereFormation, promo=data2016$Promo)
+# pour avoir juste la promo 2015
+a=a[a$promo == 2015,]
 a$secteurs = factor(a$secteurs, levels=c(levels(a$secteurs), "Recherche (doctorat)", "Volontariat"))
 a[a$situation == "En thèse",]$secteurs = "Recherche (doctorat)"
 a[a$situation == "En volontariat (VIE, VIA, Volontariat civil)",]$secteurs = "Volontariat"

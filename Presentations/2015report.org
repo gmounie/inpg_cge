@@ -1,4 +1,4 @@
-#+TITLE: Enquête CGE
+#+TITLE: Retour sur l'enquête nationale sur l'insertion des diplômés (CGE)
 #+DATE: 2015
 #+AUTHOR: Grégory Mounié
 #+EMAIL: gregory.mounie@imag.fr
