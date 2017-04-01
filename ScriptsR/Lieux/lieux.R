@@ -50,7 +50,8 @@ p = p  + theme(plot.title=element_text("Lieu de travail (doctorat, volontariat) 
 p
 ggsave("../../Output/ensimag_2016_lieu.png", width=1*par("din")[1])
 
-
+library(dplyr)
+select(a, lieu, filiere, weight)  %>% group_by(lieu) %>% summarize(nombre = round(sum(weight),1))
 
                                         # 2015
                                         # Très basique avec juste RA, PACA et Province pour le reste

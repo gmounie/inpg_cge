@@ -2,6 +2,56 @@ source("../DataReader/dataReader.R")
 
 library(ggplot2)
 library(plyr)
+# version 2017
+a = data.frame(secteurs = data2017$X58..EmploiEntrepriseSecteurActivite, poids= 1, situation=data2017$X26..ActiviteActuelle, promo=data2017$X21..AnneeDiplomeVerifieParLeDiplome, filiere=data2017$X247..Option_ScolariteFiliereFormation)
+# pour avoir juste la promo 2016
+                                        # a=a[a$promo == 2016,]
+
+a$secteurs = factor(a$secteurs, levels=c(levels(a$secteurs), "PhD", "Voluntary work"))
+a[a$situation == "Studying for a PhD",]$secteurs = "PhD"
+a[a$situation == "Voluntary work",]$secteurs = "Voluntary work"
+levels(a$situation)
+levels(a$secteurs)
+
+levels(a$filiere) = c("Non renseigné" , "Master" , "Master" , "IF" , "ISI" , "ISSC" , "Master" , "Master" , "Master" , "Master" , "MMIS" , "SLE")
+a$filiere = factor(a$filiere)
+a$promo = factor(a$promo)
+
+
+levels(a$secteurs) = c("" , "15 Autres" , "15 Autres" , "15 Autres" , "15 Autres" , "15 Autres" , "Financial and insurance activities" , "15 Autres" , "IT and other information services" , "IT industries" , "15 Autres" , "15 Autres" , "15 Autres" , "15 Autres" , "15 Autres" , "15 Autres" , "15 Autres" , "15 Autres" , "Scientific research and development" , "Telecommunications" , "15 Autres" , "15 Autres" , "PhD" , "Voluntary work")
+a$secteurs = factor(a$secteurs)              
+
+
+a = a[a$filiere != "",]
+#a = a[as.character(a$secteurs) != "",]
+# total= length(a$secteurs[a$secteurs != ""])
+total = length(a$secteurs)
+ddply(a, .(secteurs), summarize, nb=round(100*sum(poids)/total, digits=1))
+
+b = a[a$apprentissage == "En apprentissage",] 
+totala = length(b$secteurs[b$secteurs != ""])
+ddply(b, .(secteurs), summarize, nb=round(100*sum(poids)/totala, digits=0)) 
+
+val = count(data2017)
+val2 = val
+val2$freq = val$freq / sum(val$freq)
+val3 = val2
+val3$agglosect = val3$SecteurActivite
+#for(i in 1:length(val3$freq)) { if (val3$freq[i] < 0.1) val3$agglosect[i] = "Autres secteurs" }
+
+
+
+#p = ggplot(val3, aes(x=factor(agglosect), weight=freq)) + geom_bar(fill="lightgreen", colour="darkgreen") + coord_flip() + opts(title="Secteurs d'activité") + xlab("") + ylab("Pourcentage") 
+
+
+p = ggplot(a, aes(x=factor(secteurs), weight=poids/(length(a$secteurs)),fill=filiere)) + geom_bar(colour="white") + coord_flip() + ggtitle("Secteurs d'activité en 2017, par filière, 6, 18 et 30 mois après la sortie") + xlab("") + ylab("Pourcentage")
+
+
+#p + geom_text(x=1, y=0.11, label="secteurs < 10%", size=16) + opts(plot.title = theme_text(size=32, lineheight=.8, face="bold"), axis.text.x = theme_text(size=28, lineheight=.8, face="bold"), axis.text.y = theme_text(size=28, lineheight=.8, face="bold"),  axis.title.x = theme_text(size=28, lineheight=.8)) 
+
+p
+#p + geom_text(x=1, y=0.11, label="15 secteurs < 10%")
+ggsave("../../Output/ensimag_2017_secteurs_filiere.png", width=1.5*par("din")[1])
 # version 2016
 secteurs = data2016$SecteurActiviteFinale[data2016$AnneeEnquete == 2016]
 a = data.frame(secteurs = data2016$SecteurActivite, poids= 1, situation=data2016$ActiviteActuelleV2016, filiere=data2016$Option_FiliereFormation, promo=data2016$Promo)
