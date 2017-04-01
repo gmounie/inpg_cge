@@ -2,9 +2,20 @@ source("../DataReader/dataReader.R")
 data2013 = data2013[data2013$AnneeEnquete == 2013,]
 
 # version 2017
-taux_emplois = data.frame(situation=data2017$X26..ActiviteActuelle, promo=data2017$X21..AnneeDiplomeVerifieParLeDiplome, poids=100, nb=1)
+taux_emplois = data.frame(situation=data2017$X26..ActiviteActuelle, promo=data2017$X21..AnneeDiplomeVerifieParLeDiplome, poids=100, nb=1, poidsTotal=1, filiere=data2017$X247..Option_ScolariteFiliereFormation, poidsFiliere=1)
+levels(taux_emplois$filiere) = c("Non renseigné" , "Master" , "Master" , "IF" , "ISI" , "ISSC" , "Master" , "Master" , "Master" , "Master" , "MMIS" , "SLE")
+taux_emplois$filiere = factor(taux_emplois$filiere)
 taux_emplois = taux_emplois[taux_emplois$situation != "",]
 taux_emplois = taux_emplois[! is.na(taux_emplois$promo),]
+taux_emplois$poidsTotal = 100./length(taux_emplois$situation)
+taux_emplois$poidsFiliere[taux_emplois$filiere == "Master"] = 100./ length(taux_emplois[taux_emplois$filiere == "Master","situation"])
+taux_emplois$poidsFiliere[taux_emplois$filiere == "IF"] = 100./ length(taux_emplois[taux_emplois$filiere == "IF","situation"])
+taux_emplois$poidsFiliere[taux_emplois$filiere == "MMIS"] = 100. / length(taux_emplois[taux_emplois$filiere == "MMIS","situation"])
+taux_emplois$poidsFiliere[taux_emplois$filiere == "ISSC"] = 100. / length(taux_emplois[taux_emplois$filiere == "ISSC","situation"])
+taux_emplois$poidsFiliere[taux_emplois$filiere == "SLE"] = 100. / length(taux_emplois[taux_emplois$filiere == "SLE","situation"])
+taux_emplois$poidsFiliere[taux_emplois$filiere == "ISI"] = 100. / length(taux_emplois[taux_emplois$filiere == "ISI","situation"])
+
+
 taux_emplois[taux_emplois$promo == 2014,"nb"] = length(taux_emplois[taux_emplois$promo == 2014,"situation"])
 taux_emplois[taux_emplois$promo == 2015,"nb"] = length(taux_emplois[taux_emplois$promo == 2015,"situation"])
 taux_emplois[taux_emplois$promo == 2016,"nb"] = length(taux_emplois[taux_emplois$promo == 2016,"situation"])
@@ -12,33 +23,19 @@ taux_emplois[,"poids"] = 100./taux_emplois[,"nb"]
 levels(taux_emplois$situation)
 levels(taux_emplois$situation) = c("Non renseigné" , "Furthering studies" , "Job-hunting" , "Not in activity out of choice" , "Studying for a PhD" , "Voluntary work" , "Working")
 
-taux_emplois$situation = relevel(taux_emplois$situation, 6)
-levels(taux_emplois$situation)
-taux_emplois$situation = relevel(taux_emplois$situation, "En recherche d'emploi")
-levels(taux_emplois$situation)
-# poursuite d'étude
-taux_emplois$situation = relevel(taux_emplois$situation, 4)
-
-taux_emplois$situation = relevel(taux_emplois$situation, "En volontariat (VIE, VIA, Volontariat civil)")
-
-# accent utf8 vs latin 1
-# thèse est le numéro 5
-# taux_emplois$situation = relevel(taux_emplois$situation, "En thèse")
-levels(taux_emplois$situation)
-taux_emplois$situation = relevel(taux_emplois$situation, 6)
-                                        #taux_emplois$situation = relevel(taux_emplois$situation, "En création d'entreprise")
-
-# accent utf8 vs latin1
-                                        #taux_emplois$situation = relevel(taux_emplois$situation, "En activité professionnelle")
-levels(taux_emplois$situation)
-taux_emplois$situation = relevel(taux_emplois$situation, 6)
-#taux_emplois$situation = relevel(taux_emplois$situation, "")
 library(ggplot2)
 p = ggplot(data=taux_emplois, aes(x=as.factor(promo), fill=situation, weight=poids), colour=black)  + geom_bar() + coord_flip()
 p + scale_fill_manual(values=c("yellow","red","SlateBlue4","green","chartreuse4","blue", "orange")) + ggtitle("Situation des diplômés début 2O17, à 6, 18 et 30 mois") + xlab("Promo Ensimag") + ylab("Pourcentage")
 ggsave("../../Output/ensimag_2017_situation.svg")   
 ggsave("../../Output/ensimag_2017_situation.png", width=2*par("din")[1]) 
 
+library("dplyr")
+select(taux_emplois , situation, promo, poids) %>% group_by(promo, situation) %>% summarize(nombre = round(sum(poids),1))
+
+# statistiques par filière
+a = select(taux_emplois , situation, promo, poidsFiliere, filiere) %>% group_by(filiere, situation) %>% summarize(nombre = round(sum(poidsFiliere),1))
+a[1:15,]
+a[16:31,]
 
 # version 2016
 taux_emplois = data.frame(situation=data2016$ActiviteActuelleV2016, promo=data2016$Promo, poids=100, nb=1)
