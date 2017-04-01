@@ -1,6 +1,34 @@
 source("../DataReader/dataReader.R")
 
 library(ggplot2)
+                                        # 2017
+                                        # très basique, juste RA, PACA et province
+
+lieu = data.frame( lieutrav = data2017$X38..EmploiLieuRegionEtranger ,lieuvol = data2017$X101..VolontariatRegionEtranger, lieudoc = data2017$X123..TheseRegionEtranger)
+lieu$lieu[lieu$lieutrav != ""] = as.character(lieu$lieutrav[lieu$lieutrav != ""])
+lieu$lieu[lieu$lieudoc != ""] = as.character(lieu$lieudoc[lieu$lieudoc != ""])
+lieu$lieu[lieu$lieuvol != ""] = as.character(lieu$lieuvol[lieu$lieuvol != ""])
+lieu$lieu = factor(lieu$lieu)
+a = data.frame(lieu = lieu$lieu, weight=1, promo=data2017$X21..AnneeDiplomeVerifieParLeDiplome, filiere=data2017$X247..Option_ScolariteFiliereFormation)
+
+
+levels(a$filiere) = c("Non renseigné" , "Master" , "Master" , "IF" , "ISI" , "ISSC" , "Master" , "Master" , "Master" , "Master" , "MMIS" , "SLE")
+a$filiere = factor(a$filiere)
+a$promo = factor(a$promo)
+a = a[! is.na(a$promo),]
+a = a[! (a$filiere == "Non renseigné"),]
+#a = a[! is.na(a$lieu),]
+a$weight=100./length(a$promo)
+
+levels(a$lieu)
+
+levels(a$lieu) = c( "Abroad" , "Auvergne-Rhône-Alpes" , "Province" , "Province" , "Province" , "Province" , "Province" , "Île-de-France" , "Province" , "Province" , "Provence-Alpes-Côte d’Azur")
+a$lieu = factor(a$lieu)
+
+p = ggplot(data=a, aes(x=lieu, fill=filiere))  + geom_bar(colour="white",(aes(weight=weight))) + coord_flip() + facet_wrap(c("filiere"))
+p = p  + theme(plot.title=element_text("Lieu de travail (doctorat, volontariat) en fonction de la filière")) + xlab("Lieu") + scale_fill_hue(l=70, c=150)  + ylab("% des diplômés")
+p
+ggsave("../../Output/ensimag_2017_lieu.png", width=2*par("din")[1])
 
                                         # 2016
                                         # très basique, juste RA, PACA et province
