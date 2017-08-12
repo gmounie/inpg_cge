@@ -23,6 +23,9 @@ a$secteurs = factor(a$secteurs)
 
 
 a = a[a$filiere != "",]
+a = a[a$filiere != "Non renseigné",]
+a$filiere = factor(a$filiere)
+
 #a = a[as.character(a$secteurs) != "",]
 # total= length(a$secteurs[a$secteurs != ""])
 total = length(a$secteurs)
@@ -52,6 +55,28 @@ p = ggplot(a, aes(x=factor(secteurs), weight=poids/(length(a$secteurs)),fill=fil
 p
 #p + geom_text(x=1, y=0.11, label="15 secteurs < 10%")
 ggsave("../../Output/ensimag_2017_secteurs_filiere.png", width=1.5*par("din")[1])
+
+p = ggplot(a, aes(x=factor(filiere), weight=poids/(length(a$filiere)),fill=secteurs)) + geom_bar(colour="white") + coord_flip() + ggtitle("Filière en 2017, par secteur d'activité, 6, 18 et 30 mois après la sortie") + xlab("") + ylab("Pourcentage")
+
+
+#p + geom_text(x=1, y=0.11, label="secteurs < 10%", size=16) + opts(plot.title = theme_text(size=32, lineheight=.8, face="bold"), axis.text.x = theme_text(size=28, lineheight=.8, face="bold"), axis.text.y = theme_text(size=28, lineheight=.8, face="bold"),  axis.title.x = theme_text(size=28, lineheight=.8)) 
+
+p
+#p + geom_text(x=1, y=0.11, label="15 secteurs < 10%")
+ggsave("../../Output/ensimag_2017_filiere_secteurs.png", width=1.5*par("din")[1])
+
+
+p = ggplot(a, aes(x=factor(filiere), weight=poids/(length(a$filiere)),fill=situation)) + geom_bar(colour="white") + coord_flip() + ggtitle("Filière en 2017, par situation, 6, 18 et 30 mois après la sortie") + xlab("") + ylab("Pourcentage")
+
+
+#p + geom_text(x=1, y=0.11, label="secteurs < 10%", size=16) + opts(plot.title = theme_text(size=32, lineheight=.8, face="bold"), axis.text.x = theme_text(size=28, lineheight=.8, face="bold"), axis.text.y = theme_text(size=28, lineheight=.8, face="bold"),  axis.title.x = theme_text(size=28, lineheight=.8)) 
+
+p
+#p + geom_text(x=1, y=0.11, label="15 secteurs < 10%")
+ggsave("../../Output/ensimag_2017_filiere_situation.png", width=1.5*par("din")[1])
+
+
+
 # version 2016
 secteurs = data2016$SecteurActiviteFinale[data2016$AnneeEnquete == 2016]
 a = data.frame(secteurs = data2016$SecteurActivite, poids= 1, situation=data2016$ActiviteActuelleV2016, filiere=data2016$Option_FiliereFormation, promo=data2016$Promo)

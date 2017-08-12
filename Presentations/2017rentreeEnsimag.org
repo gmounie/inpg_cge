@@ -1,4 +1,4 @@
-#+TITLE: Ensimag: Que sont devenus les diplômé(e)s 2016, 2015 et 2014 ? (enquête nationale sur l'insertion des diplômés ingénieurs et d'écoles de commerce (enquête CGE))
+#+TITLE: Ensimag: Que sont devenus les diplômé(e)s 2016, 2015 et 2014 ? (enquête nationale sur l'insertion des diplômés ingénieurs et d'écoles de commerce (enquête CGE: 175 écoles/184))
 #+DATE: 2017
 #+AUTHOR: Grégory Mounié
 #+EMAIL: gregory.mounie@imag.fr
@@ -23,32 +23,42 @@
 #+LATEX_CLASS_OPTIONS: [presentation]
 #+STARTUP: beamer
 
+* Bibliography                                                     :noexport:
+  [[./enquete-insertion-cge-2017.pdf][Enquête CGE]]
+  25% sur tablette et smartphone
+
 * Ensimag: diplômé(e)s 2016, 2015, 2014
 
 ** Répondants
    
-*** Vous voulez voir ces statistiques, les "autres" (futurs ensimag, ministères, journalistes, etc.) aussi !
-    *Répondez SVP ! 3 fois ! Les même questions !*.
+*** Lorsqu'un étudiant pose une question sur le devenir des diplômés...
+    *Démandez lui de répondre à l'enquête, SVP ! 3 ans de suite ! Les
+    mêmes questions 3 fois !*.  Rappel: Étudiant \lambda: 7-8000 \euro/an, Lycéen
+    \lambda: 15000\euro/an, Ensimag \lambda: 23000 \euro/an;
 
-    Rappel: Étudiant \lambda: 7-8000 \euro/an, Lycéen \lambda: 15000\euro/an, Ensimag \lambda: 23000 \euro/an;
 *** Proportions des promotions répondant aux questions         :B_alertblock:
     :PROPERTIES:
     :BEAMER_env: alertblock
     :END:
-   Réponses à 6 mois: 74%; 18 mois: 62%; 30 mois: 45%.  (Comparable
-   moyenne Ingé France 2015: 6 mois 69.8%; 18 mois 56.2%; 30 mois
-   49.6%; Moyenne G-INP 2016: 6 mois 80%; 18 mois 69%; 30 mois: 60%)
+   # Réponses à 6 mois: 74%; 18 mois: 62%; 30 mois: 45%.  (Comparable
+   # moyenne Ingé France 2015: 6 mois 69.8%; 18 mois 56.2%; 30 mois
+   # 49.6%; Moyenne G-INP 2016: 6 mois 80%; 18 mois 69%; 30 mois: 60%)
+   | % de répondants | 6 mois | 18 mois | 30 mois |
+   |-----------------+--------+---------+---------|
+   | Ensimag         |     74 |      62 |      45 |
+   | Grenoble-INP    |     80 |      69 |      60 |
+   | France Ingé CGE |   73.6 |    58.2 |    51.9 |
 
-*** Contexte: "perte" d'IF à cause du décalage de diplôme
-    IF += 15% de cours en plus \Rightarrow décalage de 1 an du diplôme pour les
-    anciennes promotions ! Qui se résorbe maintenant petit à petit.
+
+**** Contexte: "perte" d'IF à cause du décalage de diplôme
+     IF += 15% de cours en plus \Rightarrow décalage de 1 an du diplôme pour les
+     anciennes promotions ! Qui se résorbe maintenant petit à petit.
 
 ** Répondants par filières
 
-   *filière IF sous-représenté* (biais sur les réponses à cause du
-   décalage passé)
+   *Rappel: filière IF sous-représentée* (biais à cause du décalage passé)
 
-   #+ATTR_LATEX: :width 12cm :height 6cm
+   #+ATTR_LATEX: :width 12cm :height 7cm
    [[./../Output/ensimag_2017_repondants_filiere.png]]
 
 ** Situation des diplômés
@@ -66,6 +76,39 @@
  [[./../Output/ensimag_2017_situation.png]]
 
 
+** TODO Situation des diplômés
+
+   Version tableau:
+   | % diplômés | Act. pro | PhD   | Vol. | étude |  R. E. |  SA |
+   |------------+----------+-------+------+-------+--------+-----|
+   | Ensimag 6  |       69 | *17*  |    1 |     9 |    *3* |   2 |
+   | G-INP 6    |       59 | *17*  |    3 |     9 |      9 |   2 |
+   | FR Ingé 6  |     68.1 | *6.9* |  3.6 |   8.5 | *10.9* |   2 |
+   |------------+----------+-------+------+-------+--------+-----|
+   | Ensimag 18 |       83 | *13*  |    1 |     1 |      2 |   1 |
+   | G-INP 18   |       72 | *18*  |    1 |     1 |      4 |   1 |
+   | FR Ingé 18 |     77.4 | *8.5* |  3.8 |   3.8 |    5.1 | 1.4 |
+   |------------+----------+-------+------+-------+--------+-----|
+   | Ensimag 30 |       81 | *18*  |    0 |     1 |      0 |   0 |
+   | G-INP 30   |       72 | *21*  |    2 |     2 |      1 |   2 |
+   | FR Ingé 30 |     81.7 | *9.7* |  2.6 |   1.9 |      3 | 1.1 |
+   |------------+----------+-------+------+-------+--------+-----|
+
+*** Note par filière:
+    Plus de doctorat en Master et MMIS, moins en ISI, beaucoup moins
+    en IF.
+   # Comme tous les ans, pas de grande différence entre filières sauf sur
+   # le doctorat. Plus de doctorat en Master (50%?), MMIS(27%), SLE
+   # (18%), (ISSC 20%?), un peu moins en ISI (8%), beaucoup moins en IF
+   # (3%).
+   Biais probable: réponses des doctorants locaux à 30 mois. 
+   (Moyenne Ingé France 6 mois: 14.4% de recherche d'emploi)
+
+ #+ATTR_LATEX: :width 11cm
+ [[./../Output/ensimag_2017_situation.png]]
+
+
+
 ** Votre emploi est-il votre premier emploi ? (par filière)
 
  #+ATTR_LATEX: :width 11cm
@@ -78,10 +121,16 @@
  #+ATTR_LATEX: :width 11.5cm :height 7cm
  [[./../Output/ensimag_2017_lieu.png]]
 
-** Secteur de l'entreprise (Les 3 promos)
+** Secteur de l'entreprise (Les 3 promos, par filière)
 
    #+ATTR_LATEX: :width 12cm :height 7cm
    [[./../Output/ensimag_2017_secteurs_filiere.png]]
+
+** Filière again (Les 3 promos, par secteur de l'entreprise)
+
+   #+ATTR_LATEX: :width 12cm :height 7cm
+   [[./../Output/ensimag_2017_secteurs_filiere.png]]
+
 
 ** Compétences techniques utilisées (Les 3 promos)
 
@@ -155,6 +204,7 @@ Marché de l'emploi moins tendu: inter-contrat à 18 mois moins visible.
 
 
 * Demandes							   :noexport:
+** TODO satisfaction formation par filière
 ** DONE part à l'étranger
 ** DONE satisfaction travail et formation
 ** DONE salaire boxplot
