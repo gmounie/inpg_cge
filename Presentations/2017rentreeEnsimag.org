@@ -1,4 +1,4 @@
-#+TITLE: Ensimag: Que sont devenus les diplômé(e)s 2016, 2015 et 2014 ? (enquête nationale sur l'insertion des diplômés ingénieurs et d'écoles de commerce (enquête CGE: 175 écoles/184))
+#+TITLE: Ensimag: Les diplômé(e)s 2016, 2015 et 2014, enquête nationale sur l'insertion des diplômés ingénieurs et d'écoles de commerce: *Enquête CGE: 133+32 écoles/184, 28/30K Ingé., 17/20K mana.*
 #+DATE: 2017
 #+AUTHOR: Grégory Mounié
 #+EMAIL: gregory.mounie@imag.fr
@@ -15,7 +15,7 @@
 #+OPTIONS: H:2
 #+BEAMER_COLOR_THEME: spruce
 #+BEAMER_FONT_THEME:
-#+BEAMER_HEADER:  \usecolortheme{rose} \usecolortheme{dolphin}
+#+BEAMER_HEADER:  \usecolortheme{rose}
 #+BEAMER_INNER_THEME:
 #+BEAMER_OUTER_THEME:
 #+BEAMER_THEME: Warsaw
@@ -32,9 +32,9 @@
 ** Répondants
    
 *** Lorsqu'un étudiant pose une question sur le devenir des diplômés...
-    *Démandez lui de répondre à l'enquête, SVP ! 3 ans de suite ! Les
-    mêmes questions 3 fois !*.  Rappel: Étudiant \lambda: 7-8000 \euro/an, Lycéen
-    \lambda: 15000\euro/an, Ensimag \lambda: 23000 \euro/an;
+    *Répondez lui de répondre à l'enquête, SVP ! 3 ans de suite ! Les
+    95 questions ! 3 fois !*.  Rappel: Étudiant \lambda: 7-8000 \euro/an, Lycéen
+    \lambda: 15000\euro/an, Ensimag \lambda: 23000 \euro/an, SupAero/Ulm/X \lambda: 66000 \euro/an;
 
 *** Proportions des promotions répondant aux questions         :B_alertblock:
     :PROPERTIES:
@@ -61,7 +61,7 @@
    #+ATTR_LATEX: :width 12cm :height 7cm
    [[./../Output/ensimag_2017_repondants_filiere.png]]
 
-** Situation des diplômés
+** Situation des diplômés                                          :noexport:
 
    Comme tous les ans, plus de doctorat en Master et MMIS, moins en
    ISI, beaucoup moins en IF.
@@ -69,14 +69,14 @@
    # le doctorat. Plus de doctorat en Master (50%?), MMIS(27%), SLE
    # (18%), (ISSC 20%?), un peu moins en ISI (8%), beaucoup moins en IF
    # (3%).
-   Biais probable: réponses des doctorants locaux à 30 mois. 
+   Biais possible: sur-réponses des doctorants locaux. 
    (Moyenne Ingé France 6 mois: 14.4% de recherche d'emploi)
 
  #+ATTR_LATEX: :width 11cm
  [[./../Output/ensimag_2017_situation.png]]
 
 
-** TODO Situation des diplômés
+** Situation des diplômés
 
    Version tableau:
    | % diplômés | Indus. | PhD   | Vol. | étude |  R. E. |  SA |
@@ -125,13 +125,20 @@
    #+ATTR_LATEX: :width 12cm :height 7cm
    [[./../Output/ensimag_2017_secteurs_filiere.png]]
 
-** Filière again (Les 3 promos, par secteur de l'entreprise)
+** Filière again (Les 3 promos, par secteur de l'entreprise)       :noexport:
 
    #+ATTR_LATEX: :width 12cm :height 7cm
-   [[./../Output/ensimag_2017_secteurs_filiere.png]]
+   [[./../Output/ensimag_2017_filiere_secteurs.png]]
 
 
-** Compétences techniques utilisées (Les 3 promos)
+** Ceci n'est pas une question.
+   Les compétences techniques utilisées (Les 3 promos)
+
+ #+ATTR_LATEX: :width 12cm :height 7cm
+ [[./../Output/ensimag_2017_competence.png]]
+   
+** Répartition des compétences utilisées.
+   Les compétences techniques utilisées (Les 3 promos)
 
  #+ATTR_LATEX: :width 12cm :height 7cm
  [[./../Output/ensimag_2017_competence.png]]
@@ -146,8 +153,9 @@
     - Elles ne prennent pas en compte: ni les chomeurs, ni les poursuite
       d'étude, ni les temps partiels,
     - Elles ne comptent pas les doctorants, ou les VIE,
-    - Elles sont influencées (fortement) par les salaires à
-      l'étranger, dans les deux sens (pays développés ou émergents)
+    - France versus Étranger, France Ingé: 30% (6 mois) 70% (30
+      mois). Pour nous dans les deux sens (pays développés ou
+      émergents)
     - Paris versus Province (10%)
     - Les primes à l'étranger dans les haut salaires (50% rémunération)
     - Le biais homme/femme (pas pour nous, mais visible à
