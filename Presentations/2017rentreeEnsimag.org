@@ -150,20 +150,18 @@
     :PROPERTIES:
     :BEAMER_env: alertblock
     :END:
-    - Elles ne prennent pas en compte: ni les chomeurs, ni les poursuite
-      d'étude, ni les temps partiels,
-    - Elles ne comptent pas les doctorants, ou les VIE,
-    - France versus Étranger, France Ingé: 30% (6 mois) 70% (30
-      mois). Pour nous dans les deux sens (pays développés ou
+    - Ni les chômeurs, ni les poursuites d'étude, ni les temps partiels,
+    - Ni les doctorants, ni les VIE,
+    - France versus Étranger, Moyenne CGE France Ingé: +30% (6 mois) +70% (30
+      mois). Pour nous, dans les deux sens (pays développés versus
       émergents)
-    - Paris versus Province (10%)
-    - Les primes à l'étranger dans les haut salaires (50% rémunération)
-    - Le biais homme/femme (pas pour nous, mais visible à
+    - Paris versus Province +10%
+    - Les primes à l'étranger dans les hauts salaires +50%
+    - Le biais Homme/Femme (pas pour nous, mais visible à
       Grenoble-INP)
     - Tripatouillage: salaire hors norme \rightarrow  erreur
 
 ** Salaire moyen dans l'/industrie/
-   Note (Départ de Patrice Kappel: pas les chiffres Grenoble-INP complets: Min-Max hors Ensimag
    | K\euro              | FR hp | FR p |  W hp |  W p | W H p | W F p |
    |-----------------+-------+------+-------+------+-------+-------|
    | Ensimag 6       |  35.4 |      |  38.7 |      |       |       |
