@@ -9,7 +9,108 @@ library(stringr)
 library(plyr)
 library(ggplot2)
 
-# 2017
+## 2017 calculer le taux de présence de certaines compétences par promo
+## envisagés: Info, Math, Finance, Autres, (Autres/Physique ?)
+
+# Obtenir la liste des secteurs
+a = str_split(data2017$X250..Ecole_ActivitesTechniquesFonction,";")
+a = factor(unlist(a))
+a = a[a != ""]
+a = factor(unlist(a))
+levels(a)
+
+matchinfo = "Automation|Electronic networks|Embedded electronics|Information systems, management information systems, databases|Microtechnologies : microelectronics & microsystems|Multimedia, graphics, audiovisual software|Real time or embedded software, industrial IT|Signal and imaging processing|Software, IT, networks|Telecommunication systems"
+
+matchmath = "Mathematics, modeling, simulation|Modeling - scientific computing|Multimedia, graphics, audiovisual software|Signal and imaging processing"
+
+matchfi = "Economy - Finance|Financial engineering"
+
+matchtout = "Aerospace|Automation|Aviation industry|Biology - Biotechnology|Civil & urban engineering|Economy - Finance|Electricity networks|Electromagnetism|Electronic networks|Embedded electronics|Financial engineering|Information systems, management information systems, databases|Instrumentation|Land transport|Management - Organization|Marketing - Business|Mathematics, modeling, simulation|Microtechnologies : microelectronics & microsystems|Modeling - scientific computing|Multimedia, graphics, audiovisual software|Optics, optoelectronics|Others|Power electronics|Power engineering|Printing|Process engineering|Quality - Safety|Real time or embedded software, industrial IT|Signal and imaging processing|Software, IT, networks|Telecommunication systems|Theoretical physics"
+
+
+
+## Info, math, fi, tout
+info = ! is.na(str_match(data2017$X250..Ecole_ActivitesTechniquesFonction,matchinfo))
+math = ! is.na(str_match(data2017$X250..Ecole_ActivitesTechniquesFonction,matchmath))
+fi = ! is.na(str_match(data2017$X250..Ecole_ActivitesTechniquesFonction,matchfi))
+tout = ! is.na(str_match(data2017$X250..Ecole_ActivitesTechniquesFonction,matchtout))
+
+compet17 = data.frame(situation=data2017$X26..ActiviteActuelle,
+                      filiere=data2017$X247..Option_ScolariteFiliereFormation,
+                      info=info, math=math, fi=fi, tout=tout)
+
+nb17 = sum(compet17$tout)
+nbfi17 = sum(compet17$fi)
+
+## All
+
+cat("% of info:", sum(compet17$info)/nb17, "\n")
+cat("% of math:", sum(compet17$math)/nb17, "\n")
+cat("% of mathinfo:", sum(compet17$math & compet17$info)/nb17, "\n")
+cat("% of math or info", sum(compet17$math | compet17$info)/nb17, "\n")
+cat("% of ! math info:", sum(compet17$tout & !(compet17$math | compet17$info))/nb17, "\n")
+
+cat("nbfi:", nbfi17, "\n")
+cat("% of fi with info:", sum(compet17$fi & compet17$info)/nbfi17, "\n")
+cat("% of fi with math:", sum(compet17$fi & compet17$math)/nbfi17, "\n")
+cat("% of fi without math or info:", sum((compet17$fi & !(compet17$math | compet17$info))/nbfi17), "\n")
+
+
+levels(compet17$filiere) = c("Non renseigné" , "Master" , "Master" , "IF" , "ISI" , "ISSC" , "Master" , "Master" , "Master" , "Master" , "MMIS" , "SLE")
+
+## Master
+nb17master = sum(compet17$tout & compet17$filiere == "Master")
+cat("% Master", nb17master, "\n")
+cat("% of Master info:", sum(compet17$info[compet17$filiere == "Master"])/nb17master, "\n")
+cat("% of Master math:", sum(compet17$math[compet17$filiere == "Master"])/nb17master, "\n")
+cat("% of Master math and info:", sum(compet17$math[compet17$filiere == "Master"] & compet17$info[compet17$filiere == "Master"])/nb17master, "\n")
+cat("% of Master ! math or info:", sum(compet17$tout[compet17$filiere == "Master"] & !(compet17$math[compet17$filiere == "Master"] | compet17$info[compet17$filiere == "Master"]))/nb17master, "\n")
+
+## IF
+nb17if = sum(compet17$tout & compet17$filiere == "IF")
+cat("% IF", nb17if, "\n")
+cat("% of IF info:", sum(compet17$info[compet17$filiere == "IF"])/nb17if, "\n")
+cat("% of IF math:", sum(compet17$math[compet17$filiere == "IF"])/nb17if, "\n")
+cat("% of IF math and info:", sum(compet17$math[compet17$filiere == "IF"] & compet17$info[compet17$filiere == "IF"])/nb17if, "\n")
+cat("% of IF ! math or info:", sum(compet17$tout[compet17$filiere == "IF"] & !(compet17$math[compet17$filiere == "IF"] | compet17$info[compet17$filiere == "IF"]))/nb17if, "\n")
+
+## ISI
+nb17isi = sum(compet17$tout & compet17$filiere == "ISI")
+cat("% ISI", nb17isi, "\n")
+cat("% of ISI info:", sum(compet17$info[compet17$filiere == "ISI"])/nb17isi, "\n")
+cat("% of ISI math:", sum(compet17$math[compet17$filiere == "ISI"])/nb17isi, "\n")
+cat("% of ISI math and info:", sum(compet17$math[compet17$filiere == "ISI"] & compet17$info[compet17$filiere == "ISI"])/nb17isi, "\n")
+cat("% of ISI ! math or info:", sum(compet17$tout[compet17$filiere == "ISI"] & !(compet17$math[compet17$filiere == "ISI"] | compet17$info[compet17$filiere == "ISI"]))/nb17isi, "\n")
+
+## ISSC
+nb17issc = sum(compet17$tout & compet17$filiere == "ISSC")
+cat("% ISSC", nb17issc, "\n")
+cat("% of ISSC info:", sum(compet17$info[compet17$filiere == "ISSC"])/nb17issc, "\n")
+cat("% of ISSC math:", sum(compet17$math[compet17$filiere == "ISSC"])/nb17issc, "\n")
+cat("% of ISSC math and info:", sum(compet17$math[compet17$filiere == "ISSC"] & compet17$info[compet17$filiere == "ISSC"])/nb17issc, "\n")
+cat("% of ISSC ! math or info:", sum(compet17$tout[compet17$filiere == "ISSC"] & !(compet17$math[compet17$filiere == "ISSC"] | compet17$info[compet17$filiere == "ISSC"]))/nb17issc, "\n")
+
+## MMIS
+nb17mmis = sum(compet17$tout & compet17$filiere == "MMIS")
+cat("% MMIS", nb17mmis, "\n")
+cat("% of MMIS info:", sum(compet17$info[compet17$filiere == "MMIS"])/nb17mmis, "\n")
+cat("% of MMIS math:", sum(compet17$math[compet17$filiere == "MMIS"])/nb17mmis, "\n")
+cat("% of MMIS math and info:", sum(compet17$math[compet17$filiere == "MMIS"] & compet17$info[compet17$filiere == "MMIS"])/nb17mmis, "\n")
+cat("% of MMIS ! math or info:", sum(compet17$tout[compet17$filiere == "MMIS"] & !(compet17$math[compet17$filiere == "MMIS"] | compet17$info[compet17$filiere == "MMIS"]))/nb17mmis, "\n")
+
+## SLE
+nb17sle = sum(compet17$tout & compet17$filiere == "SLE")
+cat("% SLE", nb17sle, "\n")
+cat("% of SLE info:", sum(compet17$info[compet17$filiere == "SLE"])/nb17sle, "\n")
+cat("% of SLE math:", sum(compet17$math[compet17$filiere == "SLE"])/nb17sle, "\n")
+cat("% of SLE math and info:", sum(compet17$math[compet17$filiere == "SLE"] & compet17$info[compet17$filiere == "SLE"])/nb17sle, "\n")
+cat("% of SLE ! math or info:", sum(compet17$tout[compet17$filiere == "SLE"] & !(compet17$math[compet17$filiere == "SLE"] | compet17$info[compet17$filiere == "SLE"]))/nb17sle, "\n")
+
+
+## specialities for not doing info or math or fi
+
+
+## 2017 figure
 a = str_split(data2017$X250..Ecole_ActivitesTechniquesFonction,";")
 #situation=data2017$X26..ActiviteActuelle, promo=data2017$X21..AnneeDiplomeVerifieParLeDiplome,
 
