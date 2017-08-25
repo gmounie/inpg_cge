@@ -131,19 +131,31 @@
    [[./../Output/ensimag_2017_filiere_secteurs.png]]
 
 
-** Ceci n'est pas une question.
-   Les compétences techniques utilisées (Les 3 promos)
+** Ceci n'est pas une question (juste industrie).
+   Les compétences techniques utilisées par ceux dans l'industrie (Les
+   3 promos, 339 réponses)
 
  #+ATTR_LATEX: :width 12cm :height 7cm
  [[./../Output/ensimag_2017_competence.png]]
    
-** Répartition des compétences utilisées.
-   Les compétences techniques utilisées (Les 3 promos)
+** Répartition des compétences utilisées (juste industrie).
+   Les compétences techniques utilisées (Les 3 promos, dans
+   l'industrie, 339 réponses)
 
- #+ATTR_LATEX: :width 12cm :height 7cm
- [[./../Output/ensimag_2017_competence.png]]
-   
+   | -           | Info | Math | No Info No Math |
+   |-------------+------+------+-----------------|
+   | 339 tous    |  87% |  41% |              7% |
+   | 76 Doing Fi |  61% |  48% |             21% |
+   | 10 Master   |  90% |  40% |             10% |
+   | 66 IF       |  58% |  36% |             20% |
+   | 137 ISI     |  95% |  25% |              4% |
+   | 5 ISSC      | 100% |   0% |              0% |
+   | 86 MMIS     |  91% |  63% |              3% |
+   | 24 SLE      |  91% |  20% |              4% |
 
+*** 9/339 diplômés sans info, ni math, ni finance:
+    4 "Others", 3 "Aviation industry", 1 "Marketing - Business", 1
+    "Process engineering"
 
 ** The average salary is a lie
 *** Les statistiques de salaires moyens sont fausses           :B_alertblock:
