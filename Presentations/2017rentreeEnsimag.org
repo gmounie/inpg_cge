@@ -88,13 +88,6 @@
  #+ATTR_LATEX: :width 11cm
  [[./../Output/ensimag_2017_premieremploi.png]]
 
-
-** Lieu par filière, y compris doctorants (Les 3 promos)
-   IDF:35%;ARA:28%;Étranger:15%;PACA:6%;Province:6%;NA:11%
-
- #+ATTR_LATEX: :width 11.5cm :height 7cm
- [[./../Output/ensimag_2017_lieu.png]]
-
 ** Secteur de l'entreprise (Les 3 promos, par filière)
 
    #+ATTR_LATEX: :width 12cm :height 7cm
@@ -211,6 +204,13 @@
 | Ensimag P H 30 |          |       |               |    0.0 |
 | Ensimag P F 30 |          |       |               |    0.0 |
 #+TBLFM: $5=($2 - ($3 * (1 - $4)))/$4;%.1f
+
+
+** Lieu par filière, y compris doctorants (Les 3 promos)
+   IDF:35%;ARA:28%;Étranger:15%;PACA:6%;Province:6%;NA:11%
+
+ #+ATTR_LATEX: :width 11.5cm :height 7cm
+ [[./../Output/ensimag_2017_lieu.png]]
 
 
 ** Satisfaction (noté de Trés Satisfait à Très Insatisfait)
