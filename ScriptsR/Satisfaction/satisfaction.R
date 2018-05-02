@@ -10,7 +10,7 @@ a = data.frame(Emploi=data2018$X86..EmploiSatisfaction, Conditions=data2018$X87.
 
 a$noteFormation[a$Formation == "Très satisfait(e)"] = 20
 a$noteFormation[a$Formation == "Satisfait(e)"] = 15
-a$noteFormation[a$Formation == "Ni satisfait(e) ni insatisfait(e) Satisfait(e)"] = 10
+a$noteFormation[a$Formation == "Ni satisfait(e) ni insatisfait(e)"] = 10
 a$noteFormation[a$Formation == "Insatisfait(e)"] = 5
 a$noteFormation[a$Formation == "Très insatisfait(e)"] = 0
 
