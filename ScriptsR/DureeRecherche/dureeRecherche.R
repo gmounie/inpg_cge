@@ -6,6 +6,15 @@ library(plyr)
 
 ## Durée de la recherche d'emploi
 # l'info n'est pas obligatoire pour les 2014, peu remplit !
+
+r15promo = data.frame(durée = as.factor(data2015$DureePourTrouverEmploiApresSortie), promo = data2015$Promo,  enquete=2015, filiere=data2015$Option_FiliereFormation)
+length(r15promo[r15promo$promo == 2014,]$durée)
+summary(r15promo[r15promo$promo == 2014,]$durée)
+g = ggplot(data=r15promo[r15promo$promo == 2014,], aes(x=durée)) + geom_histogram()
+g
+length(r15promo[r15promo$promo == 2014,]$durée)
+
+r15 = data.frame(durée = as.character(data2015$DureePourTrouverEmploiApresSortie), enquete=2015)
 r14 = data.frame(durée = as.character(data2014$DureeRecherchePremierEmploi), enquete=2014)
 r13 = data.frame(durée = as.character(data2013$DureeRecherchePremierEmploi), enquete=2013)
 r12 = data.frame(durée = as.character(data2012$DureeRecherchePremierEmploi), enquete=2012)
@@ -13,7 +22,7 @@ r11 = data.frame(durée = as.character(data2011$TempsTrouverEmploiINPG), enquete
 r10 = data.frame(durée = c(as.character(data2010_2009$emp.actuel.duree.recherche), as.character(data2010_2008$emp.actuel.duree.recherche)), enquete=2010)
 
 # pas d'information dans l'enquete 2014
-r = rbind(r13,r12,r11,r10)
+r = rbind(r15,r14,r13,r12,r11,r10)
 r$enquete = factor(r$enquete)
 r= r[r$durée != "",]
 levels(r$durée)

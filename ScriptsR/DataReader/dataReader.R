@@ -1,3 +1,7 @@
+data2018 = read.csv("../../../ObservatoirePourLEmploi.git/CGE2018/CGE-ENSIMAG_Ensimag2018_3-13-2018_15_22.csv", sep =";", header=T, dec=".")
+data2017 = read.csv("../../../ObservatoirePourLEmploi.git/CGE2017/CGE-ENSIMAG_Ensimag2017_3-31-2017_10_41.csv", sep =",", header=T, dec=".")
+data2016 = read.csv("../../../ObservatoirePourLEmploi.git/CGE2016/_ENSIMAG2016_921.csv", sep =",", header=T, dec=".")
+data2015 = read.csv("../../../ObservatoirePourLEmploi.git/CGE2015/Ensimag2015-2015-04-01.csv", sep =",", header=T, dec=".")
 data2014 = read.csv("../../../ObservatoirePourLEmploi.git/CGE2014/_ensimag2014_296.csv", sep =",", header=T, dec=".")
 data2013 = read.csv("../../../ObservatoirePourLEmploi.git/CGE2013/_ensimag2013-filtree-18-avr-2013.csv", sep =";", header=T, dec=",")
 data2012 = read.csv("../../../ObservatoirePourLEmploi.git/CGE2012/_cge2012-ensimag_final_26mars.csv", sep =";", header=T, dec=",")
@@ -13,6 +17,18 @@ data2012 = data2012[data2012$AnneeEnquete == 2012,]
 # grave typo dans 2011 noté "2 011", ne pas filtré (inutile en plus)
 # data2011 = data2011[data2011$AnneeEnquete == 2011,] 
 
+# avant fusion SEOC
+taille2017 = 265
+
+# retour à la normale
+taille2016 = 258
+
+# finance en décembre
+taille2015 = 274
+
+# 2015 financiers entré l'année d'avant
+taille2014 = 255
+
 # attention promo sans la filère finance
 taille2013 = 184
 
@@ -23,7 +39,19 @@ taille2011 = sum(promo2011$M, promo2011$F)
 taille2012 = sum(promo2012$M, promo2012$F)
 taille2010 = 242
 
-promo6_2013 = 184
+promo6_2016 = taille2016
+promo18_2015 = taille2015
+promo30_2014 = taille2014
+
+promo6_2015 = taille2015
+promo18_2014 = taille2014
+promo30_2013 = taille2013
+
+promo6_2014 = taille2014
+promo18_2013 = taille2013
+
+
+promo6_2013 = taille2013
 promo18_2012 = taille2012
 
 promo6_2012 = taille2012

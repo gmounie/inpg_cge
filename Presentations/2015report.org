@@ -1,0 +1,71 @@
+#+TITLE: Retour sur l'enquête nationale sur l'insertion des diplômés (CGE)
+#+DATE: 2015
+#+AUTHOR: Grégory Mounié
+#+EMAIL: gregory.mounie@imag.fr
+#+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
+#+OPTIONS: author:t c:nil creator:comment d:(not "LOGBOOK") date:t
+#+OPTIONS: e:t email:nil f:t inline:t num:t p:nil pri:nil stat:t
+#+OPTIONS: tags:t tasks:t tex:t timestamp:t toc:nil todo:t |:t
+#+CREATOR: Emacs 24.4.1 (Org mode 8.2.10)
+#+DESCRIPTION:
+#+EXCLUDE_TAGS: noexport
+#+KEYWORDS:
+#+LANGUAGE: en
+#+SELECT_TAGS: export
+
+#+OPTIONS: H:1
+#+BEAMER_COLOR_THEME: orchid
+#+BEAMER_FONT_THEME:
+#+BEAMER_HEADER:
+#+BEAMER_INNER_THEME:
+#+BEAMER_OUTER_THEME:
+#+BEAMER_THEME: CambridgeUS
+#+LATEX_CLASS: beamer
+#+LATEX_CLASS_OPTIONS: [presentation]
+#+STARTUP: beamer
+
+* Répondants
+  - Les 3 dernières promos (nouveauté 2015 !)
+  - Entre les deux-tiers et la moitié de chaque promo
+
+#+ATTR_LATEX: :width 12cm
+[[./../Output/repondants15.png]]
+
+* Répondants par filières
+  - Attention IF est sous-représenté !
+
+#+ATTR_LATEX: :width 13cm
+[[./../Output/ensimag_2015_repondants_filiere.png]]
+
+* Situation des diplômés
+
+#+ATTR_LATEX: :width 13cm
+[[./../Output/ensimag_2015_situation.png]]
+
+* Lieu (Les 3 promos)
+#+ATTR_LATEX: :width 12cm
+[[./../Output/ensimag_2015_lieu.png]]
+
+* Secteur de l'entreprise (Les 3 promos)
+
+#+ATTR_LATEX: :width 13cm :height 6cm
+[[./../Output/ensimag_2015_secteurs_filiere.png]]
+
+* Nature des postes (Les 3 promos)
+
+#+ATTR_LATEX: :width 12cm
+[[./../Output/ensimag_2015_postes.png]]
+
+
+* Competences techniques utilisées (Les 3 promos)
+
+#+ATTR_LATEX: :width 13cm
+[[./../Output/ensimag_2015_competence.png]]
+
+
+
+* Salaires 
+
+#+ATTR_LATEX: :width 12cm
+[[./../Output/ensimag_2015_salaire_total_inf100000.png]]
+

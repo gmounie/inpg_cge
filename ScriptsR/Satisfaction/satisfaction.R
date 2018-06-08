@@ -3,6 +3,63 @@
 source("../DataReader/dataReader.R")
 
 library(ggplot2)
+                                        # 2017
+a = data.frame(Emploi=data2017$X87..EmploiSatisfaction, Formation=data2017$X142..EcoleSatisfactionFormation, filiere=data2017$X247..Option_ScolariteFiliereFormation)
+
+aE = data.frame(type="Emploi", val=data2017$X87..EmploiSatisfaction, filiere=data2017$X247..Option_ScolariteFiliereFormation)
+aF = data.frame(type="Formation", val=data2017$X142..EcoleSatisfactionFormation, filiere=data2017$X247..Option_ScolariteFiliereFormation)
+aCT = data.frame(type="Condition de Travail", val=data2017$X88..Option_EmploiSatisfactionConditions, filiere=data2017$X247..Option_ScolariteFiliereFormation)
+aRC = data.frame(type="Relation Collegues", val=data2017$X89..Option_EmploiSatisfactionCollegues, filiere=data2017$X247..Option_ScolariteFiliereFormation)
+aR = data.frame(type="Remunération", val=data2017$X90..Option_EmploiSatisfactionRemuneration, filiere=data2017$X247..Option_ScolariteFiliereFormation)
+aL = data.frame(type="Localisation", val=data2017$X92..Option_EmploiSatisfactionLocalisation, filiere=data2017$X247..Option_ScolariteFiliereFormation)
+
+
+b = rbind(aE,aF, aCT,aRC, aR, aL)
+str(b)
+levels(b$filiere)
+levels(b$filiere) = c("Non renseigné" , "Master" , "Master" , "IF" , "ISI" , "ISSC" , "Master" , "Master" , "Master" , "Master" , "MMIS" , "SLE")
+levels(b$val) = c("", "Ni satisfait ni insatisfait" , "Satisfait"     , "Insatisfait" , "Très satisfait", "Très insatisfait" , "Ni satisfait ni insatisfait" , "Satisfait" , "Très satisfait", "Très insatisfait" , "Insatisfait"   , "Ni satisfait ni insatisfait" , "Satisfait", "Très insatisfait" , "Très satisfait")
+b$val = factor(b$val)
+b$val = relevel(b$val, "Très satisfait")
+b$val = relevel(b$val, "Satisfait")
+b$val = relevel(b$val, "Insatisfait")
+b$val = relevel(b$val, "Ni satisfait ni insatisfait")
+b$val = relevel(b$val, "Insatisfait")
+b$val = relevel(b$val, "Très insatisfait")
+b$val = relevel(b$val, "")
+
+
+ggplot(b,aes(val, fill=filiere)) + geom_bar(colour="white") + coord_flip() + facet_wrap(c("type")) + ggtitle("Satisfaction des diplômés")
+ggsave("../../Output/ensimag_2017_satisfaction.png", width=1.5*par("din")[1])
+
+                                        # 2016
+a = data.frame(Emploi=data2016$SatisfactionEmploi, Formation=data2016$SatisfactionFormation, filiere=data2016$Option_FiliereFormation)
+
+aE = data.frame(type="Emploi", val=data2016$SatisfactionEmploi, filiere=data2016$Option_FiliereFormation)
+aF = data.frame(type="Formation", val=data2016$SatisfactionFormation, filiere=data2016$Option_FiliereFormation)
+aCT = data.frame(type="Condition de Travail", val=data2016$SatisfactionConditionsTravail, filiere=data2016$Option_FiliereFormation)
+aRC = data.frame(type="Relation Collegues", val=data2016$SatisfactionRelationCollegues, filiere=data2016$Option_FiliereFormation)
+aR = data.frame(type="Remunération", val=data2016$SatisfactionRemuneration, filiere=data2016$Option_FiliereFormation)
+aL = data.frame(type="Localisation", val=data2016$SatisfactionLocalisationEntreprise, filiere=data2016$Option_FiliereFormation)
+
+
+b = rbind(aE,aF, aCT,aRC, aR, aL)
+str(b)
+levels(b$filiere) = c( "Master" , "Master" , "IF" , "ISI" , "Tcom/ISSC" , "Master" , "Master" , "Master" , "MMIS" , "SLE" , "Tcom/ISSC")
+
+ggplot(b,aes(val, fill=filiere)) + geom_bar(colour="white") + facet_wrap(c("type"))
+ggsave("../../Output/ensimag_2016_satisfaction.png", width=1.5*par("din")[1])
+
+## qplot(data2016$SatisfactionFormation,data2016$SatisfactionEmploi) + geom_jitter(width=0.6,height=0.6)
+## qplot(data2016$SatisfactionConditionsTravail)
+## qplot(data2016$SatisfactionSatisfactionRelationCollegues)
+## qplot(data2016$SatisfactionRemuneration)
+## qplot(data2016$SatisfactionLocalisationEntreprise)
+## qplot(data2016$SatisfactionRemuneration, data2016$SatisfactionLocalisationEntreprise) + geom_jitter(width=0.6,height=0.6)
+## qplot(data2016$SatisfactionAutonomie)
+## qplot(data2016$Ecole_EmploiCorrespondFormation)
+
+
 
 data2013$RessentiFormationINPG = relevel(data2013$RessentiFormationINPG, "Très satisfaisante")
 data2013$RessentiFormationINPG = relevel(data2013$RessentiFormationINPG, "Satisfaisante")

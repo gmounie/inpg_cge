@@ -1,0 +1,382 @@
+#+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
+#+OPTIONS: author:t broken-links:nil c:nil creator:nil
+#+OPTIONS: d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t num:t
+#+OPTIONS: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
+#+OPTIONS: timestamp:t title:t toc:t todo:t |:t
+#+TITLE: Presentation ISI: les chiffres 2017
+#+DATE: <2017-03-07 mar.>
+#+AUTHOR: Grégory Mounié
+#+EMAIL: Gregory.Mounie@imag.fr
+#+LANGUAGE: en
+#+SELECT_TAGS: export
+#+EXCLUDE_TAGS: noexport
+#+CREATOR: Emacs 25.1.1 (Org mode 9.0.3)
+
+* Nombre de réponses en ISI à 6, 18 et 30 mois
+
+#+BEGIN_SRC R :results output latex :exports results :session ensimag17
+  source("../DataReader/dataReader.R")
+  library(xtable)
+  dataISI = data2017[data2017$X247..Option_ScolariteFiliereFormation == "ISI – ingénierie des systèmes d’information",]
+  xtable(table(length(dataISI$X166..Nom)))
+#+END_SRC
+
+#+RESULTS:
+#+BEGIN_EXPORT latex
+% latex table generated in R 3.3.3 by xtable 1.8-2 package
+% Wed Mar  8 10:24:07 2017
+\begin{table}[ht]
+\centering
+\begin{tabular}{rr}
+  \hline
+ & V1 \\ 
+  \hline
+150 &   1 \\ 
+   \hline
+\end{tabular}
+\end{table}
+#+END_EXPORT
+
+
+* Postes
+
+#+BEGIN_SRC R :results output latex :exports results :session ensimag17
+  postes = data.frame(poste=dataISI$X245..Option_EmploiPosteListe, activité=dataISI$X26..ActiviteActuelle, secteur=dataISI$X58..EmploiEntrepriseSecteurActivite, satisfactionEmploi=dataISI$X87..EmploiSatisfaction, entreprise=dataISI$X49..EmploiEntreprise, taille=dataISI$X55..EmploiEntrepriseTaille)
+  levels(postes$poste) = c(levels(postes$poste), "doctorant")
+  postes[postes$activité == "Studying for a PhD",]$poste = "doctorant"
+  xtable(table(factor(postes$poste)))
+#+END_SRC
+
+#+RESULTS:
+#+BEGIN_EXPORT latex
+% latex table generated in R 3.3.3 by xtable 1.8-2 package
+% Tue Mar  7 15:19:01 2017
+\begin{table}[h]
+\centering
+\begin{tabular}{rr}
+  \hline
+ & V1 \\ 
+  \hline
+ &  17 \\ 
+  Autre &  17 \\ 
+  Consultant &   5 \\ 
+  Ingénieur commercial &   1 \\ 
+  Ingénieur d'étude &  12 \\ 
+  Ingénieur développement produit &  14 \\ 
+  Ingénieur logiciel &  51 \\ 
+  Ingénieur recherche et développement, ingénieur brevets &  17 \\ 
+  Ingénieur sécurité &   3 \\ 
+  doctorant &  13 \\ 
+   \hline
+\end{tabular}
+\end{table}
+#+END_EXPORT
+
+* Activité
+#+BEGIN_SRC R :results output latex :exports results :session ensimag17
+  xtable(table(postes$activité))
+#+END_SRC
+
+#+RESULTS:
+#+BEGIN_EXPORT latex
+% latex table generated in R 3.3.3 by xtable 1.8-2 package
+% Tue Mar  7 15:19:07 2017
+\begin{table}[h]
+\centering
+\begin{tabular}{rr}
+  \hline
+ & V1 \\ 
+  \hline
+ &   0 \\ 
+  Furthering studies (including preparation for a competitive examination) &   5 \\ 
+  Job-hunting &   5 \\ 
+  Not in activity out of choice &   2 \\ 
+  Studying for a PhD &  13 \\ 
+  Voluntary work &   0 \\ 
+  Working & 125 \\ 
+   \hline
+\end{tabular}
+\end{table}
+#+END_EXPORT
+
+                                        # situation emploi
+
+* Secteurs
+
+#+BEGIN_SRC R :results output latex :exports results :session ensimag17
+  levels(postes$secteur) = c(levels(postes$secteur), "Recherche (doctorat)")
+  postes[postes$activité == "Studying for a PhD",]$secteur = "Recherche (doctorat)"
+  xtable(table(factor(postes$secteur)))
+#+END_SRC
+
+#+RESULTS:
+#+BEGIN_EXPORT latex
+% latex table generated in R 3.3.3 by xtable 1.8-2 package
+% Tue Mar  7 15:19:15 2017
+\begin{table}[h]
+\centering
+\begin{tabular}{rr}
+  \hline
+ & V1 \\ 
+  \hline
+ &  17 \\ 
+  Automobile, aeronautics, shipping and rail industries &   1 \\ 
+  Consulting, research consultancy &  10 \\ 
+  Education, research &   1 \\ 
+  Energy &   2 \\ 
+  Financial and insurance activities &   7 \\ 
+  IT and other information services &  69 \\ 
+  IT industries &  10 \\ 
+  Legal, accounting, management, architecture, engin.. activities &   1 \\ 
+  Manufacture of rubber and plastic products, .. mineral products &   1 \\ 
+  Manufacture of textiles, clothes, leather and related products &   1 \\ 
+  Other industries &   1 \\ 
+  Other professional, scientific and technical activities &   4 \\ 
+  Other sectors &   2 \\ 
+  Publishing, audiovisual and broadcasting activities &   2 \\ 
+  Scientific research and development &   4 \\ 
+  Telecommunications &   1 \\ 
+  Transportation &   1 \\ 
+  Wholesale and retail trade &   2 \\ 
+  Recherche (doctorat) &  13 \\ 
+   \hline
+\end{tabular}
+\end{table}
+#+END_EXPORT
+
+* taille des entreprises
+#+BEGIN_SRC R :results output latex :exports results :session ensimag17
+  xtable(table(postes$taille))
+#+END_SRC
+
+#+RESULTS:
+#+BEGIN_EXPORT latex
+% latex table generated in R 3.3.3 by xtable 1.8-2 package
+% Tue Mar  7 15:19:21 2017
+\begin{table}[h]
+\centering
+\begin{tabular}{rr}
+  \hline
+ & V1 \\ 
+  \hline
+ &  25 \\ 
+  10 to 19 employees &   4 \\ 
+  20 to 49 employees &  18 \\ 
+  250 to 4 999 employees &  29 \\ 
+  5 000 employees and more &  36 \\ 
+  50 to 249 employees &  21 \\ 
+  Less than 10 employees &  17 \\ 
+   \hline
+\end{tabular}
+\end{table}
+#+END_EXPORT
+
+* Liste des employeurs et taille
+
+#+BEGIN_SRC R :results output latex :exports results :session ensimag17
+  xtable(table(factor(postes$entreprise)))
+#+END_SRC
+
+#+RESULTS:
+#+BEGIN_EXPORT latex
+% latex table generated in R 3.3.3 by xtable 1.8-2 package
+% Tue Mar  7 15:19:28 2017
+\begin{table}[h]
+\centering
+\begin{tabular}{rr}
+  \hline
+ & V1 \\ 
+  \hline
+ &  33 \\ 
+  2S Computing &   1 \\ 
+  360Learning &   1 \\ 
+  Accenture &   1 \\ 
+  ActiveViam &   1 \\ 
+  Agence Nationale de la Sécurité des Systèmes d'Information (ANSSI) &   1 \\ 
+  Air France &   1 \\ 
+  Airbus OneWeb Satellites SAS &   1 \\ 
+  AllegroDvt &   1 \\ 
+  AllegroDvt2 &   1 \\ 
+  Amadeus SAS &   2 \\ 
+  Antidot SAS &   1 \\ 
+  Apalia &   1 \\ 
+  Apple Inc &   1 \\ 
+  Applidium &   1 \\ 
+  Apptitude Sàrl &   1 \\ 
+  Astek &   1 \\ 
+  Atos &   2 \\ 
+  Aubay &   1 \\ 
+  Backelite &   1 \\ 
+  BAM &   1 \\ 
+  bitcraft &   1 \\ 
+  Bloomberg &   1 \\ 
+  Bonitasoft &   1 \\ 
+  CAISSE D'EPARGNE D'ALSACE &   1 \\ 
+  Capgemini Technology Services &   1 \\ 
+  CGI &   1 \\ 
+  CGI France &   1 \\ 
+  Clever Net Systems &   1 \\ 
+  D3S &   1 \\ 
+  Dassault Systèmes &   1 \\ 
+  Deep Algo &   1 \\ 
+  Deezer &   1 \\ 
+  Dorey Designs &   1 \\ 
+  Eaton &   1 \\ 
+  EDF &   1 \\ 
+  Elqui &   1 \\ 
+  Ernst \& Young Advisory &   1 \\ 
+  Esker &   1 \\ 
+  Eugen Systems &   1 \\ 
+  EURO INFORMATION &   1 \\ 
+  GIRO Inc. &   1 \\ 
+  Google &   1 \\ 
+  Gunvor &   1 \\ 
+  HARDIS GROUP &   1 \\ 
+  Hiq Consulting &   1 \\ 
+  IBL-Unisys (Pvt) Ltd. &   1 \\ 
+  IBM &   2 \\ 
+  IBM France &   2 \\ 
+  id3 technologies &   1 \\ 
+  Ingeniance &   3 \\ 
+  Inria &   1 \\ 
+  INRIA Grenoble &   1 \\ 
+  Inriaj &   1 \\ 
+  Intitek &   1 \\ 
+  Keepixo &   1 \\ 
+  Kelkoo &   1 \\ 
+  Klee Conseil \& Intégration &   1 \\ 
+  Lafourchette &   1 \\ 
+  Leroy Merlin France &   1 \\ 
+  Lerti &   1 \\ 
+  Margo Conseil &   1 \\ 
+  MargoConseil &   1 \\ 
+  MCA Nederland B.V. &   1 \\ 
+  Meylan &   1 \\ 
+  MFPM Michelin &   1 \\ 
+  Michelin &   1 \\ 
+  Microsoft Engineering Center &   3 \\ 
+  Microsoft engineering center  &   1 \\ 
+  Microsoft Engineering Center  &   1 \\ 
+  Microsoft Engineering Center Paris &   1 \\ 
+  Mirakl &   1 \\ 
+  Mulesoft &   1 \\ 
+  Murex &   1 \\ 
+  Nadeo &   1 \\ 
+  PAP Var &   1 \\ 
+  Phonotonic &   1 \\ 
+  Posva Solutions &   1 \\ 
+  Praxedo &   1 \\ 
+  Quarkslab &   1 \\ 
+  Rodanotech &   1 \\ 
+  Salesforce.com &   1 \\ 
+  SensioLabs &   1 \\ 
+  Sleepinnov Technology &   1 \\ 
+  SMILE &   1 \\ 
+  Sogeti France &   1 \\ 
+  Sopra Steria &   2 \\ 
+  Sopra-Steria &   1 \\ 
+  Spartoo &   1 \\ 
+  Spotnic &   1 \\ 
+  SquarePoint capital &   1 \\ 
+  SUPRALOG &   1 \\ 
+  Swissquote &   1 \\ 
+  Telenor Digital &   1 \\ 
+  Tessi lab &   1 \\ 
+  Thales Alenia Space &   1 \\ 
+  Thales Services &   1 \\ 
+  Theodo &   1 \\ 
+  tilli &   1 \\ 
+  Virtual Open Systems &   1 \\ 
+  Viveris Système &   1 \\ 
+  Viveris Systèmes &   1 \\ 
+  Vizzuality &   1 \\ 
+  Wavestone &   1 \\ 
+  Worldline &   2 \\ 
+  Zeemono &   1 \\ 
+  Zestats &   2 \\ 
+   \hline
+\end{tabular}
+\end{table}
+#+END_EXPORT
+
+
+* Satisfaction de l'emploi
+
+Réponse optionelle, beaucoup moins de réponses.
+
+#+BEGIN_SRC R :results output latex :exports results :session ensimag17
+ xtable(table(factor(postes$satisfactionEmploi)))
+#+END_SRC
+
+#+RESULTS:
+#+BEGIN_EXPORT latex
+% latex table generated in R 3.3.3 by xtable 1.8-2 package
+% Tue Mar  7 15:19:37 2017
+\begin{table}[h]
+\centering
+\begin{tabular}{rr}
+  \hline
+ & V1 \\ 
+  \hline
+ &  56 \\ 
+  Neither satisfied nor dissatisfied &   7 \\ 
+  Satisfied &  46 \\ 
+  Unsatisfied &   6 \\ 
+  Very satisfied &  33 \\ 
+  Very unsatisfied &   2 \\ 
+   \hline
+\end{tabular}
+\end{table}
+#+END_EXPORT
+
+* Salaires
+
+#+BEGIN_SRC R :results output :exports results :session ensimag17
+tmp0 = dataISI$X71..EmploiSalaireBrutAnnuelHorsPrimes
+tmp00 =  dataISI$X73..EmploiPrimesBrutOuiMontant
+tmp0[is.na(tmp0)] = 0
+tmp00[is.na(tmp00)] = 0
+tmp = tmp0 + tmp00
+tmp1 = dataISI$X132..TheseSalaireBrutAnnuelHorsPrimes
+tmp2 = dataISI$X137..TheseSalaireBrutAnnuelAvecPrimes 
+tmp[is.na(tmp)] = tmp2[is.na(tmp)]
+tmp[is.na(tmp)] = tmp1[is.na(tmp)]
+tmp[is.na(tmp)] = 0
+tmp[tmp <= 3000] = 12 * tmp[tmp <= 3000]
+tmp[tmp == 0] = NA
+summary(tmp)
+#+END_SRC
+
+#+RESULTS:
+:    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+:    5000   35000   40000   45350   45220  180000      32
+
+* Salaire par sexe sur la promo
+
+#+BEGIN_SRC R :results output :exports results :session ensimag17
+sexe = data2017[data2017$X169..AnneeDiplome == 2016,]$X10..SexeVerifieParLeDiplome
+tmp0 = data2017[data2017$X169..AnneeDiplome == 2016,]$X71..EmploiSalaireBrutAnnuelHorsPrimes
+tmp00 =  data2017[data2017$X169..AnneeDiplome == 2016,]$X73..EmploiPrimesBrutOuiMontant
+tmp0[is.na(tmp0)] = 0
+tmp00[is.na(tmp00)] = 0
+tmp = tmp0 + tmp00
+tmp1 = data2017[data2017$X169..AnneeDiplome == 2016,]$X132..TheseSalaireBrutAnnuelHorsPrimes
+tmp2 = data2017[data2017$X169..AnneeDiplome == 2016,]$X137..TheseSalaireBrutAnnuelAvecPrimes 
+tmp[is.na(tmp)] = tmp2[is.na(tmp)]
+tmp[is.na(tmp)] = tmp1[is.na(tmp)]
+tmp[is.na(tmp)] = 0
+tmp[tmp <= 3000] = 12 * tmp[tmp <= 3000]
+tmp[tmp == 0] = NA
+salaireparsexe = data.frame(salaire= tmp, sexe=sexe)
+summary(tmp)
+summary(salaireparsexe$salaire[salaireparsexe$sexe == "Female"])
+summary(salaireparsexe$salaire[salaireparsexe$sexe == "Male"])
+#+END_SRC
+
+#+RESULTS:
+:    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+:   16000   34200   40100   45290   45900  180000      86
+:    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+:   25640   35920   41000   39930   45500   49000      17
+:    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+:   16000   34000   40100   46020   45900  180000      70

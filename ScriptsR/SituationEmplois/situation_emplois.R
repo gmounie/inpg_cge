@@ -1,8 +1,102 @@
 source("../DataReader/dataReader.R")
 data2013 = data2013[data2013$AnneeEnquete == 2013,]
 
+# version 2017
+taux_emplois = data.frame(situation=data2017$X26..ActiviteActuelle, promo=data2017$X21..AnneeDiplomeVerifieParLeDiplome, poids=100, nb=1, poidsTotal=1, filiere=data2017$X247..Option_ScolariteFiliereFormation, poidsFiliere=1)
+levels(taux_emplois$filiere) = c("Non renseigné" , "Master" , "Master" , "IF" , "ISI" , "ISSC" , "Master" , "Master" , "Master" , "Master" , "MMIS" , "SLE")
+taux_emplois$filiere = factor(taux_emplois$filiere)
+taux_emplois = taux_emplois[taux_emplois$situation != "",]
+taux_emplois = taux_emplois[! is.na(taux_emplois$promo),]
+taux_emplois$poidsTotal = 100./length(taux_emplois$situation)
+taux_emplois$poidsFiliere[taux_emplois$filiere == "Master"] = 100./ length(taux_emplois[taux_emplois$filiere == "Master","situation"])
+taux_emplois$poidsFiliere[taux_emplois$filiere == "IF"] = 100./ length(taux_emplois[taux_emplois$filiere == "IF","situation"])
+taux_emplois$poidsFiliere[taux_emplois$filiere == "MMIS"] = 100. / length(taux_emplois[taux_emplois$filiere == "MMIS","situation"])
+taux_emplois$poidsFiliere[taux_emplois$filiere == "ISSC"] = 100. / length(taux_emplois[taux_emplois$filiere == "ISSC","situation"])
+taux_emplois$poidsFiliere[taux_emplois$filiere == "SLE"] = 100. / length(taux_emplois[taux_emplois$filiere == "SLE","situation"])
+taux_emplois$poidsFiliere[taux_emplois$filiere == "ISI"] = 100. / length(taux_emplois[taux_emplois$filiere == "ISI","situation"])
+
+
+taux_emplois[taux_emplois$promo == 2014,"nb"] = length(taux_emplois[taux_emplois$promo == 2014,"situation"])
+taux_emplois[taux_emplois$promo == 2015,"nb"] = length(taux_emplois[taux_emplois$promo == 2015,"situation"])
+taux_emplois[taux_emplois$promo == 2016,"nb"] = length(taux_emplois[taux_emplois$promo == 2016,"situation"])
+taux_emplois[,"poids"] = 100./taux_emplois[,"nb"]
+levels(taux_emplois$situation)
+levels(taux_emplois$situation) = c("Non renseigné" , "Furthering studies" , "Job-hunting" , "Not in activity out of choice" , "Studying for a PhD" , "Voluntary work" , "Working")
+
+library(ggplot2)
+p = ggplot(data=taux_emplois, aes(x=as.factor(promo), fill=situation, weight=poids), colour=black)  + geom_bar() + coord_flip()
+p + scale_fill_manual(values=c("yellow","red","SlateBlue4","green","chartreuse4","blue", "orange")) + ggtitle("Situation des diplômés début 2O17, à 6, 18 et 30 mois") + xlab("Promo Ensimag") + ylab("Pourcentage")
+ggsave("../../Output/ensimag_2017_situation.svg")   
+ggsave("../../Output/ensimag_2017_situation.png", width=2*par("din")[1]) 
+
+library("dplyr")
+select(taux_emplois , situation, promo, poids) %>% group_by(promo, situation) %>% summarize(nombre = round(sum(poids),1))
+
+# statistiques par filière
+a = select(taux_emplois , situation, promo, poidsFiliere, filiere) %>% group_by(filiere, situation) %>% summarize(nombre = round(sum(poidsFiliere),1))
+a[1:15,]
+a[16:31,]
+
+# version 2016
+taux_emplois = data.frame(situation=data2016$ActiviteActuelleV2016, promo=data2016$Promo, poids=100, nb=1)
+taux_emplois = taux_emplois[taux_emplois$situation != "",]
+taux_emplois[taux_emplois$promo == 2013,"nb"] = length(taux_emplois[taux_emplois$promo == 2013,"situation"])
+taux_emplois[taux_emplois$promo == 2014,"nb"] = length(taux_emplois[taux_emplois$promo == 2014,"situation"])
+taux_emplois[taux_emplois$promo == 2015,"nb"] = length(taux_emplois[taux_emplois$promo == 2015,"situation"])
+taux_emplois[,"poids"] = 100./taux_emplois[,"nb"]
+levels(taux_emplois$situation)
+taux_emplois$situation = relevel(taux_emplois$situation, 6)
+levels(taux_emplois$situation)
+taux_emplois$situation = relevel(taux_emplois$situation, "En recherche d'emploi")
+levels(taux_emplois$situation)
+# poursuite d'étude
+taux_emplois$situation = relevel(taux_emplois$situation, 4)
+
+taux_emplois$situation = relevel(taux_emplois$situation, "En volontariat (VIE, VIA, Volontariat civil)")
+
+# accent utf8 vs latin 1
+# thèse est le numéro 5
+# taux_emplois$situation = relevel(taux_emplois$situation, "En thèse")
+levels(taux_emplois$situation)
+taux_emplois$situation = relevel(taux_emplois$situation, 6)
+                                        #taux_emplois$situation = relevel(taux_emplois$situation, "En création d'entreprise")
+
+# accent utf8 vs latin1
+                                        #taux_emplois$situation = relevel(taux_emplois$situation, "En activité professionnelle")
+levels(taux_emplois$situation)
+taux_emplois$situation = relevel(taux_emplois$situation, 6)
+#taux_emplois$situation = relevel(taux_emplois$situation, "")
+library(ggplot2)
+p = ggplot(data=taux_emplois, aes(x=as.factor(promo), fill=situation, weight=poids), colour=black)  + geom_bar() + coord_flip()
+p + scale_fill_manual(values=c("blue","green","SlateBlue4","chartreuse4","red","yellow", "orange")) + ggtitle("Situation des diplômés début 2O16, à 6, 18 et 30 mois") + xlab("Promo Ensimag") + ylab("Pourcentage")
+ggsave("../../Output/ensimag_2016_situation.svg")   
+ggsave("../../Output/ensimag_2016_situation.png", width=2*par("din")[1]) 
+
+
+
+# version 2015
+taux_emplois = data.frame(situation=data2015$ActiviteActuelleV2015, promo=data2015$Promo, poids=100, nb=1)
+taux_emplois = taux_emplois[taux_emplois$situation != "",]
+taux_emplois[taux_emplois$promo == 2012,"nb"] = length(taux_emplois[taux_emplois$promo == 2012,"situation"])
+taux_emplois[taux_emplois$promo == 2013,"nb"] = length(taux_emplois[taux_emplois$promo == 2013,"situation"])
+taux_emplois[taux_emplois$promo == 2014,"nb"] = length(taux_emplois[taux_emplois$promo == 2014,"situation"])
+taux_emplois[,"poids"] = 100/taux_emplois[,"nb"]
+taux_emplois$situation = relevel(taux_emplois$situation, "En recherche d'emploi")
+taux_emplois$situation = relevel(taux_emplois$situation, "En volontariat")
+taux_emplois$situation = relevel(taux_emplois$situation, "En thèse")
+taux_emplois$situation = relevel(taux_emplois$situation, "En création d'entreprise")
+taux_emplois$situation = relevel(taux_emplois$situation, "En activité professionnelle")
+#taux_emplois$situation = relevel(taux_emplois$situation, "")
+library(ggplot2)
+p = ggplot(data=taux_emplois, aes(x=as.factor(promo), fill=situation, weight=poids), colour=black)  + geom_bar() + coord_flip()
+p + scale_fill_manual(values=c("blue","green","SlateBlue4","chartreuse4","red","yellow", "orange")) + ggtitle("Situation des diplômés début 2O15, à 6, 18 et 30 mois") + xlab("Promo Ensimag") + ylab("Pourcentage")
+ggsave("../../Output/ensimag_2015_situation.svg")   
+ggsave("../../Output/ensimag_2015_situation.png", width=2*par("din")[1]) 
+
+
 # version 2014
 taux_emplois = data.frame(situation=data2014$ActiviteActuelle, activitesOLD=data2014$ActiviteActuelleV2010, promo=data2014$Promo, poids=100, nb=1)
+taux_emplois = taux_emplois[taux_emplois$situation != ""]
 taux_emplois[taux_emplois$promo == 2012,"nb"] = length(taux_emplois[taux_emplois$promo == 2012,"situation"])
 taux_emplois[taux_emplois$promo == 2013,"nb"] = length(taux_emplois[taux_emplois$promo == 2013,"situation"])
 taux_emplois[,"poids"] = 100/taux_emplois[,"nb"]
@@ -16,7 +110,7 @@ library(ggplot2)
 p = ggplot(data=taux_emplois, aes(x=as.factor(promo), fill=situation, weight=poids), colour=black)  + geom_bar()
 p + scale_fill_manual(values=c("blue","green","SlateBlue4","chartreuse4","red","yellow", "orange")) + opts(title="Situation des diplômés début 2O14, à 6 et 18 mois") + xlab("Promo Ensimag") + ylab("Pourcentage")
 ggsave("../../Output/ensimag_2014_situation.svg")   
-ggsave("../../Output/ensimag_2014_situation.pdf") 
+ggsave("../../Output/ensimag_2014_situation.png") 
 
 
 # version 2013
@@ -133,25 +227,23 @@ situation2009_2013[situation2009_2013$promo == 2012,"nb"] = length(situation2009
 situation2009_2013[situation2009_2013$promo == 2013,"nb"] = length(situation2009_2013[situation2009_2013$promo == 2013,"situation"])
 situation2009_2013[,"poids"] = 100/situation2009_2013[,"nb"]
 
+length(situation2009_2013$situation)
+summary(situation2009_2013$situation)
+length(situation2008_2012$situation)
+summary(situation2008_2012$situation)
 
 ggplot(situation2009_2013, aes(x=promo,fill=situation, weight=poids)) + geom_bar() +scale_fill_manual(values=c("blue","green","SlateBlue4","chartreuse4","red","yellow", "orange")) + ylab("Pourcentage de réponses")
 ggsave("../../Output/ensimag_2009_2013_situation.png", width=2*par("din")[1])
 
 
 summary(situation2009_2013)
+dim(situation2009_2013)
+head(situation2009_2013)
+library("dplyr")
+select(situation2009_2013, situation, promo, poids) %>% group_by(promo, situation) %>% summarize(nombre = round(sum(poids),1))
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+summary(situation2008_2012)
+dim(situation2008_2012)
+head(situation2008_2012)
+select(situation2008_2012, situation, promo, poids) %>% group_by(promo, situation) %>% summarize(nombre = round(sum(poids),1))
 
