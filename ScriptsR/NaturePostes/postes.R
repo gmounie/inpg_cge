@@ -4,6 +4,28 @@ source("../DataReader/dataReader.R")
 
 library(ggplot2)
 library(plyr)
+                                        # 2017
+postes = data2017$X245..Option_EmploiPosteListe
+a = data.frame(postes = postes, poids= 1, situation=data2017$X26..ActiviteActuelle, filiere=data2017$X247..Option_ScolariteFiliereFormation)
+
+levels(a$situation)
+a$postes = factor(a$postes, levels=c(levels(a$postes), "PhD", "Volontaire"))
+a[a$situation == "Studying for a PhD",]$postes = "PhD"
+a[a$situation == "Voluntary work",]$postes = "Volontaire"
+levels(a$filiere) = c("Non renseigné" , "Master" , "Master" , "IF" , "ISI" , "ISSC" , "Master" , "Master" , "Master" , "Master" , "MMIS" , "SLE")
+a$filiere = factor(a$filiere)
+
+levels(a$postes)
+levels(a$postes) = c("" , "Autres" , "Consultant" , "11 Autres < 2.5%" , "11 Autres < 2.5%" , "11 Autres < 2.5%" , "Ingénieur d'étude" , "11 Autres < 2.5%" , "Ingénieur développement produit" , "11 Autres < 2.5%" , "Ingénieur financier" , "Ingénieur logiciel" , "11 Autres < 2.5%" , "11 Autres < 2.5%" , "11 Autres < 2.5%" , "Ingénieur R&D, brevets" , "11 Autres < 2.5%" , "11 Autres < 2.5%" , "11 Autres < 2.5%" , "PhD" , "Volontaire")
+a = a[a$postes != "",]
+
+p = ggplot(a, aes(x=factor(postes), weight=poids/(length(a$postes)),fill=filiere)) + geom_bar(colour="white") + coord_flip() + theme(title=element_text("Nature des postes")) + xlab("") + ylab("Pourcentage") 
+p
+ggsave("../../Output/ensimag_2017_postes.svg", width=2*par("din")[1])
+ggsave("../../Output/ensimag_2017_postes.png", width=2*par("din")[1])
+
+
+
                                         # 2016
 postes = data2016$Option_PosteSurListe
 a = data.frame(postes = data2016$Option_PosteSurListe, poids= 1, situation=data2016$ActiviteActuelleV2016,filiere=data2016$Option_FiliereFormation)

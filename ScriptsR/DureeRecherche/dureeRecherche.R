@@ -3,6 +3,13 @@ source("../DataReader/dataReader.R")
 library(ggplot2)
 library(plyr)
 
+r17promo = data.frame(durée = as.factor(data2017$X140..1erEmploiLapsPourTrouverApresDiplome), promo = data2017$X21..AnneeDiplomeVerifieParLeDiplome,  enquete=2017, filiere=data2017$X247..Option_ScolariteFiliereFormation, activité=data2017$X26..ActiviteActuelle)
+length(r17promo[r17promo$promo == 2016 & r17promo$activité == "Studying for a PhD",]$durée)
+summary(r17promo[r17promo$promo == 2016 & r17promo$activité == "Studying for a PhD",]$durée)
+length(r17promo[r17promo$promo == 2016 & r17promo$activité == "Working",]$durée)
+summary(r17promo[r17promo$promo == 2016 & r17promo$activité == "Working",]$durée)
+length(r17promo[r17promo$promo == 2016 & (r17promo$activité == "Working" | r17promo$activité == "Studying for a PhD"),]$durée)
+summary(r17promo[r17promo$promo == 2016 & (r17promo$activité == "Working" | r17promo$activité == "Studying for a PhD"),]$durée)
 
 ## Durée de la recherche d'emploi
 # l'info n'est pas obligatoire pour les 2014, peu remplit !

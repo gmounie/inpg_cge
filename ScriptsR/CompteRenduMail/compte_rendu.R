@@ -12,7 +12,7 @@ print(repondants18_2016/taille2016)
 print(repondants30_2015/taille2015)
 
 
-postes = data.frame(poste=data2018$X256..Option_EmploiPosteListe, activité=data2018$X20..ActiviteActuelle, secteur=data2018$X55..EmploiEntrepriseSecteurActivite, lieu=data2018$X33..EmploiLieuRegionEtranger, lieuThese=data2018$X122..TheseRegionEtranger, salaire=data2018$X183..EmploiCorrige_BrutAnnuelHorsPrimes, salaireThese=data2018$X136..TheseSalaireBrutAnnuelAvecPrimes)
+postes = data.frame(poste=data2018$X256..Option_EmploiPosteListe, activité=data2018$X20..ActiviteActuelle, secteur=data2018$X55..EmploiEntrepriseSecteurActivite, lieu=data2018$X33..EmploiLieuRegionEtranger, lieuThese=data2018$X122..TheseRegionEtranger, salaire=data2018$X183..EmploiCorrige_BrutAnnuelHorsPrimes, salairePrime=data2018$X186..Emploi_SalaireBrutAnnuelAvecPrimes, salaireThese=data2018$X136..TheseSalaireBrutAnnuelAvecPrimes)
 
 
 
@@ -38,11 +38,17 @@ summary(as.data.frame(postes$lieu), maxsum=10)
 print("### Lieu Doctorat (1er chiffre: NA non répondu ou pas concerné)###")
 summary(as.data.frame(postes$lieuThese), maxsum=10)
 
-print("### Quartile Salaire France  ###")
+print("### Quartile salaire hors prime France  ###")
 quantile(postes$salaire[postes$lieu != "Étranger"], na.rm=TRUE, probs = seq(0.25,0.75, 0.25))
 
-print("### Quartile Salaire Étranger ###")
+print("### Quartile salaire hors prime Étranger ###")
 quantile(postes$salaire[postes$lieu == "Étranger"], na.rm=TRUE, probs = seq(0.25,0.75, 0.25))
+
+print("### Quartile salaire avec primes France  ###")
+quantile(postes$salairePrime[postes$lieu != "Étranger"], na.rm=TRUE, probs = seq(0.25,0.75, 0.25))
+
+print("### Quartile salaire avec primes Étranger ###")
+quantile(postes$salairePrime[postes$lieu == "Étranger"], na.rm=TRUE, probs = seq(0.25,0.75, 0.25))
 
 print("### Quartile Salaire Doctorat France et Étranger ###")
 quantile(postes$salaireThese, na.rm=TRUE, probs = seq(0.25,0.75, 0.25))

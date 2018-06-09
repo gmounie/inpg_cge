@@ -3,6 +3,33 @@ source("../DataReader/dataReader.R")
 library(ggplot2)
 library(plyr)
 library(dplyr)
+                                        # 2017
+a = data.frame(taille = data2017$X55..EmploiEntrepriseTaille, poids= 1,filiere=data2017$X247..Option_ScolariteFiliereFormation)
+levels(a$taille)
+levels(a$taille) = c("", "10 to 19" , "20 to 49"      , "250 to 4 999" , "5 000 and more", "50 to 249" , "Less than 10")
+
+# strip les NA pour faciliter la lecture
+a = a[a$taille != "",]
+a$taille = factor(a$taille)
+levels(a$taille)
+a$taille = relevel(a$taille, "5 000 and more" )
+a$taille = relevel(a$taille, "250 to 4 999" )
+a$taille = relevel(a$taille, "50 to 249" )
+a$taille = relevel(a$taille, "20 to 49" )
+a$taille = relevel(a$taille, "10 to 19" )
+a$taille = relevel(a$taille, "Less than 10" )
+
+
+levels(a$filiere) = c("Non renseigné" , "Master" , "Master" , "IF" , "ISI" , "ISSC" , "Master" , "Master" , "Master" , "Master" , "MMIS" , "SLE")
+a$filiere = factor(a$filiere)
+
+
+p = ggplot(a, aes(x=factor(taille), weight=poids/(length(a$taille)),fill=filiere )) + geom_bar(colour="white") + coord_flip() + ggtitle(("Tailles des entreprises")) + xlab("") + ylab("Pourcentage") 
+p
+ggsave("../../Output/ensimag_2017_tailles.png", width=2*par("din")[1])
+
+
+
                                         # 2016
 a = data.frame(taille = data2016$TailleEntrepriseV2010, poids= 1,filiere=data2016$Option_FiliereFormation)
 levels(a$taille)

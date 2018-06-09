@@ -2,7 +2,20 @@ source("../DataReader/dataReader.R")
 
 library(ggplot2)
 library(plyr)
-# version 2017
+library(dplyr)
+# version 2018 ISI
+a = data.frame(secteurs = data2018$X55..EmploiEntrepriseSecteurActivite, poids= 1, situation=data2018$X20..ActiviteActuelle, promo=data2018$X14..AnneeDiplomeVerifieParLeDiplome, filiere=data2018$X258..Option_ScolariteFiliereFormation)
+isipro = a[a$filiere == "ISI – ingénierie des systèmes d’information" & a$situation == "En activité professionnelle",]
+totalpro = sum(isipro$poids)
+ddply(isipro, .(secteurs), summarize, nb=round(100*sum(poids)/totalpro, digits=1))
+
+isi = a[a$filiere == "ISI – ingénierie des systèmes d’information",]
+total = sum(isi$poids)
+ddply(isi, .(situation), summarize, nb=round(100*sum(poids)/total, digits=1))
+
+
+
+                                        # version 2017
 a = data.frame(secteurs = data2017$X58..EmploiEntrepriseSecteurActivite, poids= 1, situation=data2017$X26..ActiviteActuelle, promo=data2017$X21..AnneeDiplomeVerifieParLeDiplome, filiere=data2017$X247..Option_ScolariteFiliereFormation)
 # pour avoir juste la promo 2016
                                         # a=a[a$promo == 2016,]
