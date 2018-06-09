@@ -256,7 +256,11 @@ val3$agglosect = val3$SecteurActivite
 #p = ggplot(val3, aes(x=factor(agglosect), weight=freq)) + geom_bar(fill="lightgreen", colour="darkgreen") + coord_flip() + opts(title="Secteurs d'activité") + xlab("") + ylab("Pourcentage") 
 
 
-p = ggplot(a, aes(x=factor(secteurs), weight=poids/(length(a$secteurs)),fill=filiere)) + geom_bar(colour="white") + coord_flip() + ggtitle("Secteurs d'activité en 2013, par filière, 6 et 12 mois") + xlab("") + ylab("Pourcentage") 
+
+p = ggplot(a, aes(x=factor(secteurs), weight=poids/(length(a$secteurs)),fill=filiere)) + geom_bar(colour="white") + coord_flip()  + xlab("") + ylab("Pourcentage") 
+
+#p = ggplot(a, aes(x=factor(secteurs), weight=poids/(length(a$secteurs)),fill=filiere)) + geom_bar(colour="white") + coord_flip() + ggtitle("Secteurs d'activité en 2013, par filière, 6 et 12 mois") + xlab("") + ylab("Pourcentage") 
+
 
 
 #p + geom_text(x=1, y=0.11, label="secteurs < 10%", size=16) + opts(plot.title = theme_text(size=32, lineheight=.8, face="bold"), axis.text.x = theme_text(size=28, lineheight=.8, face="bold"), axis.text.y = theme_text(size=28, lineheight=.8, face="bold"),  axis.title.x = theme_text(size=28, lineheight=.8)) 
@@ -265,6 +269,10 @@ p
 #p + geom_text(x=1, y=0.11, label="15 secteurs < 10%")
 ggsave("../../Output/ensimag_2013_secteurs_filiere.png", width=2*par("din")[1])
 
+p = ggplot(a, aes(x=factor(filiere), weight=poids/(length(a$filiere)),fill=secteurs)) + geom_bar(colour="white") + coord_flip()  + xlab("") + ylab("Pourcentage") 
+
+p
+ggsave("../../Output/ensimag_2013_secteursfiliere.png", width=2*par("din")[1])
 
 secteurs2008_20013_18mois = factor(c( sub("[0-9]+. *","",as.character(data2010_2008$emp.actuel.Secteur)), as.character(data2011$SecteurActiviteINPG[data2011$Promo == 2009]), as.character(data2012$SecteurActiviteINPG[data2012$AnneeDiplome == 2010]), as.character(data2013$SecteurActiviteFinale[data2013$AnneeEnquete == 2013 && data2013$AnneeDiplome == 2011]), as.character(data2014$SecteurActiviteFinale[data2014$AnneeEnquete == 2014 && data2014$AnneeDiplome == 2012]) ) )
 
