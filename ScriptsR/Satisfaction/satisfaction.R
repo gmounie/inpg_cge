@@ -7,6 +7,8 @@ library(dplyr)
                                         #2018
 a = data.frame(Emploi=data2018$X86..EmploiSatisfaction, Conditions=data2018$X87..EmploiSatisfactionConditions, Collegues=data2018$X88..EmploiSatisfactionCollegues, Remuneration=data2018$X89..EmploiSatisfactionRemuneration, Autonomie=data2018$X90..EmploiSatisfactionAutonomie, Collegues=data2018$X91..EmploiSatisfactionLocalisation, Formation=data2018$X141..EcoleSatisfactionFormation, noteFormation=NA, Filiere=data2018$X258..Option_ScolariteFiliereFormation)
 
+levels(a$Filiere) = c("NA", "IF" , "ISI" , "ISSC" , "Master" , "Master" , "Master" , "MMIS" , "SLE")
+a$Filiere = factor(a$Filiere)
 
 a$noteFormation[a$Formation == "Très satisfait(e)"] = 20
 a$noteFormation[a$Formation == "Satisfait(e)"] = 15
@@ -15,14 +17,22 @@ a$noteFormation[a$Formation == "Insatisfait(e)"] = 5
 a$noteFormation[a$Formation == "Très insatisfait(e)"] = 0
 
 b = select(a, Filiere) %>% group_by(Filiere) %>% summarize(n())
+b
 write.csv(file="rep18.csv", b)
 b= select(a, Emploi, Filiere) %>% group_by(Filiere, Emploi) %>% summarize(n())
+b
 write.csv(file="emploi18.csv", b)
 b= select(a, Formation, Filiere) %>% group_by(Filiere, Formation) %>% summarize(n())
+b
 write.csv(file="formation18.csv", b)
 b= select(a, noteFormation, Filiere) %>% group_by(Filiere) %>% summarize(mean(noteFormation, na.rm = T))
 b
 write.csv(file="noteformation18.csv", b)
+
+ggplot(a,aes(Formation, fill=Filiere)) + geom_bar(colour="white") + coord_flip() + facet_wrap(c("Filiere")) + ggtitle("Satisfaction des diplômés de la formation")
+ggsave("../../Output/ensimag_2018_satisfaction_filière.png", width=1.5*par("din")[1])
+
+
                                         # 2017
 a = data.frame(Emploi=data2017$X87..EmploiSatisfaction, Formation=data2017$X142..EcoleSatisfactionFormation, filiere=data2017$X247..Option_ScolariteFiliereFormation)
 
