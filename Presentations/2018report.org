@@ -1,0 +1,177 @@
+#+TITLE: Ensimag: Que sont devenus les diplômé(e)s 2016, 2015 et 2014 ? (enquête nationale sur l'insertion des diplômés ingénieurs et d'écoles de commerce (enquête CGE))
+#+DATE: 2018
+#+AUTHOR: Grégory Mounié
+#+EMAIL: gregory.mounie@imag.fr
+#+OPTIONS: ':nil *:t -:t ::t <:t H:2 \n:nil ^:t arch:headline
+#+OPTIONS: author:t c:nil creator:comment d:(not "LOGBOOK") date:t
+#+OPTIONS: e:t email:nil f:t inline:t num:t p:nil pri:nil stat:t
+#+OPTIONS: tags:t tasks:t tex:t timestamp:t toc:nil todo:t |:t
+#+DESCRIPTION:
+#+EXCLUDE_TAGS: noexport
+#+KEYWORDS:
+#+LANGUAGE: en
+#+SELECT_TAGS: export
+
+#+OPTIONS: H:2
+#+BEAMER_COLOR_THEME: spruce
+#+BEAMER_FONT_THEME:
+#+BEAMER_HEADER:  \usecolortheme{rose} \usecolortheme{dolphin}
+#+BEAMER_INNER_THEME:
+#+BEAMER_OUTER_THEME:
+#+BEAMER_THEME: Warsaw
+#+LATEX_CLASS: beamer
+#+LATEX_CLASS_OPTIONS: [presentation]
+#+STARTUP: beamer
+
+* TODO Ensimag: diplômé(e)s 2017, 2016, 2015
+
+** Répondants
+   
+*** Vous voulez voir ces statistiques, les "autres" (futurs ensimag, ministères, journalistes, etc.) aussi !
+    *Répondez SVP ! 3 fois ! Les même questions !*.
+
+    Rappel: Étudiant \lambda: 7-8000 \euro/an, Lycéen \lambda: 15000\euro/an, Ensimag \lambda: 23000 \euro/an;
+*** Proportions des promotions répondant aux questions         :B_alertblock:
+    :PROPERTIES:
+    :BEAMER_env: alertblock
+    :END:
+   Réponses à 6 mois: 74%; 18 mois: 62%; 30 mois: 45%.  (Comparable
+   moyenne Ingé France 2015: 6 mois 69.8%; 18 mois 56.2%; 30 mois
+   49.6%; Moyenne G-INP 2016: 6 mois 80%; 18 mois 69%; 30 mois: 60%)
+
+   | Réponses (2017) | 6 mois  | 18 mois | 30 mois |
+   | Ensimag         | (74%)   | (62%)   | (45%)   |
+   | G-INP           | (80%)   | (69%)   | (60%)   |
+   | Ingé France     | (69.8%) | (56.7%) | (49.6%) |
+
+*** Contexte: les années passées "perte" d'IF à cause du décalage de diplôme
+    IF += 15% de cours en plus \Rightarrow décalage de 1 an du diplôme pour les
+    anciennes promotions ! Qui se résorbe maintenant petit à petit.
+
+** Répondants par filières
+
+   *filière IF sous-représenté* (biais sur les réponses à cause du
+   décalage passé)
+
+   #+ATTR_LATEX: :width 12cm :height 6cm
+   [[./../Output/ensimag_2017_repondants_filiere.png]]
+
+** Situation des diplômés
+
+   Comme tous les ans, plus de doctorat en Master et MMIS, moins en
+   ISI, beaucoup moins en IF.
+   # Comme tous les ans, pas de grande différence entre filières sauf sur
+   # le doctorat. Plus de doctorat en Master (50%?), MMIS(27%), SLE
+   # (18%), (ISSC 20%?), un peu moins en ISI (8%), beaucoup moins en IF
+   # (3%).
+   Biais probable: réponses des doctorants locaux à 30 mois. 
+   (Moyenne Ingé France 6 mois: 14.4% de recherche d'emploi)
+
+ #+ATTR_LATEX: :width 11cm
+ [[./../Output/ensimag_2017_situation.png]]
+
+
+** Votre emploi est-il votre premier emploi ? (par filière)
+
+ #+ATTR_LATEX: :width 11cm
+ [[./../Output/ensimag_2017_premieremploi.png]]
+
+
+** Lieu par filière (Les 3 promos)
+   IDF:35%;ARA:28%;Étranger:15%;PACA:6%;Province:6%;NA:11%
+
+ #+ATTR_LATEX: :width 11.5cm :height 7cm
+ [[./../Output/ensimag_2017_lieu.png]]
+
+** Secteur de l'entreprise (Les 3 promos)
+
+   #+ATTR_LATEX: :width 12cm :height 7cm
+   [[./../Output/ensimag_2017_secteurs_filiere.png]]
+
+** Compétences techniques utilisées (Les 3 promos)
+
+ #+ATTR_LATEX: :width 12cm :height 7cm
+ [[./../Output/ensimag_2017_competence.png]]
+   
+
+
+** Salaires filtrés aux extrèmes
+   TOP 6 Abroad: 2 IF, 3 ISI, 1 MMIS 
+ #+ATTR_LATEX: :width 12cm :height 7cm
+ [[./../Output/ensimag_2017_salaire_total_inf100000.png]]
+
+** Salaires France, hors thèse, non filtrés
+   TOP 6 France: 2 IF, 3 ISI, 1 MMIS (si, si, c'est pareil :-) )
+
+ #+ATTR_LATEX: :width 12cm :height 7cm
+ [[./../Output/ensimag_2017_salaire_france_industrie.png]]
+
+
+** Satisfaction (noté de Trés Satisfait à Très Insatisfait)
+   Formation: seulement 4 valeurs
+
+ #+ATTR_LATEX: :width 12cm :height 7cm
+ [[./../Output/ensimag_2017_satisfaction.png]]
+
+** Comment ont-ils trouvé leur emploi ? (les 3 promos)   
+30% de *NA* inclue les doctorant (~17%), recherche d'emploi et poursuite d'étude.
+
+ #+ATTR_LATEX: :width 11cm
+[[./../Output/ensimag_2017_methode.png]]
+
+** Taille de l'entreprise
+30% *NA* inclue les doctorant (~17%), recherche d'emploi et poursuite d'étude.
+
+ #+ATTR_LATEX: :width 11cm
+ [[./../Output/ensimag_2017_tailles.png]]
+
+** Management (En activité, hors thèse) (les 3 promos)
+ #+ATTR_LATEX: :width 11cm
+ [[./../Output/ensimag_2017_management.png]]
+
+
+** Annexes
+   Quelques autres statistiques:
+   - nature des postes
+   - répondants au fil des ans
+   - intervalle de confiance sur la recherche d'emploi
+
+** Nature des postes (Les 3 promos)
+30% *NA* inclue les doctorant (~17%), recherche d'emploi et poursuite d'étude.
+
+ #+ATTR_LATEX: :width 12cm :height 6cm
+ [[./../Output/ensimag_2017_postes.png]]
+
+
+** Répondants au fils des ans
+
+ #+ATTR_LATEX: :width 11.5cm :height 7cm
+ [[./../Output/repondants17.png]]
+
+** Intervalle de confiance sur la recherche d'emploi
+
+Marché de l'emploi moins tendu: inter-contrat à 18 mois moins visible.
+
+ #+ATTR_LATEX: :width 6cm
+ [[./../Output/ensimag_itchomeur_6mois.png]]
+ #+ATTR_LATEX: :width 6cm
+ [[./../Output/ensimag_itchomeur_18mois.png]]
+
+
+
+* Demandes							   :noexport:
+** DONE part à l'étranger
+** DONE satisfaction travail et formation
+** DONE salaire boxplot
+** DONE combien d'emploi avant la situation
+   - premier emploi
+** DONE taux d'abstention
+** DONE compétence les plus utiles
+** DONE combien on travailler dans la boite à la fin du PFE
+   - méthode pour trouver leur emploi
+** DONE % doctorat
+** DONE taille des entreprises
+** DONE % de poursuite d'étude
+** DONE localisation
+** DONE salaire moyen juste France et entreprises
+** DONE proportion de management
