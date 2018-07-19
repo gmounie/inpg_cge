@@ -1,0 +1,5 @@
+*.pdf
+*.tex
+*.log
+auto/
+_minted-2016report/
