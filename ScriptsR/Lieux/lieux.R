@@ -1,6 +1,55 @@
 source("../DataReader/dataReader.R")
 
 library(ggplot2)
+library(dplyr)
+                                        # 2018
+                                        # très basique, juste RA, PACA et province
+
+lieu = data.frame( lieutrav = data2018$X33..EmploiLieuRegionEtranger ,lieuvol = data2018$X100..VolontariatRegionEtranger, lieudoc = data2018$X122..TheseRegionEtranger)
+lieu$lieu[lieu$lieutrav != ""] = as.character(lieu$lieutrav[lieu$lieutrav != ""])
+lieu$lieu[lieu$lieudoc != ""] = as.character(lieu$lieudoc[lieu$lieudoc != ""])
+lieu$lieu[lieu$lieuvol != ""] = as.character(lieu$lieuvol[lieu$lieuvol != ""])
+lieu$lieu = factor(lieu$lieu)
+a = data.frame(lieu = lieu$lieu, weight=1, promo=data2018$X14..AnneeDiplomeVerifieParLeDiplome, filiere=data2018$X258..Option_ScolariteFiliereFormation)
+
+a = a %>% mutate(filiere= recode(filiere,                   
+"IF – ingénierie pour la finance" = "IF",       
+"ISI – ingénierie des systèmes d’information" = "ISI",
+"ISSC –Internet, services et systèmes connectés" = "ISSC",
+"Master Informatique" = "Master",
+"Master Msiam" = "Master",
+"Master SCCI (2017 ,2016)" = "Master",
+"MMIS – modélisation mathématique, images, simulation" = "MMIS",
+"SLE – Systèmes et logiciels embarqués" = "SLE")) %>%
+    mutate(lieu, lieu=recode_factor(lieu,
+                                    "Île-de-France"="IDF",
+                                    "Auvergne-Rhône-Alpes"="ARA",
+                                    "Étranger"="Etr",
+                                    "Provence-Alpes-Côte d’Azur"="PACA",
+                                    "Bourgogne-Franche-Comté"="Prov",   
+                                    "Bretagne"="Prov",
+                                    "Centre-Val de Loire"="Prov",       
+                                    "Grand Est"="Prov",                 
+                                    "Hauts-de-France"="Prov",
+                                    "Nouvelle-Aquitaine"="Prov",
+                                    "Occitanie"="Prov")) %>%
+    filter(filiere != "")
+
+
+a$promo = factor(a$promo)
+a = a[! is.na(a$promo),]
+a = a[! (a$filiere == "Non renseigné"),]
+#a = a[! is.na(a$lieu),]
+a$weight=100./length(a$promo)
+
+a %>% group_by(filiere) %>% summarize()
+
+
+p = ggplot(data=a, aes(x=lieu, fill=filiere))  + geom_bar(colour="white",(aes(weight=weight))) + coord_flip() + facet_wrap(c("filiere"))
+p = p  + theme(plot.title=element_text("Lieu de travail (doctorat, volontariat) en fonction de la filière")) + xlab("Lieu") + scale_fill_hue(l=70, c=150)  + ylab("% des diplômés")
+p
+ggsave("../../Output/ensimag_2018_lieu.png", width=2*par("din")[1])
+
                                         # 2017
                                         # très basique, juste RA, PACA et province
 

@@ -1,5 +1,14 @@
 source("../DataReader/dataReader.R")
 
+# 2018
+salaireBrut2018 = data.frame(salprime= data2018$X186..Emploi_SalaireBrutAnnuelAvecPrimes, lieu= data2018$X178..LieuTravail_FranceEtranger, promo=data2018$X14..AnneeDiplomeVerifieParLeDiplome, sexe=data2018$X4..SexeVerifieParLeDiplome)
+
+# prime par promo et sexe
+salaireBrut2018 %>% group_by(promo, sexe) %>% summarize(median(salprime, na.rm=TRUE))
+# prime par promo et sexe
+salaireBrut2018 %>% group_by(promo, lieu) %>% summarize(mean(salprime, na.rm=TRUE))
+
+
 ## Donne le salaire moyen et le salaire médian ?
 salaireBrut2017 = as.data.frame(data2017[, c("X191..Emploi_SalaireBrutAnnuelAvecPrimes", "X188..EmploiCorrige_BrutAnnuelHorsPrimes", "X168..Sexe", "X21..AnneeDiplomeVerifieParLeDiplome", "X1..AnneeEnquete", "X137..TheseSalaireBrutAnnuelAvecPrimes", "X132..TheseSalaireBrutAnnuelHorsPrimes", "X26..ActiviteActuelle", "X38..EmploiLieuRegionEtranger", "X123..TheseRegionEtranger")])
 names(salaireBrut2017) = c("SalaireBrutAnnuelAvecPrimes", "SalaireBrutAnnuelHorsPrimes", "Sexe", "AnneeDiplome", "AnneeEnquete", "RevenuBrutAnnuelAvecPrimesThesard", "RevenuBrutAnnuelHorsPrimesThesard", "ActiviteActuelle", "LieuTravailDetailEnquete2012", "LieuLaboDoctoratEnquete2012");
