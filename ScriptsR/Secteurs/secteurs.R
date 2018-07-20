@@ -3,7 +3,84 @@ source("../DataReader/dataReader.R")
 library(ggplot2)
 library(plyr)
 library(dplyr)
-# version 2018 ISI
+
+                                        # version 2018
+a = data.frame(secteurs = data2018$X55..EmploiEntrepriseSecteurActivite, poids= 1, situation=data2018$X20..ActiviteActuelle, promo=data2018$X14..AnneeDiplomeVerifieParLeDiplome, filiere=data2018$X258..Option_ScolariteFiliereFormation)
+# pour avoir juste la promo 2016
+                                        # a=a[a$promo == 2016,]
+
+a$secteurs = factor(a$secteurs, levels=c(levels(a$secteurs), "En thèse", "En volontariat"))
+a[a$situation == "En thèse",]$secteurs = "En thèse"
+a[a$situation == "En volontariat (VIA, VIE, ...)",]$secteurs = "En volontariat"
+levels(a$situation)
+levels(a$secteurs)
+
+levels(a$filiere) = c("NA", "IF" , "ISI" , "ISSC" , "Master" , "Master" , "Master" , "MMIS" , "SLE")
+a$filiere = factor(a$filiere)
+a$promo = factor(a$promo)
+
+levels(a$secteurs) = c("NA" , "Activités financières et d'assurance" , "Autre (4%) + 16 autres" , "Activités informatiques et services d'information (TIC Services)" , "Autre (4%) + 16 autres" , "Autre (4%) + 16 autres" , "Autre (4%) + 16 autres" , "Autre (4%) + 16 autres" , "Autre (4%) + 16 autres" , "Autre (4%) + 16 autres" , "Autre (4%) + 16 autres" , "Édition, audiovisuel et diffusion" , "Autre (4%) + 16 autres" , "Enseignement, recherche" , "Autre (4%) + 16 autres" , "Autre (4%) + 16 autres" , "Industrie des Technologies de l'Information et de la Communication (TIC)" , "Autre (4%) + 16 autres" , "Autre (4%) + 16 autres" , "Recherche-développement scientifique" , "Autre (4%) + 16 autres" , "Sociétés de conseil, Bureaux d'études, Ingénierie" , "Autre (4%) + 16 autres" , "Autre (4%) + 16 autres" , "Autre (4%) + 16 autres" , "En thèse" , "En volontariat")
+
+a$secteurs = factor(a$secteurs)              
+
+
+a = a[a$filiere != "",]
+a = a[a$filiere != "Non renseigné",]
+a$filiere = factor(a$filiere)
+
+#a = a[as.character(a$secteurs) != "",]
+# total= length(a$secteurs[a$secteurs != ""])
+total = length(a$secteurs)
+ddply(a, .(secteurs), summarize, nb=round(100*sum(poids)/total, digits=1))
+
+b = a[a$apprentissage == "En apprentissage",] 
+totala = length(b$secteurs[b$secteurs != ""])
+ddply(b, .(secteurs), summarize, nb=round(100*sum(poids)/totala, digits=0)) 
+
+val = count(data2018)
+val2 = val
+val2$freq = val$freq / sum(val$freq)
+val3 = val2
+val3$agglosect = val3$SecteurActivite
+#for(i in 1:length(val3$freq)) { if (val3$freq[i] < 0.1) val3$agglosect[i] = "Autres secteurs" }
+
+
+
+#p = ggplot(val3, aes(x=factor(agglosect), weight=freq)) + geom_bar(fill="lightgreen", colour="darkgreen") + coord_flip() + opts(title="Secteurs d'activité") + xlab("") + ylab("Pourcentage") 
+
+
+p = ggplot(a, aes(x=factor(secteurs), weight=poids/(length(a$secteurs)),fill=filiere)) + geom_bar(colour="white") + coord_flip() + ggtitle("Secteurs d'activité en 2018, par filière, 6, 18 et 30 mois après la sortie") + xlab("") + ylab("Pourcentage")
+
+
+#p + geom_text(x=1, y=0.11, label="secteurs < 10%", size=16) + opts(plot.title = theme_text(size=32, lineheight=.8, face="bold"), axis.text.x = theme_text(size=28, lineheight=.8, face="bold"), axis.text.y = theme_text(size=28, lineheight=.8, face="bold"),  axis.title.x = theme_text(size=28, lineheight=.8)) 
+
+p
+#p + geom_text(x=1, y=0.11, label="15 secteurs < 10%")
+ggsave("../../Output/ensimag_2018_secteurs_filiere.png", width=1.5*par("din")[1])
+
+p = ggplot(a, aes(x=factor(filiere), weight=poids/(length(a$filiere)),fill=secteurs)) + geom_bar(colour="white") + coord_flip() + ggtitle("Filière en 2018, par secteur d'activité, 6, 18 et 30 mois après la sortie") + xlab("") + ylab("Pourcentage")
+
+
+#p + geom_text(x=1, y=0.11, label="secteurs < 10%", size=16) + opts(plot.title = theme_text(size=32, lineheight=.8, face="bold"), axis.text.x = theme_text(size=28, lineheight=.8, face="bold"), axis.text.y = theme_text(size=28, lineheight=.8, face="bold"),  axis.title.x = theme_text(size=28, lineheight=.8)) 
+
+p
+#p + geom_text(x=1, y=0.11, label="15 secteurs < 10%")
+ggsave("../../Output/ensimag_2018_filiere_secteurs.png", width=1.5*par("din")[1])
+
+
+p = ggplot(a, aes(x=factor(filiere), weight=poids/(length(a$filiere)),fill=situation)) + geom_bar(colour="white") + coord_flip() + ggtitle("Filière en 2018, par situation, 6, 18 et 30 mois après la sortie") + xlab("") + ylab("Pourcentage")
+
+
+#p + geom_text(x=1, y=0.11, label="secteurs < 10%", size=16) + opts(plot.title = theme_text(size=32, lineheight=.8, face="bold"), axis.text.x = theme_text(size=28, lineheight=.8, face="bold"), axis.text.y = theme_text(size=28, lineheight=.8, face="bold"),  axis.title.x = theme_text(size=28, lineheight=.8)) 
+
+p
+#p + geom_text(x=1, y=0.11, label="15 secteurs < 10%")
+ggsave("../../Output/ensimag_2018_filiere_situation.png", width=1.5*par("din")[1])
+
+
+
+
+                                        # version 2018 ISI
 a = data.frame(secteurs = data2018$X55..EmploiEntrepriseSecteurActivite, poids= 1, situation=data2018$X20..ActiviteActuelle, promo=data2018$X14..AnneeDiplomeVerifieParLeDiplome, filiere=data2018$X258..Option_ScolariteFiliereFormation)
 isipro = a[a$filiere == "ISI – ingénierie des systèmes d’information" & a$situation == "En activité professionnelle",]
 totalpro = sum(isipro$poids)
