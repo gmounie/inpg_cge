@@ -7,8 +7,22 @@ library(dplyr)
                                         #2018
 a = data.frame(Emploi=data2018$X86..EmploiSatisfaction, Conditions=data2018$X87..EmploiSatisfactionConditions, Collegues=data2018$X88..EmploiSatisfactionCollegues, Remuneration=data2018$X89..EmploiSatisfactionRemuneration, Autonomie=data2018$X90..EmploiSatisfactionAutonomie, Collegues=data2018$X91..EmploiSatisfactionLocalisation, Formation=data2018$X141..EcoleSatisfactionFormation, noteFormation=NA, Filiere=data2018$X258..Option_ScolariteFiliereFormation)
 
-levels(a$Filiere) = c("NA", "IF" , "ISI" , "ISSC" , "Master" , "Master" , "Master" , "MMIS" , "SLE")
-a$Filiere = factor(a$Filiere)
+a = a %>% mutate(Filiere= recode(Filiere,                   
+"IF – ingénierie pour la finance" = "IF",       
+"ISI – ingénierie des systèmes d’information" = "ISI",
+"ISSC –Internet, services et systèmes connectés" = "ISSC",
+"Master Informatique" = "Master",
+"Master Msiam" = "Master",
+"Master SCCI (2017 ,2016)" = "Master",
+"MMIS – modélisation mathématique, images, simulation" = "MMIS",
+"SLE – Systèmes et logiciels embarqués" = "SLE")) %>%
+    mutate(Formation= recode_factor(Formation,
+                             "Très insatisfait(e)" = "Très insatisfait(e)",
+                             "Insatisfait(e)" = "Insatisfait(e)",
+                             "Ni satisfait(e) ni insatisfait(e)"= "Ni satisfait(e) ni insatisfait(e)",
+                             "Satisfait(e)" = "Satisfait(e)",
+                             "Très satisfait(e)" = "Très satisfait(e)"))
+
 
 a$noteFormation[a$Formation == "Très satisfait(e)"] = 20
 a$noteFormation[a$Formation == "Satisfait(e)"] = 15
@@ -30,7 +44,7 @@ b
 write.csv(file="noteformation18.csv", b)
 
 ggplot(a,aes(Formation, fill=Filiere)) + geom_bar(colour="white") + coord_flip() + facet_wrap(c("Filiere")) + ggtitle("Satisfaction des diplômés de la formation")
-ggsave("../../Output/ensimag_2018_satisfaction_filière.png", width=1.5*par("din")[1])
+ggsave("../../Output/ensimag_2018_satisfaction_filiere.png", width=1.5*par("din")[1])
 
 
                                         # 2017
