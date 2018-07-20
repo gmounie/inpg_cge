@@ -42,7 +42,8 @@ a = a[! (a$filiere == "Non renseigné"),]
 #a = a[! is.na(a$lieu),]
 a$weight=100./length(a$promo)
 
-a %>% group_by(filiere) %>% summarize()
+a %>% group_by(lieu) %>% summarize(n())
+a %>% summarize(n())
 
 
 p = ggplot(data=a, aes(x=lieu, fill=filiere))  + geom_bar(colour="white",(aes(weight=weight))) + coord_flip() + facet_wrap(c("filiere"))
