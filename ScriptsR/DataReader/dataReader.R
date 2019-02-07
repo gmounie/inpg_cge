@@ -1,3 +1,4 @@
+data2019 = read.csv("../../../ObservatoirePourLEmploi.git/CGE2019/CGE-ENSIMAG_Ensimag2019_2-7-2019_10_5.csv", sep =";", header=T, dec=".")
 data2018 = read.csv("../../../ObservatoirePourLEmploi.git/CGE2018/CGE-ENSIMAG_Ensimag2018_4-9-2018_15_3.csv", sep =";", header=T, dec=".")
 data2017 = read.csv("../../../ObservatoirePourLEmploi.git/CGE2017/CGE-ENSIMAG_Ensimag2017_3-31-2017_10_41.csv", sep =",", header=T, dec=".")
 data2016 = read.csv("../../../ObservatoirePourLEmploi.git/CGE2016/_ENSIMAG2016_921.csv", sep =",", header=T, dec=".")
@@ -16,6 +17,8 @@ data2013 = data2013[data2013$AnneeEnquete == 2013,]
 data2012 = data2012[data2012$AnneeEnquete == 2012,]
 # grave typo dans 2011 noté "2 011", ne pas filtré (inutile en plus)
 # data2011 = data2011[data2011$AnneeEnquete == 2011,] 
+
+taille2018 = 251
 
 # avant fusion SEOC
 taille2017 = 265

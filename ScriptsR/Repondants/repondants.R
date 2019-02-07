@@ -1,9 +1,20 @@
 source("../DataReader/dataReader.R")
 
+# enquete 2019
+repondants6_2018 = length( data2019$X249..AnneeEnquete[ data2019$X249..AnneeEnquete == 2019 & data2019$X14..AnneeDiplomeVerifieParLeDiplome == 2018 & data2019$X15..ActiviteActuelle != ""])
+repondants18_2017 = length( data2019$X249..AnneeEnquete[ data2019$X249..AnneeEnquete == 2019 & data2019$X14..AnneeDiplomeVerifieParLeDiplome == 2017 & data2019$X15..ActiviteActuelle != ""])
+repondants30_2016 = length( data2019$X249..AnneeEnquete[ data2019$X249..AnneeEnquete == 2019 & data2019$X14..AnneeDiplomeVerifieParLeDiplome == 2016 & data2019$X15..ActiviteActuelle != ""])
+
+print(repondants6_2018/taille2018)
+print(repondants18_2017/taille2017)
+print(repondants30_2016/taille2016)
+
+
+
 # enquete 2018
-repondants6_2017 = length( data2018$X244..AnneeEnquete[ data2018$X244..AnneeEnquete == 2018 & data2018$X14..AnneeDiplomeVerifieParLeDiplome == 2017 & data2018$X20..ActiviteActuelle != ""])
-repondants18_2016 = length( data2018$X244..AnneeEnquete[ data2018$X244..AnneeEnquete == 2018 & data2018$X14..AnneeDiplomeVerifieParLeDiplome == 2016 & data2018$X20..ActiviteActuelle != ""])
-repondants30_2015 = length( data2018$X244..AnneeEnquete[ data2018$X244..AnneeEnquete == 2018 & data2018$X14..AnneeDiplomeVerifieParLeDiplome == 2015 & data2018$X20..ActiviteActuelle != ""])
+repondants6_2017 = length( data2018$X249..AnneeEnquete[ data2018$X249..AnneeEnquete == 2018 & data2018$X14..AnneeDiplomeVerifieParLeDiplome == 2017 & data2018$X20..ActiviteActuelle != ""])
+repondants18_2016 = length( data2018$X249..AnneeEnquete[ data2018$X249..AnneeEnquete == 2018 & data2018$X14..AnneeDiplomeVerifieParLeDiplome == 2016 & data2018$X20..ActiviteActuelle != ""])
+repondants30_2015 = length( data2018$X249..AnneeEnquete[ data2018$X249..AnneeEnquete == 2018 & data2018$X14..AnneeDiplomeVerifieParLeDiplome == 2015 & data2018$X20..ActiviteActuelle != ""])
 
 print(repondants6_2017/taille2017)
 print(repondants18_2016/taille2016)
