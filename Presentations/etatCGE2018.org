@@ -24,41 +24,49 @@
 #+STARTUP: beamer
 
 * Bibliography                                                     :noexport:
-  [[./enquete-insertion-cge-2018.pdf][Enquête CGE 2018]]
-  L'an passé, 25% sur tablette et smartphone
+  Les statistiques nationales sont disponible dans le rapaport de la
+  CGE ( [[./enquete-insertion-cge-2018.pdf][Enquête CGE 2018]] )
 
-* Ensimag: diplômé(e)s 2016, 2015, 2014
+* Ensimag: diplômé(e)s 2017, 2016, 2015
 
-** Répondants
+** Proportion de réponses
    
-*** Lorsqu'un étudiant pose une question sur le devenir des diplômés...
-    *Répondez lui de répondre à l'enquête, SVP ! 3 ans de suite !*
-    *Les 95 questions (15 min sans les questions ouvertes) ! 3 fois au
-    *complet !*
-
-    Les réponses de l'an passé sont entre parenthèse pour vous donner
-    une idée de la variabilité.
-
-#  Rappel: Étudiant \lambda: 7-8000 \euro/an, Lycéen
-#    \lambda: 15000\euro/an, Ensimag \lambda: 23000 \euro/an, SupAero/Ulm/X \lambda: 66000 \euro/an;
+   Si vous lisez ce rapport, répondez à l'enquête lorsqu'elle vous
+   concerne ! (Les 3 ans !)
 
 *** Proportions des promotions répondant aux questions         :B_alertblock:
     :PROPERTIES:
     :BEAMER_env: alertblock
     :END:
-   # Réponses à 6 mois: 74%; 18 mois: 62%; 30 mois: 45%.  (Comparable
-   # moyenne Ingé France 2015: 6 mois 69.8%; 18 mois 56.2%; 30 mois
-   # 49.6%; Moyenne G-INP 2016: 6 mois 80%; 18 mois 69%; 30 mois: 60%)
-   | % de rép (2017)       |     6 mois |    18 mois |    30 mois |
+
+    #+BEGIN_SRC R :exports value
+      source("../ScriptsR/DataReader/dataReader.R")
+      # enquete 2018
+      repondants6_2017 = length( data2018$X244..AnneeEnquete[ data2018$X244..AnneeEnquete == 2018 & data2018$X14..AnneeDiplomeVerifieParLeDiplome == 2017 & data2018$X20..ActiviteActuelle != ""])
+      repondants18_2016 = length( data2018$X244..AnneeEnquete[ data2018$X244..AnneeEnquete == 2018 & data2018$X14..AnneeDiplomeVerifieParLeDiplome == 2016 & data2018$X20..ActiviteActuelle != ""])
+      repondants30_2015 = length( data2018$X244..AnneeEnquete[ data2018$X244..AnneeEnquete == 2018 & data2018$X14..AnneeDiplomeVerifieParLeDiplome == 2015 & data2018$X20..ActiviteActuelle != ""])
+
+      d = data.frame(Enquete=2018, mois=c(6, 18, 30), rep=c(repondants6_2017, repondants18_2016, repondants30_2015),taille=c(taille2017, taille2016, taille2015))
+      library(dplyr)
+      print(as_tibble(d))
+    #+END_SRC
+
+    #+RESULTS:
+
+
+   | % de rép              |     6 mois |    18 mois |    30 mois |
    |-----------------------+------------+------------+------------|
    | Ensimag               |     70(74) |     59(62) |     48(45) |
    | Grenoble-INP          |     75(80) |     63(69) |     58(60) |
    | France Ingé CGE       | 77.2(73.6) | 55.3(58.2) | 49.9(51.9) |
 
 
-# **** Contexte: "perte" d'IF à cause du décalage de diplôme
-#      IF += 15% de cours en plus \Rightarrow décalage de 1 an du diplôme pour les
-#      anciennes promotions ! Qui se résorbe maintenant petit à petit.
+   Par promotion, il y a une sous-représentation "habituelle" de la
+   filière IF, qui réponds moins que les autres. Comme c'est la
+   filière la plus spécialisée, avec le plus fort tôt de diplômés
+   travaillant dans la cible de la filière (Banques/assurances). Cela
+   biaise donc les réponses sur les secteurs d'activités et les
+   salaires.
 
 
 ** Situation des diplômés
