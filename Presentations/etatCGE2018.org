@@ -1,0 +1,339 @@
+#+TITLE: Ensimag: Les diplômé(e)s 2017, 2016 et 2015, enquête nationale sur l'insertion des diplômés ingénieurs et d'écoles de commerce: *Enquête CGE: 137+35 écoles/184, 14-20/31K Ingé., 5-10/20K mana.*
+#+DATE: 2018
+#+AUTHOR: Grégory Mounié
+#+EMAIL: Gregory.Mounie@imag.fr
+#+OPTIONS: ':nil *:t -:t ::t <:t H:2 \n:nil ^:t arch:headline
+#+OPTIONS: author:t c:nil creator:comment d:(not "LOGBOOK") date:t
+#+OPTIONS: e:t email:nil f:t inline:t num:t p:nil pri:nil stat:t
+#+OPTIONS: tags:t tasks:t tex:t timestamp:t toc:nil todo:t |:t
+#+DESCRIPTION:
+#+EXCLUDE_TAGS: noexport
+#+KEYWORDS:
+#+LANGUAGE: en
+#+SELECT_TAGS: export
+
+#+OPTIONS: H:2
+#+BEAMER_COLOR_THEME: spruce
+#+BEAMER_FONT_THEME:
+#+BEAMER_HEADER:  \usecolortheme{rose}
+#+BEAMER_INNER_THEME:
+#+BEAMER_OUTER_THEME:
+#+BEAMER_THEME: Warsaw
+#+LATEX_CLASS: beamer
+#+LATEX_CLASS_OPTIONS: [presentation]
+#+STARTUP: beamer
+
+* Bibliography                                                     :noexport:
+  [[./enquete-insertion-cge-2018.pdf][Enquête CGE 2018]]
+  L'an passé, 25% sur tablette et smartphone
+
+* Ensimag: diplômé(e)s 2016, 2015, 2014
+
+** Répondants
+   
+*** Lorsqu'un étudiant pose une question sur le devenir des diplômés...
+    *Répondez lui de répondre à l'enquête, SVP ! 3 ans de suite !*
+    *Les 95 questions (15 min sans les questions ouvertes) ! 3 fois au
+    *complet !*
+
+    Les réponses de l'an passé sont entre parenthèse pour vous donner
+    une idée de la variabilité.
+
+#  Rappel: Étudiant \lambda: 7-8000 \euro/an, Lycéen
+#    \lambda: 15000\euro/an, Ensimag \lambda: 23000 \euro/an, SupAero/Ulm/X \lambda: 66000 \euro/an;
+
+*** Proportions des promotions répondant aux questions         :B_alertblock:
+    :PROPERTIES:
+    :BEAMER_env: alertblock
+    :END:
+   # Réponses à 6 mois: 74%; 18 mois: 62%; 30 mois: 45%.  (Comparable
+   # moyenne Ingé France 2015: 6 mois 69.8%; 18 mois 56.2%; 30 mois
+   # 49.6%; Moyenne G-INP 2016: 6 mois 80%; 18 mois 69%; 30 mois: 60%)
+   | % de rép (2017)       |     6 mois |    18 mois |    30 mois |
+   |-----------------------+------------+------------+------------|
+   | Ensimag               |     70(74) |     59(62) |     48(45) |
+   | Grenoble-INP          |     75(80) |     63(69) |     58(60) |
+   | France Ingé CGE       | 77.2(73.6) | 55.3(58.2) | 49.9(51.9) |
+
+
+# **** Contexte: "perte" d'IF à cause du décalage de diplôme
+#      IF += 15% de cours en plus \Rightarrow décalage de 1 an du diplôme pour les
+#      anciennes promotions ! Qui se résorbe maintenant petit à petit.
+
+
+** Situation des diplômés
+
+   | % diplômés(2017) |     Indus. |      PhD |     Vol. |    étude |     R. E. |       SA |
+   |------------------+------------+----------+----------+----------+-----------+----------|
+   | Ensimag 6        |     83(69) |   12(17) |     3(1) |   *2*(9) |      1(3) |     2(2) |
+   | G-INP 6          |     68(59) |   17(17) |     2(3) |    10(9) |      6(9) |     1(2) |
+   | FR Ingé 6        | 71.9(68.1) | 6.5(6.9) | 3.2(3.6) |   8(8.5) | 8.3(10.9) |   2.1(2) |
+   |------------------+------------+----------+----------+----------+-----------+----------|
+   | Ensimag 18       |     77(83) |   22(13) |     1(1) |     1(1) |      1(2) |     1(1) |
+   | G-INP 18         |     70(72) |   24(18) |     3(1) |     3(1) |      3(4) |     1(1) |
+   | FR Ingé 18       | 78.2(77.4) | 8.4(8.5) |   4(3.8) | 3.5(3.8) |  4.4(5.1) | 1.8(1.4) |
+   |------------------+------------+----------+----------+----------+-----------+----------|
+   | Ensimag 30       |     82(81) |   16(18) |     1(0) |     0(1) |      2(0) |     2(0) |
+   | G-INP 30         |     76(72) |   23(21) |     1(2) |     1(2) |      2(1) |     1(2) |
+   | FR Ingé 30       |   83(81.7) |   9(9.7) | 2.7(2.6) | 1.5(1.9) |    2.5(3) | 1.3(1.1) |
+   |------------------+------------+----------+----------+----------+-----------+----------|
+
+*** Note % de doctorant par filière:
+    Doctorants: Master: 59%; MMIS 26%; SLE 15%; ISSC=12%; ISI 7%; IF 5%.
+   # Comme tous les ans, pas de grande différence entre filières sauf sur
+   # le doctorat. Plus de doctorat en Master (50%?), MMIS(27%), SLE
+   # (18%), (ISSC 20%?), un peu moins en ISI (8%), beaucoup moins en IF
+   # (3%).
+   # Biais probable: réponses des doctorants locaux à 30 mois. 
+   ( Rech. Emploi. Moyenne Ingé France 6 mois 2016: 14.4%; 2010 et 2005: 20%)
+
+** Votre emploi est-il votre premier emploi ? (par filière)
+
+ #+ATTR_LATEX: :width 11cm
+ [[./../Output/ensimag_2018_premieremploi_promo.png]]
+
+** Secteur de l'entreprise (Les 3 promos, par filière)
+
+   #+ATTR_LATEX: :width 12cm :height 7cm
+   [[./../Output/ensimag_2018_secteurs_filiere.png]]
+
+** Filière again (Les 3 promos, par secteur de l'entreprise)
+
+   #+ATTR_LATEX: :width 12cm :height 7cm
+   [[./../Output/ensimag_2018_filiere_secteurs.png]]
+
+# # question posée en 2017 mais maintenant disparu
+# ** Ceci n'est pas une question
+#    ... de la CGE. Les compétences techniques utilisées (Les
+#    3 promos, "dans l'industrie", 339 réponses)
+
+#  #+ATTR_LATEX: :width 12cm :height 7cm
+#  [[./../Output/ensimag_2017_competence.png]]
+   
+# ** Répartition des compétences utilisées (juste industrie).
+#    Les compétences techniques utilisées (Les 3 promos, "dans
+#    l'industrie", 339 réponses)
+
+#    | -               |  Info | Math | !(Info OR Math) |   Spé |
+#    |-----------------+-------+------+-----------------+-------|
+#    | 339 Tous        |   87% |  41% |              7% |   93% |
+#    | 10 Master       |   90% |  40% |             10% |    NA |
+#    | 66 IF           | *58%* |  36% |           *20%* | *83%* |
+#    | 137 ISI         |   95% |  25% |              4% |   65% |
+#    | 5 ISSC          |  100% |   0% |              0% |    0% |
+#    | 86 MMIS         |   91% |  63% |              3% |   35% |
+#    | 24 SLE          |   91% |  20% |              4% |   45% |
+#    |-----------------+-------+------+-----------------+-------|
+#    | 55 IF doing Fi  |   54% |  60% |             22% |  100% |
+#    | 21 !IF doing Fi |   81% |  19% |             19% |    NA |
+
+
+# *** 9/339 diplômés sans info, ni math, ni finance:
+#     4 "Others", 3 "Aviation industry", 1 "Marketing - Business", 1
+#     "Process engineering"
+** Satisfaction de la formation
+   Il n'y a aucune question sur les compétences utilisées par les
+   diplômés !
+
+  #+ATTR_LATEX: :width 12cm :height 7cm
+  [[./../Output/ensimag_2018_satisfaction_filière.png]]  
+
+
+** TODO The average salary is a lie !
+*** Les statistiques de salaires moyens sont /très très/ biaisées :B_alertblock:
+    :PROPERTIES:
+    :BEAMER_env: alertblock
+    :END:
+**** Comparaison salaire France Étranger
+     France versus France+Étranger pour noyer l'écart: Moyenne
+     CGE France Ingé: +30% (6 mois) +70% (30 mois). Pour nous, c'est
+     aussi dans les deux sens (pays développés versus émergents)
+    - Les primes à l'étranger peuvent compter pour +50%, HP ne sert à rien
+**** Autres sources de biais
+    - Ni les chômeurs, ni les poursuites d'étude, ni les temps
+      partiels, ni les doctorants, ni les VIE,
+    - Facteur 30 entre le min et le max pour nous
+    - Paris versus Province +10%
+    - Le biais Homme/Femme est assez uniforme par secteur (sauf Énergie)
+    - Tripatouillage de la collecte: salaire hors norme \rightarrow  erreur
+      (cge 2018 uniquement: 10 000 - 175 000 HP)
+    - Les écoles privés, en Informatique, mentent (salaire moyen >
+      salaire moyen polytechnicien)
+
+** Le salaire médian
+   Plus fiable, plus stable, limite l'influence des 10-20% à
+   l'étranger, doctorants, VIE. Pas de comparaison 
+*** Médiane hors prime, homme et femme (Keuro)
+   | Médiane hors prime | Ensimag | GINP | FR Ingé |
+   | 6 mois             |      39 | 34.2 |      34 |
+   | 18 mois            |    38.7 | 35.5 |      34 |
+   | 30 mois            |    41.7 | 36.3 |         |
+
+*** Médiane Ensimag avec prime, homme et femme
+   | Médiane avec prime | Ensimag   F | Ensimag    H |
+   | 6 mois             |       39.9  |        42.3  |
+   | 18 mois            |       45.3  |        41.5  |
+   | 30 mois            |       43.3  |        45.2  |
+
+** Salaire moyen dans l'/"industrie"/: les chiffres secrets 
+   | K\euro         | FR hp | FR p | Etr p | % écart p |
+   |------------+-------+------+-------+-----------|
+   | Ensimag 6  |  39.5 | 43.8 |  73.6 |        68 |
+   | GINP 6     |  34.7 | 38.5 |  58.1 |        51 |
+   | Fr Ingé 6  |  33.9 | 37.4 |  45.4 |        21 |
+   |------------+-------+------+-------+-----------|
+   | Ensimag 18 |  38.8 |   43 |  69.5 |        62 |
+   | GINP 18    |  35.1 | 39.2 |  57.4 |        46 |
+   | Fr Ingé 18 |  34.3 | 38.1 |  50.5 |        33 |
+   |------------+-------+------+-------+-----------|
+   | Ensimag 30 |  42.1 | 45.2 |  67.3 |        49 |
+   | GINP 30    |  36.8 | 41.5 |  59.0 |        42 |
+   | Fr Ingé 30 |  35.8 | 40.2 |  56.4 |        40 |
+   |------------+-------+------+-------+-----------|
+   #+TBLFM: $5=round(($4-$3)*100/$3)
+
+
+** TODO Calcul Salaire étranger                                    :noexport:
+# Salaire Etr
+# SalFR * xFR + SalEtr * xEtr = SalMonde
+# Donc SalEtr = (SalMonde - SalFR * (1-xEtr))/xEtr
+
+| qui            | salMonde | salFR |          xEtr |  SalEtr |
+|----------------+----------+-------+---------------+---------|
+| Tous P 6       |    38328 | 37431 |         0.112 | 45439.9 |
+| Tous P 18      |    39610 | 38122 |          0.12 | 50522.0 |
+| Tous P 30      |    42329 | 40262 |         0.128 | 56410.4 |
+| Tous P 18      |     39.5 |  37.9 |          0.12 |    51.2 |
+| Tous HP 30     |     37.3 |  35.4 |         0.144 |    48.6 |
+| Tous P 30      |     42.2 |  39.9 |         0.144 |    55.9 |
+| Tous P H 6     |     39.3 |  37.9 |         0.116 |    50.0 |
+| Tous P F 6     |     36.0 |  35.1 |         0.106 |    43.6 |
+| Tous P H 18    |     40.7 |  38.8 |         0.123 |    54.2 |
+| Tous P F 18    |     37.3 |  36.3 |         0.114 |    45.1 |
+| Tous P H 30    |     43.6 |  41.0 |         0.155 |    57.8 |
+| Tous P F 30    |     39.6 |  37.7 |         0.123 |    53.1 |
+| GINP HP 6      |     34.4 |  32.9 | (548-481)/548 |    45.2 |
+| GINP P 6       |     38.6 |  36.8 | (548-481)/548 |    51.5 |
+| Ensimag HP 6   |          |       |               |     0.0 |
+| Ensimag P 6    |          |       |               |     0.0 |
+| Ensimag HP 18  |          |       |               |     0.0 |
+| Ensimag P 18   |          |       |               |     0.0 |
+| Ensimag HP 30  |          |       |               |     0.0 |
+| Ensimag P 30   |          |       |               |     0.0 |
+| Ensimag P H 6  |          |       |               |     0.0 |
+| Ensimag P F 6  |          |       |               |     0.0 |
+| Ensimag P H 18 |          |       |               |     0.0 |
+| Ensimag P F 18 |          |       |               |     0.0 |
+| Ensimag P H 30 |          |       |               |     0.0 |
+| Ensimag P F 30 |          |       |               |     0.0 |
+#+TBLFM: $5=($2 - ($3 * (1 - $4)))/$4;%.1f
+
+
+** Lieu par filière, y compris doctorants (Les 3 promos)
+   IDF:40%;ARA:23%;Étranger:20%;PACA:5%;Province:7%;NA:4%
+
+ #+ATTR_LATEX: :width 11.5cm :height 7cm
+ [[./../Output/ensimag_2018_lieu.png]]
+
+
+** TODO Satisfaction (noté de Trés Satisfait à Très Insatisfait)
+   Note: Formation, seulement 4 valeurs (1 seule négative)
+
+ #+ATTR_LATEX: :width 12cm :height 7cm
+ [[./../Output/ensimag_2017_satisfaction.png]]
+
+** TODO Taille de l'entreprise
+
+ #+ATTR_LATEX: :width 11cm
+ [[./../Output/ensimag_2017_tailles.png]]
+
+** TODO Management (En activité, hors thèse) (les 3 promos)
+ #+ATTR_LATEX: :width 11cm
+ [[./../Output/ensimag_2017_management.png]]
+
+
+** TODO Annexes
+   Quelques autres statistiques:
+   - nature des postes
+   - répondants au fil des ans
+   - intervalle de confiance sur la recherche d'emploi
+
+
+** Salaires filtrés aux extrèmes
+   TOP 6 France+Abroad: 2 IF, 3 ISI, 1 MMIS 
+ #+ATTR_LATEX: :width 12cm :height 7cm
+ [[./../Output/ensimag_2017_salaire_total_inf100000.png]]
+
+** Salaires France, hors thèse, non filtrés
+   TOP 6 France: 2 IF, 3 ISI, 1 MMIS (si, si, c'est pareil :-) )
+
+ #+ATTR_LATEX: :width 12cm :height 7cm
+ [[./../Output/ensimag_2017_salaire_france_industrie.png]]
+
+** Comment ont-ils trouvé leur emploi ? (les 3 promos)   
+30% de *NA* inclue les doctorant (~17%), recherche d'emploi et poursuite d'étude.
+
+ #+ATTR_LATEX: :width 11cm
+[[./../Output/ensimag_2017_methode.png]]
+
+** Situation des diplômés                                          :noexport:
+
+   Comme tous les ans, plus de doctorat en Master et MMIS, moins en
+   ISI, beaucoup moins en IF.
+   # Comme tous les ans, pas de grande différence entre filières sauf sur
+   # le doctorat. Plus de doctorat en Master (50%?), MMIS(27%), SLE
+   # (18%), (ISSC 20%?), un peu moins en ISI (8%), beaucoup moins en IF
+   # (3%).
+   Biais possible: sur-réponses des doctorants locaux. 
+   (Moyenne Ingé France 6 mois: 14.4% de recherche d'emploi)
+
+ #+ATTR_LATEX: :width 11cm
+ [[./../Output/ensimag_2017_situation.png]]
+
+** Répondants par filières
+
+   *Rappel: filière IF sous-représentée* (biais à cause du décalage passé)
+
+   #+ATTR_LATEX: :width 12cm :height 7cm
+   [[./../Output/ensimag_2017_repondants_filiere.png]]
+
+** Nature des postes (Les 3 promos)
+30% *NA* inclue les doctorant (~17%), recherche d'emploi et poursuite d'étude.
+
+ #+ATTR_LATEX: :width 12cm :height 6cm
+ [[./../Output/ensimag_2017_postes.png]]
+
+
+** Répondants au fils des ans
+
+ #+ATTR_LATEX: :width 11.5cm :height 7cm
+ [[./../Output/repondants17.png]]
+
+** Intervalle de confiance sur la recherche d'emploi
+
+Marché de l'emploi moins tendu: inter-contrat à 18 mois moins visible.
+
+ #+ATTR_LATEX: :width 6cm
+ [[./../Output/ensimag_itchomeur_6mois.png]]
+ #+ATTR_LATEX: :width 6cm
+ [[./../Output/ensimag_itchomeur_18mois.png]]
+
+
+
+* Demandes							   :noexport:
+** DONE satisfaction formation par filière
+** DONE part à l'étranger
+** DONE satisfaction travail et formation
+** DONE salaire boxplot
+** DONE combien d'emploi avant la situation
+   - premier emploi
+** DONE taux d'abstention
+** DONE compétence les plus utiles
+** DONE combien on travailler dans la boite à la fin du PFE
+   - méthode pour trouver leur emploi
+** DONE % doctorat
+** DONE taille des entreprises
+** DONE % de poursuite d'étude
+** DONE localisation
+** DONE salaire moyen juste France et entreprises
+** DONE proportion de management
