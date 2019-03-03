@@ -1,15 +1,15 @@
-data2019 = read.csv("../../../ObservatoirePourLEmploi.git/CGE2019/CGE-ENSIMAG_Ensimag2019_2-28-2019_14_5.csv", sep =",", header=T, dec=".")
-data2018 = read.csv("../../../ObservatoirePourLEmploi.git/CGE2018/CGE-ENSIMAG_Ensimag2018_4-9-2018_15_3.csv", sep =";", header=T, dec=".")
-data2017 = read.csv("../../../ObservatoirePourLEmploi.git/CGE2017/CGE-ENSIMAG_Ensimag2017_3-31-2017_10_41.csv", sep =",", header=T, dec=".")
-data2016 = read.csv("../../../ObservatoirePourLEmploi.git/CGE2016/_ENSIMAG2016_921.csv", sep =",", header=T, dec=".")
-data2015 = read.csv("../../../ObservatoirePourLEmploi.git/CGE2015/Ensimag2015-2015-04-01.csv", sep =",", header=T, dec=".")
-data2014 = read.csv("../../../ObservatoirePourLEmploi.git/CGE2014/_ensimag2014_296.csv", sep =",", header=T, dec=".")
-data2013 = read.csv("../../../ObservatoirePourLEmploi.git/CGE2013/_ensimag2013-filtree-18-avr-2013.csv", sep =";", header=T, dec=",")
-data2012 = read.csv("../../../ObservatoirePourLEmploi.git/CGE2012/_cge2012-ensimag_final_26mars.csv", sep =";", header=T, dec=",")
-data2011 = read.csv("../../../ObservatoirePourLEmploi.git/CGE2011/cge-ensimag-2011_SPHINX_7avril2011.csv", sep =";", header=T, dec=",");
-data2010_2009 = read.csv("../../../ObservatoirePourLEmploi.git/CGE2010/CGE_2010_Grenoble_INP-_Ensimag_-_promotion_2009_UTF8.CSV", sep =",", header=T, dec=",")
-data2010_2008 = read.csv("../../../ObservatoirePourLEmploi.git/CGE2010/CGE_2010_Grenoble_INP-_Ensimag_-_promotion_2008_UTF8.CSV", sep =",", header=T, dec=",")
-data2009_2008 = read.csv("../../../ObservatoirePourLEmploi.git/CGE2009/CGE2009-20mars-ENSIMAG-Promo2008_utf8.CSV", sep =",", header=T, dec=",")
+data2019 = read.csv("~/ObservatoirePourLEmploi.git/CGE2019/CGE-ENSIMAG_Ensimag2019_2-28-2019_14_5.csv", sep =",", header=T, dec=".")
+data2018 = read.csv("~/ObservatoirePourLEmploi.git/CGE2018/CGE-ENSIMAG_Ensimag2018_4-9-2018_15_3.csv", sep =";", header=T, dec=".")
+data2017 = read.csv("~/ObservatoirePourLEmploi.git/CGE2017/CGE-ENSIMAG_Ensimag2017_3-31-2017_10_41.csv", sep =",", header=T, dec=".")
+data2016 = read.csv("~/ObservatoirePourLEmploi.git/CGE2016/_ENSIMAG2016_921.csv", sep =",", header=T, dec=".")
+data2015 = read.csv("~/ObservatoirePourLEmploi.git/CGE2015/Ensimag2015-2015-04-01.csv", sep =",", header=T, dec=".")
+data2014 = read.csv("~/ObservatoirePourLEmploi.git/CGE2014/_ensimag2014_296.csv", sep =",", header=T, dec=".")
+data2013 = read.csv("~/ObservatoirePourLEmploi.git/CGE2013/_ensimag2013-filtree-18-avr-2013.csv", sep =";", header=T, dec=",")
+data2012 = read.csv("~/ObservatoirePourLEmploi.git/CGE2012/_cge2012-ensimag_final_26mars.csv", sep =";", header=T, dec=",")
+data2011 = read.csv("~/ObservatoirePourLEmploi.git/CGE2011/cge-ensimag-2011_SPHINX_7avril2011.csv", sep =";", header=T, dec=",");
+data2010_2009 = read.csv("~/ObservatoirePourLEmploi.git/CGE2010/CGE_2010_Grenoble_INP-_Ensimag_-_promotion_2009_UTF8.CSV", sep =",", header=T, dec=",")
+data2010_2008 = read.csv("~/ObservatoirePourLEmploi.git/CGE2010/CGE_2010_Grenoble_INP-_Ensimag_-_promotion_2008_UTF8.CSV", sep =",", header=T, dec=",")
+data2009_2008 = read.csv("~/ObservatoirePourLEmploi.git/CGE2009/CGE2009-20mars-ENSIMAG-Promo2008_utf8.CSV", sep =",", header=T, dec=",")
 
 
 data2014 = data2014[data2014$AnneeEnquete == 2014,]
@@ -36,8 +36,8 @@ taille2014 = 255
 taille2013 = 184
 
 
-promo2012 = read.csv("../../../ObservatoirePourLEmploi.git/CGE2013/promo_2012.csv", sep=";", header=T)
-promo2011 = read.csv("../../../ObservatoirePourLEmploi.git/CGE2013/promo_2011.csv", sep=";", header=T)
+promo2012 = read.csv("~/ObservatoirePourLEmploi.git/CGE2013/promo_2012.csv", sep=";", header=T)
+promo2011 = read.csv("~/ObservatoirePourLEmploi.git/CGE2013/promo_2011.csv", sep=";", header=T)
 taille2011 = sum(promo2011$M, promo2011$F)
 taille2012 = sum(promo2012$M, promo2012$F)
 taille2010 = 242
