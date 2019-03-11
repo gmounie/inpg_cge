@@ -1,4 +1,4 @@
-data2019 = read.csv("~/ObservatoirePourLEmploi.git/CGE2019/CGE-ENSIMAG_Ensimag2019_2-28-2019_14_5.csv", sep =",", header=T, dec=".")
+data2019 = read.csv("~/ObservatoirePourLEmploi.git/CGE2019/CGE-ENSIMAG_Ensimag2019_3-11-2019_11_33.csv", sep =",", header=T, dec=".")
 data2018 = read.csv("~/ObservatoirePourLEmploi.git/CGE2018/CGE-ENSIMAG_Ensimag2018_4-9-2018_15_3.csv", sep =";", header=T, dec=".")
 data2017 = read.csv("~/ObservatoirePourLEmploi.git/CGE2017/CGE-ENSIMAG_Ensimag2017_3-31-2017_10_41.csv", sep =",", header=T, dec=".")
 data2016 = read.csv("~/ObservatoirePourLEmploi.git/CGE2016/_ENSIMAG2016_921.csv", sep =",", header=T, dec=".")
