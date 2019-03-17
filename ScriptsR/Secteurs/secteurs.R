@@ -1,10 +1,26 @@
 source("../DataReader/dataReader.R")
 
 library(ggplot2)
-library(plyr)
+## library(plyr)
 library(dplyr)
 
-                                        # version 2018
+## version 2019
+a = data.frame(secteur = data2019$X48..EmploiEntrepriseSecteurActivite, situation=data2019$X15..ActiviteActuelle, promo=data2019$X14..AnneeDiplomeVerifieParLeDiplome, filiere=data2019$X264..Option_ScolariteFiliereFormation,rep=1)
+
+a$secteur = factor(a$secteur, levels=c(levels(a$secteur), "PhD"))
+a[a$situation == "Studying for a PhD",]$secteur = "PhD"
+
+a = data.frame(a)
+
+a %>% select(secteur) %>%  summary()
+
+# %>% mutate(nbrep= n())
+
+a %>% filter(situation == "Working" || situation == "Studying for a PhD") %>% group_by(promo) %>% arrange(secteur)
+
+print(as_tibble(a))
+
+## version 2018
 a = data.frame(secteurs = data2018$X55..EmploiEntrepriseSecteurActivite, poids= 1, situation=data2018$X20..ActiviteActuelle, promo=data2018$X14..AnneeDiplomeVerifieParLeDiplome, filiere=data2018$X258..Option_ScolariteFiliereFormation)
 # pour avoir juste la promo 2016
                                         # a=a[a$promo == 2016,]
