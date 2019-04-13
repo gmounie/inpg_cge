@@ -1,7 +1,35 @@
 source("../DataReader/dataReader.R")
 data2013 = data2013[data2013$AnneeEnquete == 2013,]
 
-# version 2017
+library("dplyr")
+library("ggplot2")
+
+## version 2019
+df = data.frame(situation=data2019$X15..ActiviteActuelle, promo=data2019$X14..AnneeDiplomeVerifieParLeDiplome, filiere=data2019$X264..Option_ScolariteFiliereFormation)
+
+
+df = df %>% group_by(promo) %>% mutate(nbrep=n())
+df %>% select(promo, situation, nbrep) %>% group_by(promo, situation) %>% summarize(activite=round(100* n()/min(nbrep)))
+
+p = ggplot(data=df, aes(x=as.factor(promo), fill=situation, weight=1/nbrep), colour=black)  + geom_bar() + coord_flip()
+p + scale_fill_manual(values=c("white", "yellow","red","SlateBlue4","green","chartreuse4","blue", "orange")) + ggtitle("Situation des diplômés début 2O19, à 6, 18 et 30 mois") + xlab("Promo Ensimag") + ylab("Pourcentage")
+ggsave("../../Output/ensimag_2019_situation.svg")   
+ggsave("../../Output/ensimag_2019_situation.png", width=2*par("din")[1]) 
+
+
+## version 2018
+df = data.frame(situation=data2018$X20..ActiviteActuelle, promo=data2018$X14..AnneeDiplomeVerifieParLeDiplome, filiere=data2018$X258..Option_ScolariteFiliereFormation)
+
+df = df %>% group_by(promo) %>% mutate(nbrep=n())
+df %>% select(promo, situation, nbrep) %>% group_by(promo, situation) %>% summarize(activite=round(100* n()/min(nbrep)))
+
+p = ggplot(data=df, aes(x=as.factor(promo), fill=situation, weight=1/nbrep), colour=black)  + geom_bar() + coord_flip()
+p + scale_fill_manual(values=c("yellow","red","SlateBlue4","green","chartreuse4","blue", "orange")) + ggtitle("Situation des diplômés début 2O18, à 6, 18 et 30 mois") + xlab("Promo Ensimag") + ylab("Pourcentage")
+ggsave("../../Output/ensimag_2018_situation.svg")   
+ggsave("../../Output/ensimag_2018_situation.png", width=2*par("din")[1]) 
+
+
+## version 2017
 taux_emplois = data.frame(situation=data2017$X26..ActiviteActuelle, promo=data2017$X21..AnneeDiplomeVerifieParLeDiplome, poids=100, nb=1, poidsTotal=1, filiere=data2017$X247..Option_ScolariteFiliereFormation, poidsFiliere=1)
 levels(taux_emplois$filiere) = c("Non renseigné" , "Master" , "Master" , "IF" , "ISI" , "ISSC" , "Master" , "Master" , "Master" , "Master" , "MMIS" , "SLE")
 taux_emplois$filiere = factor(taux_emplois$filiere)
